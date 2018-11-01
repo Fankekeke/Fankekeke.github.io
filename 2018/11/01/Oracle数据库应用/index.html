@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="��ռ䣨������Ÿ���Ӧ���ļ���һ���Ϊ����123$ �����Ա�ռ䣺һ�㱣������̣�����������$ ��ʱ�Ա�ռ䣺ֻ���ڱ���ϵͳ�ж��ڻ�����ݣ�����������$ ������ռ䣺������������Ϊ=δ�ύ���������� ��ôΪʲôҪ������ռ��أ��Բ�ͬ�û����䲻ͬ�ı�ռ䣬������������ڹ�����">
+<meta name="description" content="表空间（用来存放各种应用文件）一般分为三种123$ 永久性表空间：一般保存表，过程，索引等数据$ 临时性表空间：只用于保存系统中短期活动的数据，如排序数据$ 撤销表空间：用来帮助回退为=未提交的事务数据 那么为什么要创建表空间呢？对不同用户分配不同的表空间，方便管理有利于管理磁盘空间，提高i/o性能 一些基本的授权1234567891011创建用户没有授权【创建表】create table stu">
 <meta name="keywords" content="悲伤的橘子树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Oracle���ݿ�Ӧ��">
+<meta property="og:title" content="Oracle数据库应用">
 <meta property="og:url" content="http://fanke.com/2018/11/01/Oracle数据库应用/index.html">
 <meta property="og:site_name" content="悲伤的橘子树">
-<meta property="og:description" content="��ռ䣨������Ÿ���Ӧ���ļ���һ���Ϊ����123$ �����Ա�ռ䣺һ�㱣������̣�����������$ ��ʱ�Ա�ռ䣺ֻ���ڱ���ϵͳ�ж��ڻ�����ݣ�����������$ ������ռ䣺������������Ϊ=δ�ύ���������� ��ôΪʲôҪ������ռ��أ��Բ�ͬ�û����䲻ͬ�ı�ռ䣬������������ڹ�����">
+<meta property="og:description" content="表空间（用来存放各种应用文件）一般分为三种123$ 永久性表空间：一般保存表，过程，索引等数据$ 临时性表空间：只用于保存系统中短期活动的数据，如排序数据$ 撤销表空间：用来帮助回退为=未提交的事务数据 那么为什么要创建表空间呢？对不同用户分配不同的表空间，方便管理有利于管理磁盘空间，提高i/o性能 一些基本的授权1234567891011创建用户没有授权【创建表】create table stu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-01T15:33:50.854Z">
+<meta property="og:updated_time" content="2018-11-01T15:36:57.971Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Oracle���ݿ�Ӧ��">
-<meta name="twitter:description" content="��ռ䣨������Ÿ���Ӧ���ļ���һ���Ϊ����123$ �����Ա�ռ䣺һ�㱣������̣�����������$ ��ʱ�Ա�ռ䣺ֻ���ڱ���ϵͳ�ж��ڻ�����ݣ�����������$ ������ռ䣺������������Ϊ=δ�ύ���������� ��ôΪʲôҪ������ռ��أ��Բ�ͬ�û����䲻ͬ�ı�ռ䣬������������ڹ�����">
+<meta name="twitter:title" content="Oracle数据库应用">
+<meta name="twitter:description" content="表空间（用来存放各种应用文件）一般分为三种123$ 永久性表空间：一般保存表，过程，索引等数据$ 临时性表空间：只用于保存系统中短期活动的数据，如排序数据$ 撤销表空间：用来帮助回退为=未提交的事务数据 那么为什么要创建表空间呢？对不同用户分配不同的表空间，方便管理有利于管理磁盘空间，提高i/o性能 一些基本的授权1234567891011创建用户没有授权【创建表】create table stu">
 
 
 
@@ -141,7 +141,7 @@
 
 
 
-  <title>Oracle���ݿ�Ӧ�� | 悲伤的橘子树</title>
+  <title>Oracle数据库应用 | 悲伤的橘子树</title>
   
 
 
@@ -327,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Oracle���ݿ�Ӧ��</h1>
+          <h1 class="post-title" itemprop="name headline">Oracle数据库应用</h1>
         
 
         <div class="post-meta">
@@ -414,42 +414,42 @@
       
 
       
-        <h2 id="��ռ䣨������Y���Ӧ���l���"><a href="#��ռ䣨������Y���Ӧ���l���" class="headerlink" title="��ռ䣨������Ÿ���Ӧ���ļ���"></a>��ռ䣨������Ÿ���Ӧ���ļ���</h2><p>һ���Ϊ����<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ �����Ա�ռ䣺һ�㱣������̣�����������</span><br><span class="line">$ ��ʱ�Ա�ռ䣺ֻ���ڱ���ϵͳ�ж��ڻ�����ݣ�����������</span><br><span class="line">$ ������ռ䣺������������Ϊ=δ�ύ����������</span><br></pre></td></tr></table></figure></p>
-<p>��ôΪʲôҪ������ռ��أ�<br>�Բ�ͬ�û����䲻ͬ�ı�ռ䣬�������<br>�����ڹ�����̿ռ䣬���i/o����</p>
-<h2 id="һЩ��������E"><a href="#һЩ��������E" class="headerlink" title="һЩ��������Ȩ"></a>һЩ��������Ȩ</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">�����û�û����Ȩ��������</span><br><span class="line">create table student(stu_id number(2),stu_name varchar2(10));</span><br><span class="line">create table student(stu_id number(2),stu_name varchar2(10))</span><br><span class="line">*</span><br><span class="line">�� 1 �г��ִ���:</span><br><span class="line">ORA-01031: Ȩ�޲���</span><br><span class="line">?</span><br><span class="line">//ʹ��system�û���Ȩ</span><br><span class="line">grant connect,resource to martin; //��Ȩ�û�connect,resource Ȩ��</span><br><span class="line">grant select on scott.emp to martin; //�����û��鿴emp���м�¼</span><br><span class="line">grant update on scott.emp to martin; //�����û��޸�emp���м�¼</span><br></pre></td></tr></table></figure>
-<h2 id="ͬ��ʣ����к�˽��-˽��ֻ�ܱ���jgʽ�u����ʣ�"><a href="#ͬ��ʣ����к�˽��-˽��ֻ�ܱ���jgʽ�u����ʣ�" class="headerlink" title="ͬ��ʣ����к�˽�� //˽��ֻ�ܱ���ǰģʽ�û����ʣ�"></a>ͬ��ʣ����к�˽�� //˽��ֻ�ܱ���ǰģʽ�û����ʣ�</h2><p>��sql���<br>���ض������ƺ�������<br>Ϊ�ֲ�ʽ���ݿ��Զ�̶����ṩ��λ��͸����<br>�ṩ����Ĺ�������</p>
-<pre><code class="bash">���û�martin��Ȩͬ���
+        <h2 id="表空间（用来存放各种应用文件）"><a href="#表空间（用来存放各种应用文件）" class="headerlink" title="表空间（用来存放各种应用文件）"></a>表空间（用来存放各种应用文件）</h2><p>一般分为三种<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ 永久性表空间：一般保存表，过程，索引等数据</span><br><span class="line">$ 临时性表空间：只用于保存系统中短期活动的数据，如排序数据</span><br><span class="line">$ 撤销表空间：用来帮助回退为=未提交的事务数据</span><br></pre></td></tr></table></figure></p>
+<p>那么为什么要创建表空间呢？<br>对不同用户分配不同的表空间，方便管理<br>有利于管理磁盘空间，提高i/o性能</p>
+<h2 id="一些基本的授权"><a href="#一些基本的授权" class="headerlink" title="一些基本的授权"></a>一些基本的授权</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">创建用户没有授权【创建表】</span><br><span class="line">create table student(stu_id number(2),stu_name varchar2(10));</span><br><span class="line">create table student(stu_id number(2),stu_name varchar2(10))</span><br><span class="line">*</span><br><span class="line">第 1 行出现错误:</span><br><span class="line">ORA-01031: 权限不足</span><br><span class="line">?</span><br><span class="line">//使用system用户授权</span><br><span class="line">grant connect,resource to martin; //授权用户connect,resource 权限</span><br><span class="line">grant select on scott.emp to martin; //允许用户查看emp表中记录</span><br><span class="line">grant update on scott.emp to martin; //允许用户修改emp表中记录</span><br></pre></td></tr></table></figure>
+<h2 id="同义词（公有和私有-私有只能被当前模式用户访问）"><a href="#同义词（公有和私有-私有只能被当前模式用户访问）" class="headerlink" title="同义词（公有和私有 //私有只能被当前模式用户访问）"></a>同义词（公有和私有 //私有只能被当前模式用户访问）</h2><p>简化sql语句<br>隐藏对象名称和所有者<br>为分布式数据库的远程对象提供了位置透明性<br>提供对象的公共访问</p>
+<pre><code class="bash">给用户martin授权同义词
 grant create synonym to martin;
 ?
-����˽��ͬ���
+创建私有同义词
 SQL&gt; create synonym sy_emp <span class="keyword">for</span> system.employee;
 ?
-ͬ����Ѵ�����
+同义词已创建。
 ?
 SQL&gt; select *from sy_emp;
 ?
-��������ͬ��ʣ��������û��ϴ�����
+创建共有同义词（在物主用户上创建）
 SQL&gt; create public synonym public_sy_emp <span class="keyword">for</span> employee;
 ?
-ͬ����Ѵ�����
+同义词已创建。
 ?
 SQL&gt;
 ?
-ɾ��˽��ͬ���
+删除私有同义词
 SQL&gt; drop synonym martin.sy_emp;
 ?
-ͬ�����ɾ����
+同义词已删除。
 ?
 SQL&gt;
 ?
-ɾ������ͬ���
+删除共有同义词
 SQL&gt; drop public synonym public_sy_emp;
 ?
-ͬ�����ɾ����
+同义词已删除。
 SQL&gt;
 
 </code></pre>
-<h2 id="��������"><a href="#��������" class="headerlink" title="��������"></a>��������</h2><p>�;�����������Ҫ�õģ��о�������</p>
+<h2 id="创建序列"><a href="#创建序列" class="headerlink" title="创建序列"></a>创建序列</h2><p>和就是生成主键要用的，感觉不好用</p>
 <pre><code class="bash">SQL&gt; create sequence seq1
   2  start with 10
   3  increment by 1
@@ -457,68 +457,68 @@ SQL&gt;
   5  nocycle
   6  cache 30;
 ?
-�����Ѵ�����
+序列已创建。
 ?
 SQL&gt; create table toys(toyid number(2), toyname varchar2(10),toyprice number(4,2));
 ?
-���Ѵ�����
+表已创建。
 ?
-SQL&gt; insert into toys(toyid,toyname,toyprice)values(seql.nextval,<span class="string">'�����'</span>,25);
-insert into toys(toyid,toyname,toyprice)values(seql.nextval,<span class="string">'�����'</span>,25)
+SQL&gt; insert into toys(toyid,toyname,toyprice)values(seql.nextval,<span class="string">'杰尼龟'</span>,25);
+insert into toys(toyid,toyname,toyprice)values(seql.nextval,<span class="string">'杰尼龟'</span>,25)
                                                *
-�� 1 �г��ִ���:
-ORA-02289: ���в�����
+第 1 行出现错误:
+ORA-02289: 序列不存在
 ?
 ?
-SQL&gt; insert into toys(toyid,toyname,toyprice)values(seq1.nextval,<span class="string">'�����'</span>,25);
+SQL&gt; insert into toys(toyid,toyname,toyprice)values(seq1.nextval,<span class="string">'杰尼龟'</span>,25);
 ?
-�Ѵ��� 1 �С�
+已创建 1 行。
 ?
-SQL&gt; insert into toys(toyid,toyname,toyprice)values(seq1.nextval,<span class="string">'���˹�'</span>,35);
+SQL&gt; insert into toys(toyid,toyname,toyprice)values(seq1.nextval,<span class="string">'憨八龟'</span>,35);
 ?
-�Ѵ��� 1 �С�
+已创建 1 行。
 ?
 SQL&gt; select * from toys;
 ?
      TOYID TOYNAME                TOYPRICE
 ---------- -------------------- ----------
-        11 �����                       25
-        12 ���˹�                       35
+        11 杰尼龟                       25
+        12 憨八龟                       35
 ?
 SQL&gt; create table tots(totid number(2), totname varchar2(10),totprice number(4,2));
 ?
-���Ѵ�����
+表已创建。
 ?
-SQL&gt; insert into tots(totid,totname,totprice)values(seq1.nextval,<span class="string">'С����'</span>,40);
+SQL&gt; insert into tots(totid,totname,totprice)values(seq1.nextval,<span class="string">'小火龙'</span>,40);
 ?
-�Ѵ��� 1 �С�
+已创建 1 行。
 ?
-SQL&gt; insert into tots(totid,totname,totprice)values(seq1.nextval,<span class="string">'������'</span>,80);
+SQL&gt; insert into tots(totid,totname,totprice)values(seq1.nextval,<span class="string">'毒龙钻'</span>,80);
 ?
-�Ѵ��� 1 �С�
+已创建 1 行。
 ?
 SQL&gt; select * from tots;
 ?
      TOTID TOTNAME                TOTPRICE
 ---------- -------------------- ----------
-        14 С����                       40
-        15 ������                       80
+        14 小火龙                       40
+        15 毒龙钻                       80
 
 </code></pre>
-<h2 id="���������"><a href="#���������" class="headerlink" title="���������"></a>���������</h2><p>Ŀ�ģ���������ֵ��һ���Զ���������<br>����û��Լ������������ϵ������н����޸ģ�����������Դ�����ã���������ݿ�ĵȴ�����ʱ���������� ����<br>�﷨��CREATE INDEX index_REVERSE_EMPNO ON table (column) REVERSE;</p>
-<h2 id="λͼ����"><a href="#λͼ����" class="headerlink" title="λͼ����"></a>λͼ����</h2><p>1�� ��ʱ������<br>�����зǳ�����ظ���ֵʱ������ĳ�б����� ���Ա���Ϣ��<br>Where �����а����˺ܶ�OR��������<br>���ٵ�update��������ΪҪ��Ӧ�ĸ������е�bitmap<br>2�� �ṹ��λͼ����ʹ��λͼ��Ϊ��ֵ�����ڱ��е�ÿһ������λͼ������TRUE(1)��FALSE(0)����NULLֵ��<br>3�� �ŵ㣺λͼ��һ��ѹ����ʽ��ţ����ռ�õĴ��̿ռ�ȱ�׼����ҪС�ö�<br>4�� �﷨��CREATE BITMAP INDEX index ON table (column[, column]…);</p>
-<h2 id="Ψһ����"><a href="#Ψһ����" class="headerlink" title="Ψһ����"></a>Ψһ����</h2><p>1�� ��ʱ��������ĳ���������е�ֵ������ͬ<br>2�� ������Primary Key(����)����Unique constraint(ΨһԼ��)ʱ��Ψһ���������Զ�����<br>3�� �﷨��CREATE UNIQUE INDEX index ON table (column);</p>
-<h2 id="����������"><a href="#����������" class="headerlink" title="����������"></a>����������</h2><p>���ݿ⽨��������ԭ��<br>1��ȷ����Ըñ�Ĳ����Ǵ����Ĳ�ѯ�������Ǵ�������ɾ�Ĳ�����<br>?<br>2�����Խ��������������ض��Ĳ�ѯ������Լ���sql��䣬Ϊ��ЩƵ����where�Ӿ��г��ֵ��ֶν���������<br>?<br>3�����Խ���������������һ�����ϵͳ���ܡ��޸ĸ������������ĸ���ʱ�䣬ͬʱ����������Ҳռ���̿ռ䡣<br>?<br>4������С�͵ı������������ܻ�Ӱ������<br>?<br>5��Ӧ�ñ���Ծ��н���ֵ���ֶν���������<br>?<br>6������ѡ������������͵�����Ϊ������<br>?<br>����������ԭ��<br>?<br>������ѯ�����ݿ�����Ҫ�ļ�¼��ѯ������Ҫ��Ҫ���������Լ�����Щ�ֶ��Ͻ���������Ҫ��ʵ�����ݿ�ϵͳ�Ĳ�ѯҪ���������ǣ��������ʵ���е�һЩͨ�õ�ԭ��<br>?</p>
+<h2 id="反向键索引"><a href="#反向键索引" class="headerlink" title="反向键索引"></a>反向键索引</h2><p>目的：比如索引值是一个自动增长的列<br>多个用户对集中在少数块上的索引行进行修改，容易引起资源的争用，比如对数据块的等待。此时建立反向索 引。<br>语法：CREATE INDEX index_REVERSE_EMPNO ON table (column) REVERSE;</p>
+<h2 id="位图索引"><a href="#位图索引" class="headerlink" title="位图索引"></a>位图索引</h2><p>1、 何时创建：<br>列中有非常多的重复的值时候。例如某列保存了 “性别”信息。<br>Where 条件中包含了很多OR操作符。<br>较少的update操作，因为要相应的跟新所有的bitmap<br>2、 结构：位图索引使用位图作为键值，对于表中的每一数据行位图包含了TRUE(1)、FALSE(0)、或NULL值。<br>3、 优点：位图以一种压缩格式存放，因此占用的磁盘空间比标准索引要小得多<br>4、 语法：CREATE BITMAP INDEX index ON table (column[, column]…);</p>
+<h2 id="唯一索引"><a href="#唯一索引" class="headerlink" title="唯一索引"></a>唯一索引</h2><p>1、 何时创建：当某列任意两行的值都不相同<br>2、 当建立Primary Key(主键)或者Unique constraint(唯一约束)时，唯一索引将被自动建立<br>3、 语法：CREATE UNIQUE INDEX index ON table (column);</p>
+<h2 id="熟练并背诵"><a href="#熟练并背诵" class="headerlink" title="熟练并背诵"></a>熟练并背诵</h2><p>数据库建立索引的原则<br>1，确定针对该表的操作是大量的查询操作还是大量的增删改操作。<br>?<br>2，尝试建立索引来帮助特定的查询。检查自己的sql语句，为那些频繁在where子句中出现的字段建立索引。<br>?<br>3，尝试建立复合索引来进一步提高系统性能。修改复合索引将消耗更长时间，同时，复合索引也占磁盘空间。<br>?<br>4，对于小型的表，建立索引可能会影响性能<br>?<br>5，应该避免对具有较少值的字段进行索引。<br>?<br>6，避免选择大型数据类型的列作为索引。<br>?<br>索引建立的原则<br>?<br>索引查询是数据库中重要的记录查询方法，要不要进入索引以及在那些字段上建立索引都要和实际数据库系统的查询要求结合来考虑，下面给出实际中的一些通用的原则：<br>?</p>
 <ol>
-<li>�ھ����������������ֶ��Ͻ���������<br>?</li>
-<li>��SQL����о�������GROUP BY��ORDER BY���ֶ��Ͻ���������<br>?</li>
-<li>�ڲ�ֵͬ���ٵ��ֶ��ϲ���Ҫ�������������Ա��ֶΣ�<br>?</li>
-<li>���ھ�����ȡ���б��⽨��������<br>?</li>
-<li>�������ӵ��У�����/�⽡���Ͻ���������<br>?</li>
-<li>�ھ�����ȡ�Ķ�����Ͻ���������������Ҫע�⸴�������Ľ���˳��Ҫ����ʹ�õ�Ƶ����ȷ����<br>?</li>
-<li>ȱʡ����½������ǷǴؼ����������������������ÿ��Ǵؼ��������磺����������Ŀ�����Ǻ��٣�Ψһ���У����д�Χ�Ĳ�ѯ����ֵ������������Լ��ٱ�ɨ��I/0�Ĵ�������Ч�ı�����������������Ȼ���������Ҫ�����ڶԸ��ֲ�ѯ�ķ�����Ԥ���У�Ҳȡ����DBA������Ƶ����ݿ�ṹ��</li>
+<li>在经常用作过滤器的字段上建立索引；<br>?</li>
+<li>在SQL语句中经常进行GROUP BY、ORDER BY的字段上建立索引；<br>?</li>
+<li>在不同值较少的字段上不必要建立索引，如性别字段；<br>?</li>
+<li>对于经常存取的列避免建立索引；<br>?</li>
+<li>用于联接的列（主健/外健）上建立索引；<br>?</li>
+<li>在经常存取的多个列上建立复合索引，但要注意复合索引的建立顺序要按照使用的频度来确定；<br>?</li>
+<li>缺省情况下建立的是非簇集索引，但在以下情况下最好考虑簇集索引，如：含有有限数目（不是很少）唯一的列；进行大范围的查询；充分的利用索引可以减少表扫描I/0的次数，有效的避免对整表的搜索。当然合理的索引要建立在对各种查询的分析和预测中，也取决于DBA的所设计的数据库结构。</li>
 </ol>
-<h2 id="��Χ�����������a������鷳��"><a href="#��Χ�����������a������鷳��" class="headerlink" title="��Χ�����������ã������鷳��"></a>��Χ�����������ã������鷳��</h2><pre><code class="bash">��Χ�������������ͣ�
+<h2 id="范围分区（超好用，就是麻烦）"><a href="#范围分区（超好用，就是麻烦）" class="headerlink" title="范围分区（超好用，就是麻烦）"></a>范围分区（超好用，就是麻烦）</h2><pre><code class="bash">范围分区（数字类型）
 create table graderecord  
   (  
   sno varchar2(10),  
@@ -528,12 +528,12 @@ create table graderecord
 )  
 partition by range(grade)  
 (  
-  partition bujige values less than(60), --������  
-  partition jige values less than(85), --����  
-  partition youxiu values less than(maxvalue) --����  
+  partition bujige values less than(60), --不及格  
+  partition jige values less than(85), --及格  
+  partition youxiu values less than(maxvalue) --优秀  
 )
 ?
-��Χ�������������ͣ�
+范围分区（日期类型）
 create table sales
 (
        sales_id number,
@@ -550,21 +550,21 @@ partition by range(sales_date)
        partition p4 values less than(to_date(<span class="string">'2014-01-1'</span>,<span class="string">'yyyy-mm-dd'</span>)),
        partition p5 values less than(maxvalue)
 );
-insert into sales values(1,<span class="string">'22'</span>,to_date(<span class="string">'2013-04-1'</span>,<span class="string">'yyyy-mm-dd'</span>),92,<span class="string">'����'</span>);
-insert into sales values(2,<span class="string">'22'</span>,to_date(<span class="string">'2013-05-1'</span>,<span class="string">'yyyy-mm-dd'</span>),92,<span class="string">'����'</span>);  
-insert into sales values(3,<span class="string">'23'</span>,to_date(<span class="string">'2013-08-1'</span>,<span class="string">'yyyy-mm-dd'</span>),92,<span class="string">'�й�'</span>);  
-insert into sales values(4,<span class="string">'24'</span>,to_date(<span class="string">'2013-11-1'</span>,<span class="string">'yyyy-mm-dd'</span>),92,<span class="string">'�ձ�'</span>);  
-insert into sales values(5,<span class="string">'25'</span>,to_date(<span class="string">'2013-09-1'</span>,<span class="string">'yyyy-mm-dd'</span>),92,<span class="string">'����˹'</span>); 
+insert into sales values(1,<span class="string">'22'</span>,to_date(<span class="string">'2013-04-1'</span>,<span class="string">'yyyy-mm-dd'</span>),92,<span class="string">'美国'</span>);
+insert into sales values(2,<span class="string">'22'</span>,to_date(<span class="string">'2013-05-1'</span>,<span class="string">'yyyy-mm-dd'</span>),92,<span class="string">'韩国'</span>);  
+insert into sales values(3,<span class="string">'23'</span>,to_date(<span class="string">'2013-08-1'</span>,<span class="string">'yyyy-mm-dd'</span>),92,<span class="string">'中国'</span>);  
+insert into sales values(4,<span class="string">'24'</span>,to_date(<span class="string">'2013-11-1'</span>,<span class="string">'yyyy-mm-dd'</span>),92,<span class="string">'日本'</span>);  
+insert into sales values(5,<span class="string">'25'</span>,to_date(<span class="string">'2013-09-1'</span>,<span class="string">'yyyy-mm-dd'</span>),92,<span class="string">'俄罗斯'</span>); 
 
 </code></pre>
-<h3 id="��ѯ�������"><a href="#��ѯ�������" class="headerlink" title="��ѯ�������"></a>��ѯ�������</h3><pre><code class="bash">��ѯ�������
+<h3 id="查询分区情况"><a href="#查询分区情况" class="headerlink" title="查询分区情况"></a>查询分区情况</h3><pre><code class="bash">查询分区情况
 SELECT table_name,partition_name,tablespace_name 
 FROM user_tab_partitions 
 WHERE table_name=UPPER(<span class="string">'sales_interval1'</span>);
 
 </code></pre>
-<h2 id="�����������Զ���������"><a href="#�����������Զ���������" class="headerlink" title="�����������Զ���������"></a>�����������Զ���������</h2><pre><code class="bash">===========================================================
-|          ��������
+<h2 id="间隔分区表，会自动创建分区"><a href="#间隔分区表，会自动创建分区" class="headerlink" title="间隔分区表，会自动创建分区"></a>间隔分区表，会自动创建分区</h2><pre><code class="bash">===========================================================
+|          间隔分区表
 ============================================================
 */
 CREATE TABLE sales_interval1
@@ -579,7 +579,7 @@ INTERVAL(NUMTOYMINTERVAL(1,<span class="string">'YEAR'</span>))
 (PARTITION part1 VALUES LESS THAN (to_date(<span class="string">'2011/01/01'</span>,<span class="string">'yyyy/mm/dd'</span>)))
 
 </code></pre>
-<h2 id="ʹ�÷���������Ϣ"><a href="#ʹ�÷���������Ϣ" class="headerlink" title="ʹ�÷���������Ϣ"></a>ʹ�÷���������Ϣ</h2><pre><code class="bash">�鿴��������ѯ��Ϣ
+<h2 id="使用分区查找信息"><a href="#使用分区查找信息" class="headerlink" title="使用分区查找信息"></a>使用分区查找信息</h2><pre><code class="bash">查看分区并查询信息
 SQL&gt; select table_name,partition_name from user_tab_partitions <span class="built_in">where</span> table_name=upper(<span class="string">'sales2'</span>);
 ?
 TABLE_NAME
@@ -597,22 +597,22 @@ SQL&gt; select * from sales2 partition(sys_p24);
 ?
   SALES_ID PRODUCT_ID SALES_DATE     SALES_COST AREACODE
 ---------- ---------- -------------- ---------- --------------------
-         4 24         01-11��-13             92 �ձ�
-         5 25         01-9�� -13             92 ����˹
+         4 24         01-11月-13             92 日本
+         5 25         01-9月 -13             92 俄罗斯
 ?
 SQL&gt; select * from sales2 partition(p1);
 ?
   SALES_ID PRODUCT_ID SALES_DATE     SALES_COST AREACODE
 ---------- ---------- -------------- ---------- --------------------
-         1 22         01-4�� -13             92 ����
-         2 22         01-5�� -13             92 ����
-         3 23         01-8�� -13             92 �й�
+         1 22         01-4月 -13             92 美国
+         2 22         01-5月 -13             92 韩国
+         3 23         01-8月 -13             92 中国
 ?
 SQL&gt;
 ?
 
 </code></pre>
-<h2 id="������������Ragga-Bomb-Skrillex��o�"><a href="#������������Ragga-Bomb-Skrillex��o�" class="headerlink" title="������������Ragga Bomb -Skrillex��ɵ�"></a>������������Ragga Bomb -Skrillex��ɵ�</h2>
+<h2 id="今天我是听着Ragga-Bomb-Skrillex完成的"><a href="#今天我是听着Ragga-Bomb-Skrillex完成的" class="headerlink" title="今天我是听着Ragga Bomb -Skrillex完成的"></a>今天我是听着Ragga Bomb -Skrillex完成的</h2>
       
     </div>
     
@@ -803,7 +803,7 @@ SQL&gt;
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#��ռ䣨������Y���Ӧ���l���"><span class="nav-number">1.</span> <span class="nav-text">��ռ䣨������Ÿ���Ӧ���ļ���</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#һЩ��������E"><span class="nav-number">2.</span> <span class="nav-text">һЩ��������Ȩ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ͬ��ʣ����к�˽��-˽��ֻ�ܱ���jgʽ�u����ʣ�"><span class="nav-number">3.</span> <span class="nav-text">ͬ��ʣ����к�˽�� //˽��ֻ�ܱ���ǰģʽ�û����ʣ�</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#��������"><span class="nav-number">4.</span> <span class="nav-text">��������</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#���������"><span class="nav-number">5.</span> <span class="nav-text">���������</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#λͼ����"><span class="nav-number">6.</span> <span class="nav-text">λͼ����</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ψһ����"><span class="nav-number">7.</span> <span class="nav-text">Ψһ����</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#����������"><span class="nav-number">8.</span> <span class="nav-text">����������</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#��Χ�����������a������鷳��"><span class="nav-number">9.</span> <span class="nav-text">��Χ�����������ã������鷳��</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#��ѯ�������"><span class="nav-number">9.1.</span> <span class="nav-text">��ѯ�������</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#�����������Զ���������"><span class="nav-number">10.</span> <span class="nav-text">�����������Զ���������</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ʹ�÷���������Ϣ"><span class="nav-number">11.</span> <span class="nav-text">ʹ�÷���������Ϣ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#������������Ragga-Bomb-Skrillex��o�"><span class="nav-number">12.</span> <span class="nav-text">������������Ragga Bomb -Skrillex��ɵ�</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#表空间（用来存放各种应用文件）"><span class="nav-number">1.</span> <span class="nav-text">表空间（用来存放各种应用文件）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些基本的授权"><span class="nav-number">2.</span> <span class="nav-text">一些基本的授权</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同义词（公有和私有-私有只能被当前模式用户访问）"><span class="nav-number">3.</span> <span class="nav-text">同义词（公有和私有 //私有只能被当前模式用户访问）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建序列"><span class="nav-number">4.</span> <span class="nav-text">创建序列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反向键索引"><span class="nav-number">5.</span> <span class="nav-text">反向键索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位图索引"><span class="nav-number">6.</span> <span class="nav-text">位图索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#唯一索引"><span class="nav-number">7.</span> <span class="nav-text">唯一索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#熟练并背诵"><span class="nav-number">8.</span> <span class="nav-text">熟练并背诵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#范围分区（超好用，就是麻烦）"><span class="nav-number">9.</span> <span class="nav-text">范围分区（超好用，就是麻烦）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#查询分区情况"><span class="nav-number">9.1.</span> <span class="nav-text">查询分区情况</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#间隔分区表，会自动创建分区"><span class="nav-number">10.</span> <span class="nav-text">间隔分区表，会自动创建分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用分区查找信息"><span class="nav-number">11.</span> <span class="nav-text">使用分区查找信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#今天我是听着Ragga-Bomb-Skrillex完成的"><span class="nav-number">12.</span> <span class="nav-text">今天我是听着Ragga Bomb -Skrillex完成的</span></a></li></ol></div>
             
 
           </div>
