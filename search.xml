@@ -9,14 +9,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[2018_DJ_MAG]]></title>
-    <url>%2F2018%2F11%2F03%2F2018-DJ-MAG%2F</url>
-    <content type="text"><![CDATA[2018 DJ MAG 排名第一名：马丁·盖瑞斯（Martin Garrix）123 马丁·盖瑞斯，荷兰DJ、音乐制作人毕业于赫尔曼育学院，他成为有史以来最年轻的百大DJ冠军在过去几年里，他迅速攀升至排行榜首位，并超过了提雅斯多、范·布伦和哈德威尔等传奇冠军。 第二名：Dimitri Vegas &amp; Like Mike12 排名第二的是来自我大比利时的DJ兄弟二人组，迪米特里·维加斯和迈克·维加斯。他们以自己独特现场Live以及富有带动性的曲风，迅速在电子舞曲音乐中脱颖而出，于2015年成功登上百大排行榜 第三名：阿明·范·布伦（Armin van Buuren）12 阿明·范·布伦，1976年12月25日出生于荷兰莱顿，荷兰著名音乐DJ和唱片制作人。虽然他已经40多岁，但他仍然处于巅峰状态，仍然受到大批粉丝的喜爱。 第四名：哈德维尔（Hardwell）12 作为为数不多的DJ/制作人之一，他以连续两届的第一名的成绩登上了百大DJ排行榜的榜首，哈德威尔在今年继续他作为EDM的“文艺复兴人”的统治地位。--即将退隐 第五名：提雅斯多（Ti?sto）123 提雅斯多（Ti?sto），1969年1月17日出生于荷兰布北布拉邦省，他的职业生涯为数百万听众带来了各种不同的电子音乐; 从2004年雅典奥运会的开幕式到拉斯维加斯的Hakkasan和Wet Republic的驻留，他一直是开启新世界大门的大使，走在流行文化的最前沿。 第十五名：艾维奇（Avicii）第十五名： Skrillex第三十六名： Alan Walker]]></content>
-      <tags>
-        <tag>分享</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[理想乡]]></title>
     <url>%2F2018%2F11%2F02%2F%E7%90%86%E6%83%B3%E4%B9%A1%2F</url>
     <content type="text"><![CDATA[理想乡孤独な巡礼我在这世上活着 手无寸铁 没有任何人站在我的身后 挡住汹涌的风 更没有人能站在我的面前 挡住浩瀚的阳光 我在这世上活着 怀抱一小弦洁净 像黑夜抱着月亮那样慎重 怀抱着一大束荆棘 像土地抱着青草那样深情 怀抱着一大捧冰雪 像群山怀抱着清泉一样珍重 我在这世上活着 一切规章一切守则都是假设 他们说 你得有人 才是真的 我抱紧我自己 我有我自己 抱得更紧更牢靠一些啊 我的尊严 我的本份 我人的样子 我活在这世上 手无寸铁 没有刀锋 没有尖锐的刺 从不无往不利 从不春风得意 我站立的姿势比剑优美 我沉醉的笑容比花绚丽 我写字的认真比诵经虔诚 我痛哭的声音比长歌真实 我活在这世上 手无寸铁 我活在这世上 自强自立 自得其美 我只有 自己]]></content>
@@ -33,12 +25,28 @@
       </categories>
   </entry>
   <entry>
+    <title><![CDATA[漫漫归家路]]></title>
+    <url>%2F2018%2F11%2F01%2F2018-DJ-MAG%2F</url>
+    <content type="text"><![CDATA[漫漫归家路其实我喊了一次又一次，每一次，都清醒的认识到果然没有人回应我，无论怎么呼唤，怎么祈祷，还是有无法实现的东西。 最后还是没能找到家，迷路了，累到了，然后，我决定不在呼唤无法给予我回应的东西。——《夏目友人帐》漫漫回家路]]></content>
+      <tags>
+        <tag>分享</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Oracle数据库基础]]></title>
     <url>%2F2018%2F11%2F01%2FOracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%2F</url>
     <content type="text"><![CDATA[Oracle简介1$ 众所周知，Oracle是个数据库，是Oracle公司的核心产品，优越的数据安全性和完整性，以及跨操作系统，跨硬件平台，主要特点：支持多用户，大事务的事务处理，在保持数据安全性和完整性方面性能优越，支持分布式事务处理，具有可移植性 Oracle基本概念$ 数据库：这不是我们平时所说的数据库，它是磁盘上存储数据的集合 $ 全局数据库名：用于区分一个数据库的标识，要唯一 $ 数据库实例：每个启动的数据库都对应一个数据库实例，有这个实例来访问数据库中的数据 $ 表空间：数据库若干个表空间组成，... $ 数据文件：数据文件扩展名.dbf 是来存储数据库数据的文件 $ 控制文件：控制文件扩展名.ctl 一个二进制文件,根据控制文件查找数据文件 $ 日志文件：日志文件扩展名.log,记录数据更改信息 Oracle重要的三个服务（建议全部设为手动，玩游戏的时候会卡的）$ OracleServiceSID：Oracle数据库服务，对应名为SID（系统标识符）我的是orcl $ OracleOraDb11g_home1TNSListener：监听器服务，如果要远程链接数据库服务器，就必须启动它 $ OracleDBConsoleSID：嗯，这个是控制台服务 SID（系统标识符） 连接Oracle数据库$ SQL*PLUS：system/orcl@orclDB //system是当前用户，orcl为密码，orclDB为使用的网络服务名 $ PL/SQL Developer：直接输入登录ok了 Oracle数据类型（列举几个比较难理解的）$ NUMBER(P,S)：p是精度，标识数字的有效位数，不包括小数点后，s标识小数点右边的位数，是四舍五入的哦 $ Date：SYSDATE标识返回当前的日期和时间，SYSTIMESTAMP返回当前的日期和时间和时区（精确到毫秒）可怕 $ LOB数据类型（大对象）：CLOB(字符clob，存储大量文字),BLOB(二进制lob，存储视频，图片这类)，BFILE(二进制文件，存储二进制文件)，NCLOB(存储大的nchar数据) Oracle中的伪列就像是一个表列，但是它并没有存储到表中，可以查询伪列，但是不能增删改 $ ROWID：每行都有一个行地址，ROWID就是返回该行地址 $ ROWNUM：返回一个数值代表行的次序，可以限制返回的行数（ROWNUM=1可以查到数据，ROWNUM=2就查不到，ROWNUM&gt;N也差不到，ROWNUM&lt;11查询10条记录） 查询数据不重复显示(DISTINCT)SELECT DISTINCT stuNmae from student 集合操作符UNION：返回连个查询选定的所有不重复行UNION ALL：符合两个查询锁定的所有行，包括重复的行INTERSECT：只返回两个查询都有的行MINUS：只返回第一个选定而未被第二个选定的行 连接操作符（||）将两个或多个字符串合并为一个字符串 SQL函数常用的转换函数 $ TO_CHAR 转字符串 （TO_CHAR(SYSDATE，‘YYYY 年fmMM月fmDD日 HH24:MI:SS’)） $ TO_DATE 转日期类型 $ TO_NUMBER 转数值类型 其他函数 $ NVL(EXP1,EXP2)：如果EXP1的值为null，返回EXP2,否则返回EXP1 $ NVL2(EXP1,EXP2,EXP3)：如果EXP1为null，返回EXP3,否则返回EXP2 $ DECODE(VALUE,IF1,THEN1,IF2,THEN2,ELSE)：VALUE值为IF1,则进入THEN1.. 分析函数马上11点了.. 我先走了，自行百度 今天我是听着THE NIGHT – Avicii完成的]]></content>
       <categories>
         <category>Oracle</category>
       </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[漫漫归家路]]></title>
+    <url>%2F2018%2F11%2F01%2F%E6%BC%AB%E6%BC%AB%E5%BD%92%E5%AE%B6%E8%B7%AF%2F</url>
+    <content type="text"><![CDATA[漫漫归家路其实我喊了一次又一次，每一次，都清醒的认识到果然没有人回应我，无论怎么呼唤，怎么祈祷，还是有无法实现的东西。 最后还是没能找到家，迷路了，累到了，然后，我决定不在呼唤无法给予我回应的东西。——《夏目友人帐》漫漫回家路]]></content>
+      <tags>
+        <tag>分享</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[试问老天，不抵抗是罪吗？]]></title>
