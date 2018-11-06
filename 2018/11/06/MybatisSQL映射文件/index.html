@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Oracle简介1$ 众所周知，Oracle是个数据库，是Oracle公司的核心产品，优越的数据安全性和完整性，以及跨操作系统，跨硬件平台，主要特点：支持多用户，大事务的事务处理，在保持数据安全性和完整性方面性能优越，支持分布式事务处理，具有可移植性 Oracle基本概念$ 数据库：这不是我们平时所说的数据库，它是磁盘上存储数据的集合 $ 全局数据库名：用于区分一个数据库的标识，要唯一 $ 数据库">
+<meta name="description" content="sql映射文件顶级元素配置mapper：映射元素的根节点，只有一个属性namespace，用于区分不同的mapper，绑定dao接口cache：配置给命名空间引用缓存cache-ref：从其他命名空间引用缓存配置resultMap：描述数据库结果集和对象的对应关系sql：可以重用的sql块 insert：插入语句12345&amp;lt;insert id=&quot;add&quot; parameterType=&quot;Des">
 <meta name="keywords" content="悲伤的橘子树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Oracle数据库基础">
-<meta property="og:url" content="http://fanke.com/2018/11/01/Oracle数据库基础/index.html">
+<meta property="og:title" content="MybatisSQL映射文件">
+<meta property="og:url" content="http://fanke.com/2018/11/06/MybatisSQL映射文件/index.html">
 <meta property="og:site_name" content="悲伤的橘子树">
-<meta property="og:description" content="Oracle简介1$ 众所周知，Oracle是个数据库，是Oracle公司的核心产品，优越的数据安全性和完整性，以及跨操作系统，跨硬件平台，主要特点：支持多用户，大事务的事务处理，在保持数据安全性和完整性方面性能优越，支持分布式事务处理，具有可移植性 Oracle基本概念$ 数据库：这不是我们平时所说的数据库，它是磁盘上存储数据的集合 $ 全局数据库名：用于区分一个数据库的标识，要唯一 $ 数据库">
+<meta property="og:description" content="sql映射文件顶级元素配置mapper：映射元素的根节点，只有一个属性namespace，用于区分不同的mapper，绑定dao接口cache：配置给命名空间引用缓存cache-ref：从其他命名空间引用缓存配置resultMap：描述数据库结果集和对象的对应关系sql：可以重用的sql块 insert：插入语句12345&amp;lt;insert id=&quot;add&quot; parameterType=&quot;Des">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-01T14:46:37.135Z">
+<meta property="og:updated_time" content="2018-11-06T00:55:54.368Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Oracle数据库基础">
-<meta name="twitter:description" content="Oracle简介1$ 众所周知，Oracle是个数据库，是Oracle公司的核心产品，优越的数据安全性和完整性，以及跨操作系统，跨硬件平台，主要特点：支持多用户，大事务的事务处理，在保持数据安全性和完整性方面性能优越，支持分布式事务处理，具有可移植性 Oracle基本概念$ 数据库：这不是我们平时所说的数据库，它是磁盘上存储数据的集合 $ 全局数据库名：用于区分一个数据库的标识，要唯一 $ 数据库">
+<meta name="twitter:title" content="MybatisSQL映射文件">
+<meta name="twitter:description" content="sql映射文件顶级元素配置mapper：映射元素的根节点，只有一个属性namespace，用于区分不同的mapper，绑定dao接口cache：配置给命名空间引用缓存cache-ref：从其他命名空间引用缓存配置resultMap：描述数据库结果集和对象的对应关系sql：可以重用的sql块 insert：插入语句12345&amp;lt;insert id=&quot;add&quot; parameterType=&quot;Des">
 
 
 
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://fanke.com/2018/11/01/Oracle数据库基础/">
+  <link rel="canonical" href="http://fanke.com/2018/11/06/MybatisSQL映射文件/">
 
 
 
 
 
-  <title>Oracle数据库基础 | 悲伤的橘子树</title>
+  <title>MybatisSQL映射文件 | 悲伤的橘子树</title>
   
 
 
@@ -310,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://fanke.com/2018/11/01/Oracle数据库基础/">
+    <link itemprop="mainEntityOfPage" href="http://fanke.com/2018/11/06/MybatisSQL映射文件/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="樊可">
@@ -327,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Oracle数据库基础</h1>
+          <h1 class="post-title" itemprop="name headline">MybatisSQL映射文件</h1>
         
 
         <div class="post-meta">
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-01T21:25:24+08:00">
-                2018-11-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T08:40:36+08:00">
+                2018-11-06
               </time>
             
 
@@ -362,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Oracle/" itemprop="url" rel="index">
-                    <span itemprop="name">Oracle</span>
+                  <a href="/categories/SSM/" itemprop="url" rel="index">
+                    <span itemprop="name">SSM</span>
                   </a>
                 </span>
 
@@ -380,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/01/Oracle数据库基础/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/01/Oracle数据库基础/" itemprop="commentCount"></span>
+                <a href="/2018/11/06/MybatisSQL映射文件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/06/MybatisSQL映射文件/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -414,45 +414,23 @@
       
 
       
-        <h2 id="Oracle简介"><a href="#Oracle简介" class="headerlink" title="Oracle简介"></a>Oracle简介</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ 众所周知，Oracle是个数据库，是Oracle公司的核心产品，优越的数据安全性和完整性，以及跨操作系统，跨硬件平台，主要特点：支持多用户，大事务的事务处理，在保持数据安全性和完整性方面性能优越，支持分布式事务处理，具有可移植性</span><br></pre></td></tr></table></figure>
-<h2 id="Oracle基本概念"><a href="#Oracle基本概念" class="headerlink" title="Oracle基本概念"></a>Oracle基本概念</h2><pre><code class="bash">$ 数据库：这不是我们平时所说的数据库，它是磁盘上存储数据的集合
-$ 全局数据库名：用于区分一个数据库的标识，要唯一
-$ 数据库实例：每个启动的数据库都对应一个数据库实例，有这个实例来访问数据库中的数据
-$ 表空间：数据库若干个表空间组成，...
-$ 数据文件：数据文件扩展名.dbf 是来存储数据库数据的文件
-$ 控制文件：控制文件扩展名.ctl 一个二进制文件,根据控制文件查找数据文件
-$ 日志文件：日志文件扩展名.<span class="built_in">log</span>,记录数据更改信息
-</code></pre>
-<h2 id="Oracle重要的三个服务（建议全部设为手动，玩游戏的时候会卡的）"><a href="#Oracle重要的三个服务（建议全部设为手动，玩游戏的时候会卡的）" class="headerlink" title="Oracle重要的三个服务（建议全部设为手动，玩游戏的时候会卡的）"></a>Oracle重要的三个服务（建议全部设为手动，玩游戏的时候会卡的）</h2><pre><code class="bash">$ OracleServiceSID：Oracle数据库服务，对应名为SID（系统标识符）我的是orcl
-$ OracleOraDb11g_home1TNSListener：监听器服务，如果要远程链接数据库服务器，就必须启动它
-$ OracleDBConsoleSID：嗯，这个是控制台服务 SID（系统标识符）
-</code></pre>
-<h2 id="连接Oracle数据库"><a href="#连接Oracle数据库" class="headerlink" title="连接Oracle数据库"></a>连接Oracle数据库</h2><pre><code class="bash">$ SQL*PLUS：system/orcl@orclDB  //system是当前用户，orcl为密码，orclDB为使用的网络服务名
-$ PL/SQL Developer：直接输入登录ok了
-</code></pre>
-<h2 id="Oracle数据类型（列举几个比较难理解的）"><a href="#Oracle数据类型（列举几个比较难理解的）" class="headerlink" title="Oracle数据类型（列举几个比较难理解的）"></a>Oracle数据类型（列举几个比较难理解的）</h2><pre><code class="bash">$ NUMBER(P,S)：p是精度，标识数字的有效位数，不包括小数点后，s标识小数点右边的位数，是四舍五入的哦
-$ Date：SYSDATE标识返回当前的日期和时间，SYSTIMESTAMP返回当前的日期和时间和时区（精确到毫秒）可怕
-$ LOB数据类型（大对象）：CLOB(字符clob，存储大量文字),BLOB(二进制lob，存储视频，图片这类)，BFILE(二进制文件，存储二进制文件)，NCLOB(存储大的nchar数据)
-</code></pre>
-<h2 id="Oracle中的伪列"><a href="#Oracle中的伪列" class="headerlink" title="Oracle中的伪列"></a>Oracle中的伪列</h2><p>就像是一个表列，但是它并没有存储到表中，可以查询伪列，但是不能增删改</p>
-<pre><code class="bash">$ ROWID：每行都有一个行地址，ROWID就是返回该行地址
-$ ROWNUM：返回一个数值代表行的次序，可以限制返回的行数（ROWNUM=1可以查到数据，ROWNUM=2就查不到，ROWNUM&gt;N也差不到，ROWNUM&lt;11查询10条记录）
-</code></pre>
-<h2 id="查询数据不重复显示-DISTINCT"><a href="#查询数据不重复显示-DISTINCT" class="headerlink" title="查询数据不重复显示(DISTINCT)"></a>查询数据不重复显示(DISTINCT)</h2><p>SELECT DISTINCT stuNmae from student</p>
-<h2 id="集合操作符"><a href="#集合操作符" class="headerlink" title="集合操作符"></a>集合操作符</h2><p>UNION：返回连个查询选定的所有不重复行<br>UNION ALL：符合两个查询锁定的所有行，包括重复的行<br>INTERSECT：只返回两个查询都有的行<br>MINUS：只返回第一个选定而未被第二个选定的行</p>
-<h2 id="连接操作符（-）"><a href="#连接操作符（-）" class="headerlink" title="连接操作符（||）"></a>连接操作符（||）</h2><p>将两个或多个字符串合并为一个字符串</p>
-<h2 id="SQL函数"><a href="#SQL函数" class="headerlink" title="SQL函数"></a>SQL函数</h2><p>常用的转换函数</p>
-<pre><code class="bash">$ TO_CHAR 转字符串 （TO_CHAR(SYSDATE，‘YYYY 年fmMM月fmDD日 HH24:MI:SS’)）
-$ TO_DATE 转日期类型
-$ TO_NUMBER 转数值类型
-</code></pre>
-<p>其他函数</p>
-<pre><code class="bash">$ NVL(EXP1,EXP2)：如果EXP1的值为null，返回EXP2,否则返回EXP1
-$ NVL2(EXP1,EXP2,EXP3)：如果EXP1为null，返回EXP3,否则返回EXP2
-$ DECODE(VALUE,IF1,THEN1,IF2,THEN2,ELSE)：VALUE值为IF1,则进入THEN1..
-</code></pre>
-<h2 id="分析函数"><a href="#分析函数" class="headerlink" title="分析函数"></a>分析函数</h2><p>马上11点了.. 我先走了，自行百度</p>
-<h2 id="今天我是听着THE-NIGHT-–-Avicii完成的"><a href="#今天我是听着THE-NIGHT-–-Avicii完成的" class="headerlink" title="今天我是听着THE NIGHT – Avicii完成的"></a>今天我是听着THE NIGHT – Avicii完成的</h2>
+        <h2 id="sql映射文件顶级元素配置"><a href="#sql映射文件顶级元素配置" class="headerlink" title="sql映射文件顶级元素配置"></a>sql映射文件顶级元素配置</h2><p>mapper：映射元素的根节点，只有一个属性namespace，用于区分不同的mapper，绑定dao接口<br>cache：配置给命名空间引用缓存<br>cache-ref：从其他命名空间引用缓存配置<br>resultMap：描述数据库结果集和对象的对应关系<br>sql：可以重用的sql块</p>
+<h3 id="insert：插入语句"><a href="#insert：插入语句" class="headerlink" title="insert：插入语句"></a>insert：插入语句</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;insert id=<span class="string">"add"</span> parameterType=<span class="string">"Destineinfo"</span>&gt;</span><br><span class="line">INSERT INTO</span><br><span class="line">destineinfo(room_name,destine_time,destine_name,dress)</span><br><span class="line">VALUES(<span class="comment">#&#123;room_name&#125;,#&#123;destine_time&#125;,#&#123;destine_name&#125;,#&#123;dress&#125;)</span></span><br><span class="line">&lt;/insert&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="delete：删除语句"><a href="#delete：删除语句" class="headerlink" title="delete：删除语句"></a>delete：删除语句</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;delete id=<span class="string">"dele"</span>&gt;</span><br><span class="line">DELETE FROM destineinfo <span class="built_in">where</span> id=<span class="comment">#&#123;id&#125;</span></span><br><span class="line">&lt;/delete&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="update：更新语句"><a href="#update：更新语句" class="headerlink" title="update：更新语句"></a>update：更新语句</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;update id=<span class="string">"modify"</span> parameterType=<span class="string">"Destineinfo"</span>&gt;</span><br><span class="line">UPDATE destineinfo SET</span><br><span class="line">room_name=<span class="comment">#&#123;room_name&#125;,destine_name=#&#123;destine_name&#125;</span></span><br><span class="line"><span class="built_in">where</span> id=<span class="comment">#&#123;id&#125;</span></span><br><span class="line">&lt;/update&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="select：查询语句"><a href="#select：查询语句" class="headerlink" title="select：查询语句"></a>select：查询语句</h3><p>namespace的命名必须和某个dao接口相同，已Mapper结尾<br>接口中的方法与映射文件中的sql语句id要对应的 눈<em>눈<br>select属性<br>id：命名空间的唯一标识符，要和接口的方法一致눈</em>눈<br>parameterType：传入参数的类型，可以是类，或基本数据类型<br>resultType：查询语句返回结果类型，可以是类，或基本数据类型</p>
+<h4 id="使用map入参查询"><a href="#使用map入参查询" class="headerlink" title="使用map入参查询"></a>使用map入参查询</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;select id=<span class="string">"getMap"</span> resultType=<span class="string">"Destineinfo"</span> parameterType=<span class="string">"Map"</span>&gt;</span><br><span class="line">SELECT * FROM destineinfo WHERE destine_name LIKE</span><br><span class="line">CONCAT(<span class="string">'%'</span>,<span class="comment">#&#123;name&#125;,'%')</span></span><br><span class="line">&lt;/select&gt;</span><br></pre></td></tr></table></figure>
+<p>map对象.put(“name”,姓名)；</p>
+<h4 id="使用resultMap完成查询结果的展现"><a href="#使用resultMap完成查询结果的展现" class="headerlink" title="使用resultMap完成查询结果的展现"></a>使用resultMap完成查询结果的展现</h4><p>用于数据库字段名不同与实体类的属性名 ，可以进行自动映射</p>
+<h4 id="resultMap自动映射-FULL"><a href="#resultMap自动映射-FULL" class="headerlink" title="resultMap自动映射(FULL)"></a>resultMap自动映射(FULL)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 设置resultMap的自动映射级别为none(禁止自动匹配) --&gt;</span><br><span class="line">&lt;!-- &lt;setting name=<span class="string">"autoMappingBehavior"</span> value=<span class="string">"NONE"</span>/&gt; --&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="自动映射前提：字段名和属性名要一致"><a href="#自动映射前提：字段名和属性名要一致" class="headerlink" title="自动映射前提：字段名和属性名要一致"></a>自动映射前提：字段名和属性名要一致</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;result property=<span class="string">"id"</span> column=<span class="string">"id"</span> /&gt;</span><br><span class="line">&lt;result property=<span class="string">"room_name"</span> column=<span class="string">"room_name"</span> /&gt;</span><br><span class="line">&lt;result property=<span class="string">"destine_time"</span> column=<span class="string">"destine_time"</span> /&gt;</span><br><span class="line">&lt;result property=<span class="string">"destine_name"</span> column=<span class="string">"destine_name"</span> /&gt;</span><br><span class="line">&lt;result property=<span class="string">"dressName"</span> column=<span class="string">"dressName"</span> /&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="使用resultType完成查询结果的展现"><a href="#使用resultType完成查询结果的展现" class="headerlink" title="使用resultType完成查询结果的展现"></a>使用resultType完成查询结果的展现</h5><h5 id="直接返回类型，包括基本数据类型和复杂数据类型"><a href="#直接返回类型，包括基本数据类型和复杂数据类型" class="headerlink" title="直接返回类型，包括基本数据类型和复杂数据类型"></a>直接返回类型，包括基本数据类型和复杂数据类型</h5><h4 id="resultType和resultMap只能有一个"><a href="#resultType和resultMap只能有一个" class="headerlink" title="resultType和resultMap只能有一个"></a>resultType和resultMap只能有一个</h4><h4 id="使用-param实现多参数入参"><a href="#使用-param实现多参数入参" class="headerlink" title="使用@param实现多参数入参"></a>使用@param实现多参数入参</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xml中id为updateName的id和destine_name</span><br><span class="line">public int updateName(@Param(<span class="string">"id"</span>)Integer id,@Param(<span class="string">"destine_name"</span>)String name);</span><br></pre></td></tr></table></figure>
+<h3 id="高级映射"><a href="#高级映射" class="headerlink" title="高级映射"></a>高级映射</h3><h4 id="association"><a href="#association" class="headerlink" title="association"></a>association</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;resultMap <span class="built_in">type</span>=<span class="string">"Destineinfo"</span> id=<span class="string">"userRoleResult"</span>&gt; &lt;id property=<span class="string">"id"</span></span><br><span class="line">column=<span class="string">"id"</span> /&gt; &lt;result property=<span class="string">"room_name"</span> column=<span class="string">"room_name"</span>/&gt; &lt;result</span><br><span class="line">property=<span class="string">"destine_time"</span> column=<span class="string">"destine_time"</span>/&gt; &lt;result property=<span class="string">"destine_name"</span></span><br><span class="line">column=<span class="string">"destine_name"</span>/&gt; &lt;association property=<span class="string">"dress2"</span> javaType=<span class="string">"Dress"</span>&gt;</span><br><span class="line">&lt;id property=<span class="string">"id"</span> column=<span class="string">"r_id"</span> /&gt; &lt;result property=<span class="string">"dressName"</span> column=<span class="string">"dressName"</span>/&gt;</span><br><span class="line">&lt;/association&gt; &lt;/resultMap&gt; association映射 &lt;select id=<span class="string">"getListByDressid"</span> resultMap=<span class="string">"userRoleResult"</span></span><br><span class="line">parameterType=<span class="string">"Integer"</span>&gt; SELECT d.*,s.id as r_id,s.dressName FROM destineinfo</span><br><span class="line">d, dress s WHERE d.dress=<span class="comment">#&#123;dress&#125; and d.dress=s.id &lt;/select&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以内嵌<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;association property=<span class="string">"dress2"</span> javaType=<span class="string">"Dress"</span> resultMap=<span class="string">"roleResult"</span> /&gt;</span><br><span class="line">&lt;resultMap <span class="built_in">type</span>=<span class="string">"Dress"</span> id=<span class="string">"roleResult"</span>&gt;</span><br><span class="line">&lt;id property=<span class="string">"id"</span> column=<span class="string">"r_id"</span>/&gt;</span><br><span class="line">&lt;result property=<span class="string">"dressName"</span> column=<span class="string">"dressName"</span>/&gt;</span><br><span class="line">&lt;/resultMap&gt;</span><br></pre></td></tr></table></figure></p>
+<p>使用对象 1对1<br>association属性<br>property：实体对象的属性，此处为user里定义的Role类对象role<br>javaType：完整的Java类名或别名</p>
+<h4 id="collection"><a href="#collection" class="headerlink" title="collection"></a>collection</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;resultMap <span class="built_in">type</span>=<span class="string">"Destineinfo"</span> id=<span class="string">"userAddressResult"</span>&gt;</span><br><span class="line">&lt;id property=<span class="string">"id"</span> column=<span class="string">"id"</span>/&gt;</span><br><span class="line">&lt;result property=<span class="string">"room_name"</span> column=<span class="string">"room_name"</span> /&gt;</span><br><span class="line">&lt;result property=<span class="string">"destine_time"</span> column=<span class="string">"destine_time"</span> /&gt;</span><br><span class="line">&lt;result property=<span class="string">"destine_name"</span> column=<span class="string">"destine_name"</span> /&gt;</span><br><span class="line">&lt;result property=<span class="string">"dress"</span> column=<span class="string">"dress"</span> /&gt;</span><br><span class="line">&lt;collection property=<span class="string">"addressList"</span> ofType=<span class="string">"Dress"</span> resultMap=<span class="string">"Addresss"</span> /&gt;</span><br><span class="line">&lt;/resultMap&gt;</span><br><span class="line">&lt;resultMap <span class="built_in">type</span>=<span class="string">"Dress"</span> id=<span class="string">"Addresss"</span>&gt;</span><br><span class="line">&lt;id property=<span class="string">"id"</span> column=<span class="string">"r_id"</span>/&gt;</span><br><span class="line">&lt;result property=<span class="string">"dressName"</span> column=<span class="string">"dressName"</span>/&gt;</span><br><span class="line">&lt;/resultMap&gt;</span><br></pre></td></tr></table></figure>
+<p>collection属性<br>property：实体对象的属性<br>ofType：完整的Java类名或别名<br>使用集合 1对多</p>
+
       
     </div>
     
@@ -476,8 +454,8 @@ $ DECODE(VALUE,IF1,THEN1,IF2,THEN2,ELSE)：VALUE值为IF1,则进入THEN1..
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/01/2018-DJ-MAG/" rel="next" title="漫漫归家路">
-                <i class="fa fa-chevron-left"></i> 漫漫归家路
+              <a href="/2018/11/06/初识Mybatis/" rel="next" title="初识Mybatis">
+                <i class="fa fa-chevron-left"></i> 初识Mybatis
               </a>
             
           </div>
@@ -486,8 +464,8 @@ $ DECODE(VALUE,IF1,THEN1,IF2,THEN2,ELSE)：VALUE值为IF1,则进入THEN1..
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/01/Oracle数据库应用/" rel="prev" title="Oracle数据库应用">
-                Oracle数据库应用 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/06/Mybatis动态SQL/" rel="prev" title="Mybatis动态SQL">
+                Mybatis动态SQL <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -647,7 +625,7 @@ $ DECODE(VALUE,IF1,THEN1,IF2,THEN2,ELSE)：VALUE值为IF1,则进入THEN1..
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Oracle简介"><span class="nav-number">1.</span> <span class="nav-text">Oracle简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oracle基本概念"><span class="nav-number">2.</span> <span class="nav-text">Oracle基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oracle重要的三个服务（建议全部设为手动，玩游戏的时候会卡的）"><span class="nav-number">3.</span> <span class="nav-text">Oracle重要的三个服务（建议全部设为手动，玩游戏的时候会卡的）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接Oracle数据库"><span class="nav-number">4.</span> <span class="nav-text">连接Oracle数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oracle数据类型（列举几个比较难理解的）"><span class="nav-number">5.</span> <span class="nav-text">Oracle数据类型（列举几个比较难理解的）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oracle中的伪列"><span class="nav-number">6.</span> <span class="nav-text">Oracle中的伪列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询数据不重复显示-DISTINCT"><span class="nav-number">7.</span> <span class="nav-text">查询数据不重复显示(DISTINCT)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合操作符"><span class="nav-number">8.</span> <span class="nav-text">集合操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接操作符（-）"><span class="nav-number">9.</span> <span class="nav-text">连接操作符（||）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL函数"><span class="nav-number">10.</span> <span class="nav-text">SQL函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析函数"><span class="nav-number">11.</span> <span class="nav-text">分析函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#今天我是听着THE-NIGHT-–-Avicii完成的"><span class="nav-number">12.</span> <span class="nav-text">今天我是听着THE NIGHT – Avicii完成的</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#sql映射文件顶级元素配置"><span class="nav-number">1.</span> <span class="nav-text">sql映射文件顶级元素配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#insert：插入语句"><span class="nav-number">1.1.</span> <span class="nav-text">insert：插入语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete：删除语句"><span class="nav-number">1.2.</span> <span class="nav-text">delete：删除语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#update：更新语句"><span class="nav-number">1.3.</span> <span class="nav-text">update：更新语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#select：查询语句"><span class="nav-number">1.4.</span> <span class="nav-text">select：查询语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用map入参查询"><span class="nav-number">1.4.1.</span> <span class="nav-text">使用map入参查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用resultMap完成查询结果的展现"><span class="nav-number">1.4.2.</span> <span class="nav-text">使用resultMap完成查询结果的展现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#resultMap自动映射-FULL"><span class="nav-number">1.4.3.</span> <span class="nav-text">resultMap自动映射(FULL)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自动映射前提：字段名和属性名要一致"><span class="nav-number">1.4.4.</span> <span class="nav-text">自动映射前提：字段名和属性名要一致</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用resultType完成查询结果的展现"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">使用resultType完成查询结果的展现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#直接返回类型，包括基本数据类型和复杂数据类型"><span class="nav-number">1.4.4.2.</span> <span class="nav-text">直接返回类型，包括基本数据类型和复杂数据类型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#resultType和resultMap只能有一个"><span class="nav-number">1.4.5.</span> <span class="nav-text">resultType和resultMap只能有一个</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-param实现多参数入参"><span class="nav-number">1.4.6.</span> <span class="nav-text">使用@param实现多参数入参</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高级映射"><span class="nav-number">1.5.</span> <span class="nav-text">高级映射</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#association"><span class="nav-number">1.5.1.</span> <span class="nav-text">association</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#collection"><span class="nav-number">1.5.2.</span> <span class="nav-text">collection</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

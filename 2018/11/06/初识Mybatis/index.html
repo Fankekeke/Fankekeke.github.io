@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Oracle简介1$ 众所周知，Oracle是个数据库，是Oracle公司的核心产品，优越的数据安全性和完整性，以及跨操作系统，跨硬件平台，主要特点：支持多用户，大事务的事务处理，在保持数据安全性和完整性方面性能优越，支持分布式事务处理，具有可移植性 Oracle基本概念$ 数据库：这不是我们平时所说的数据库，它是磁盘上存储数据的集合 $ 全局数据库名：用于区分一个数据库的标识，要唯一 $ 数据库">
+<meta name="description" content="部署mybatis部署jar包创建database.properties和mybatis-configl.xml文件12345database.propertiesdriver=com.mysql.jdbc.Driverurl=jdbc:mysql://localhost:3306/boardroom?useUnicode=true&amp;amp;characterEncoding=utf-8user=">
 <meta name="keywords" content="悲伤的橘子树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Oracle数据库基础">
-<meta property="og:url" content="http://fanke.com/2018/11/01/Oracle数据库基础/index.html">
+<meta property="og:title" content="初识Mybatis">
+<meta property="og:url" content="http://fanke.com/2018/11/06/初识Mybatis/index.html">
 <meta property="og:site_name" content="悲伤的橘子树">
-<meta property="og:description" content="Oracle简介1$ 众所周知，Oracle是个数据库，是Oracle公司的核心产品，优越的数据安全性和完整性，以及跨操作系统，跨硬件平台，主要特点：支持多用户，大事务的事务处理，在保持数据安全性和完整性方面性能优越，支持分布式事务处理，具有可移植性 Oracle基本概念$ 数据库：这不是我们平时所说的数据库，它是磁盘上存储数据的集合 $ 全局数据库名：用于区分一个数据库的标识，要唯一 $ 数据库">
+<meta property="og:description" content="部署mybatis部署jar包创建database.properties和mybatis-configl.xml文件12345database.propertiesdriver=com.mysql.jdbc.Driverurl=jdbc:mysql://localhost:3306/boardroom?useUnicode=true&amp;amp;characterEncoding=utf-8user=">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-01T14:46:37.135Z">
+<meta property="og:updated_time" content="2018-11-06T00:38:41.737Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Oracle数据库基础">
-<meta name="twitter:description" content="Oracle简介1$ 众所周知，Oracle是个数据库，是Oracle公司的核心产品，优越的数据安全性和完整性，以及跨操作系统，跨硬件平台，主要特点：支持多用户，大事务的事务处理，在保持数据安全性和完整性方面性能优越，支持分布式事务处理，具有可移植性 Oracle基本概念$ 数据库：这不是我们平时所说的数据库，它是磁盘上存储数据的集合 $ 全局数据库名：用于区分一个数据库的标识，要唯一 $ 数据库">
+<meta name="twitter:title" content="初识Mybatis">
+<meta name="twitter:description" content="部署mybatis部署jar包创建database.properties和mybatis-configl.xml文件12345database.propertiesdriver=com.mysql.jdbc.Driverurl=jdbc:mysql://localhost:3306/boardroom?useUnicode=true&amp;amp;characterEncoding=utf-8user=">
 
 
 
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://fanke.com/2018/11/01/Oracle数据库基础/">
+  <link rel="canonical" href="http://fanke.com/2018/11/06/初识Mybatis/">
 
 
 
 
 
-  <title>Oracle数据库基础 | 悲伤的橘子树</title>
+  <title>初识Mybatis | 悲伤的橘子树</title>
   
 
 
@@ -310,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://fanke.com/2018/11/01/Oracle数据库基础/">
+    <link itemprop="mainEntityOfPage" href="http://fanke.com/2018/11/06/初识Mybatis/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="樊可">
@@ -327,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Oracle数据库基础</h1>
+          <h1 class="post-title" itemprop="name headline">初识Mybatis</h1>
         
 
         <div class="post-meta">
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-01T21:25:24+08:00">
-                2018-11-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T08:24:07+08:00">
+                2018-11-06
               </time>
             
 
@@ -362,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Oracle/" itemprop="url" rel="index">
-                    <span itemprop="name">Oracle</span>
+                  <a href="/categories/SSM/" itemprop="url" rel="index">
+                    <span itemprop="name">SSM</span>
                   </a>
                 </span>
 
@@ -380,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/01/Oracle数据库基础/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/01/Oracle数据库基础/" itemprop="commentCount"></span>
+                <a href="/2018/11/06/初识Mybatis/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/06/初识Mybatis/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -414,45 +414,17 @@
       
 
       
-        <h2 id="Oracle简介"><a href="#Oracle简介" class="headerlink" title="Oracle简介"></a>Oracle简介</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ 众所周知，Oracle是个数据库，是Oracle公司的核心产品，优越的数据安全性和完整性，以及跨操作系统，跨硬件平台，主要特点：支持多用户，大事务的事务处理，在保持数据安全性和完整性方面性能优越，支持分布式事务处理，具有可移植性</span><br></pre></td></tr></table></figure>
-<h2 id="Oracle基本概念"><a href="#Oracle基本概念" class="headerlink" title="Oracle基本概念"></a>Oracle基本概念</h2><pre><code class="bash">$ 数据库：这不是我们平时所说的数据库，它是磁盘上存储数据的集合
-$ 全局数据库名：用于区分一个数据库的标识，要唯一
-$ 数据库实例：每个启动的数据库都对应一个数据库实例，有这个实例来访问数据库中的数据
-$ 表空间：数据库若干个表空间组成，...
-$ 数据文件：数据文件扩展名.dbf 是来存储数据库数据的文件
-$ 控制文件：控制文件扩展名.ctl 一个二进制文件,根据控制文件查找数据文件
-$ 日志文件：日志文件扩展名.<span class="built_in">log</span>,记录数据更改信息
-</code></pre>
-<h2 id="Oracle重要的三个服务（建议全部设为手动，玩游戏的时候会卡的）"><a href="#Oracle重要的三个服务（建议全部设为手动，玩游戏的时候会卡的）" class="headerlink" title="Oracle重要的三个服务（建议全部设为手动，玩游戏的时候会卡的）"></a>Oracle重要的三个服务（建议全部设为手动，玩游戏的时候会卡的）</h2><pre><code class="bash">$ OracleServiceSID：Oracle数据库服务，对应名为SID（系统标识符）我的是orcl
-$ OracleOraDb11g_home1TNSListener：监听器服务，如果要远程链接数据库服务器，就必须启动它
-$ OracleDBConsoleSID：嗯，这个是控制台服务 SID（系统标识符）
-</code></pre>
-<h2 id="连接Oracle数据库"><a href="#连接Oracle数据库" class="headerlink" title="连接Oracle数据库"></a>连接Oracle数据库</h2><pre><code class="bash">$ SQL*PLUS：system/orcl@orclDB  //system是当前用户，orcl为密码，orclDB为使用的网络服务名
-$ PL/SQL Developer：直接输入登录ok了
-</code></pre>
-<h2 id="Oracle数据类型（列举几个比较难理解的）"><a href="#Oracle数据类型（列举几个比较难理解的）" class="headerlink" title="Oracle数据类型（列举几个比较难理解的）"></a>Oracle数据类型（列举几个比较难理解的）</h2><pre><code class="bash">$ NUMBER(P,S)：p是精度，标识数字的有效位数，不包括小数点后，s标识小数点右边的位数，是四舍五入的哦
-$ Date：SYSDATE标识返回当前的日期和时间，SYSTIMESTAMP返回当前的日期和时间和时区（精确到毫秒）可怕
-$ LOB数据类型（大对象）：CLOB(字符clob，存储大量文字),BLOB(二进制lob，存储视频，图片这类)，BFILE(二进制文件，存储二进制文件)，NCLOB(存储大的nchar数据)
-</code></pre>
-<h2 id="Oracle中的伪列"><a href="#Oracle中的伪列" class="headerlink" title="Oracle中的伪列"></a>Oracle中的伪列</h2><p>就像是一个表列，但是它并没有存储到表中，可以查询伪列，但是不能增删改</p>
-<pre><code class="bash">$ ROWID：每行都有一个行地址，ROWID就是返回该行地址
-$ ROWNUM：返回一个数值代表行的次序，可以限制返回的行数（ROWNUM=1可以查到数据，ROWNUM=2就查不到，ROWNUM&gt;N也差不到，ROWNUM&lt;11查询10条记录）
-</code></pre>
-<h2 id="查询数据不重复显示-DISTINCT"><a href="#查询数据不重复显示-DISTINCT" class="headerlink" title="查询数据不重复显示(DISTINCT)"></a>查询数据不重复显示(DISTINCT)</h2><p>SELECT DISTINCT stuNmae from student</p>
-<h2 id="集合操作符"><a href="#集合操作符" class="headerlink" title="集合操作符"></a>集合操作符</h2><p>UNION：返回连个查询选定的所有不重复行<br>UNION ALL：符合两个查询锁定的所有行，包括重复的行<br>INTERSECT：只返回两个查询都有的行<br>MINUS：只返回第一个选定而未被第二个选定的行</p>
-<h2 id="连接操作符（-）"><a href="#连接操作符（-）" class="headerlink" title="连接操作符（||）"></a>连接操作符（||）</h2><p>将两个或多个字符串合并为一个字符串</p>
-<h2 id="SQL函数"><a href="#SQL函数" class="headerlink" title="SQL函数"></a>SQL函数</h2><p>常用的转换函数</p>
-<pre><code class="bash">$ TO_CHAR 转字符串 （TO_CHAR(SYSDATE，‘YYYY 年fmMM月fmDD日 HH24:MI:SS’)）
-$ TO_DATE 转日期类型
-$ TO_NUMBER 转数值类型
-</code></pre>
-<p>其他函数</p>
-<pre><code class="bash">$ NVL(EXP1,EXP2)：如果EXP1的值为null，返回EXP2,否则返回EXP1
-$ NVL2(EXP1,EXP2,EXP3)：如果EXP1为null，返回EXP3,否则返回EXP2
-$ DECODE(VALUE,IF1,THEN1,IF2,THEN2,ELSE)：VALUE值为IF1,则进入THEN1..
-</code></pre>
-<h2 id="分析函数"><a href="#分析函数" class="headerlink" title="分析函数"></a>分析函数</h2><p>马上11点了.. 我先走了，自行百度</p>
-<h2 id="今天我是听着THE-NIGHT-–-Avicii完成的"><a href="#今天我是听着THE-NIGHT-–-Avicii完成的" class="headerlink" title="今天我是听着THE NIGHT – Avicii完成的"></a>今天我是听着THE NIGHT – Avicii完成的</h2>
+        <h2 id="部署mybatis"><a href="#部署mybatis" class="headerlink" title="部署mybatis"></a>部署mybatis</h2><h3 id="部署jar包"><a href="#部署jar包" class="headerlink" title="部署jar包"></a>部署jar包</h3><h3 id="创建database-properties和mybatis-configl-xml文件"><a href="#创建database-properties和mybatis-configl-xml文件" class="headerlink" title="创建database.properties和mybatis-configl.xml文件"></a>创建database.properties和mybatis-configl.xml文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">database.properties</span><br><span class="line">driver=com.mysql.jdbc.Driver</span><br><span class="line">url=jdbc:mysql://localhost:3306/boardroom?useUnicode=<span class="literal">true</span>&amp;characterEncoding=utf-8</span><br><span class="line">user=root</span><br><span class="line">password=123456</span><br></pre></td></tr></table></figure>
+<h3 id="mybatis-configl-xml-最重要的核心文件"><a href="#mybatis-configl-xml-最重要的核心文件" class="headerlink" title="mybatis-configl.xml 最重要的核心文件"></a>mybatis-configl.xml 最重要的核心文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;!DOCTYPE configuration</span><br><span class="line">PUBLIC <span class="string">"-//mybatis.org//DTD Config 3.0//EN"</span></span><br><span class="line"><span class="string">"http://mybatis.org/dtd/mybatis-3-config.dtd"</span>&gt;</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">&lt;!-- 引入database.properties文件 --&gt;</span><br><span class="line">&lt;properties resource=<span class="string">"database.properties"</span> /&gt;</span><br><span class="line">&lt;!-- 配置mybatis的<span class="built_in">log</span>实现为LOG4J --&gt;</span><br><span class="line">&lt;settings&gt;</span><br><span class="line">&lt;setting name=<span class="string">"logImpl"</span> value=<span class="string">"LOG4J"</span> /&gt;</span><br><span class="line">&lt;/settings&gt;</span><br><span class="line">&lt;typeAliases&gt;</span><br><span class="line">&lt;typeAlias <span class="built_in">alias</span>=<span class="string">"user"</span> <span class="built_in">type</span>=<span class="string">"cn.entity.User"</span>/&gt;</span><br><span class="line">&lt;typeAlias <span class="built_in">alias</span>=<span class="string">"product"</span> <span class="built_in">type</span>=<span class="string">"cn.entity.Product"</span>/&gt;</span><br><span class="line">&lt;package name=<span class="string">"cn.entity"</span>/&gt;</span><br><span class="line">&lt;/typeAliases&gt;</span><br><span class="line">&lt;!-- 配置mybatis多套运行环境 --&gt;</span><br><span class="line">&lt;environments default=<span class="string">"development"</span>&gt;</span><br><span class="line">&lt;environment id=<span class="string">"development"</span>&gt;</span><br><span class="line">&lt;!-- 配置事务管理,采用JDBC的事务管理 --&gt;</span><br><span class="line">&lt;transactionManager <span class="built_in">type</span>=<span class="string">"JDBC"</span>&gt;&lt;/transactionManager&gt;</span><br><span class="line">&lt;!-- POOLED:mybatis自带的数据源,JNDI:基于tomcat的数据源 --&gt;</span><br><span class="line">&lt;dataSource <span class="built_in">type</span>=<span class="string">"POOLED"</span>&gt;</span><br><span class="line">&lt;property name=<span class="string">"driver"</span> value=<span class="string">"<span class="variable">$&#123;driver&#125;</span>"</span>/&gt;</span><br><span class="line">&lt;property name=<span class="string">"url"</span> value=<span class="string">"<span class="variable">$&#123;url&#125;</span>"</span>/&gt;</span><br><span class="line">&lt;property name=<span class="string">"username"</span> value=<span class="string">"<span class="variable">$&#123;user&#125;</span>"</span>/&gt;</span><br><span class="line">&lt;property name=<span class="string">"password"</span> value=<span class="string">"<span class="variable">$&#123;password&#125;</span>"</span>/&gt;</span><br><span class="line">&lt;/dataSource&gt;</span><br><span class="line">&lt;/environment&gt;</span><br><span class="line">&lt;/environments&gt;</span><br><span class="line">&lt;!-- 将mapper文件加入到配置文件中 --&gt;</span><br><span class="line">&lt;mappers&gt;</span><br><span class="line">&lt;mapper resource=<span class="string">"cn/entity/ProductMapper.xml"</span>/&gt;</span><br><span class="line">&lt;mapper resource=<span class="string">"cn/entity/DestineinfoMapper.xml"</span>/&gt;</span><br><span class="line">&lt;/mappers&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="util包下创建MyBatisUtil-java文件"><a href="#util包下创建MyBatisUtil-java文件" class="headerlink" title="util包下创建MyBatisUtil.java文件"></a>util包下创建MyBatisUtil.java文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">private static SqlSessionFactory factory;</span><br><span class="line">static&#123;</span><br><span class="line">InputStream is;</span><br><span class="line">try &#123;</span><br><span class="line">is = Resources.getResourceAsStream(<span class="string">"mybatis-configl.xml"</span>);</span><br><span class="line">factory=new SqlSessionFactoryBuilder().build(is);</span><br><span class="line">&#125; catch (IOException e) &#123;</span><br><span class="line">// TODO Auto-generated catch block</span><br><span class="line">e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">public static SqlSession <span class="function"><span class="title">CreateSqlSession</span></span>()&#123;</span><br><span class="line"><span class="built_in">return</span> factory.openSession(<span class="literal">false</span>); //<span class="literal">true</span>为自动提交事务</span><br><span class="line">&#125;</span><br><span class="line">public static void closeSqlSession(SqlSession sqlSession)&#123;</span><br><span class="line"><span class="keyword">if</span>(null!=sqlSession)&#123;</span><br><span class="line">sqlSession.close();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="dao层创建接口-以实体类名字-mapper命名"><a href="#dao层创建接口-以实体类名字-mapper命名" class="headerlink" title="dao层创建接口,以实体类名字+mapper命名"></a>dao层创建接口,以实体类名字+mapper命名</h3><h3 id="entity层创建实体类和实体类名字-mapper-xml"><a href="#entity层创建实体类和实体类名字-mapper-xml" class="headerlink" title="entity层创建实体类和实体类名字+mapper.xml"></a>entity层创建实体类和实体类名字+mapper.xml</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">namespace建议使用接口地址，进行增删改查</span><br><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper</span><br><span class="line">PUBLIC <span class="string">"-//mybatis.org//DTD Mapper 3.0//EN"</span></span><br><span class="line"><span class="string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span>&gt;</span><br><span class="line">&lt;mapper namespace=<span class="string">"cn.dao.impl.DestineinfoMapper"</span>&gt;</span><br><span class="line">&lt;!-- 查询用户表记录数 --&gt;</span><br><span class="line">&lt;select id=<span class="string">"selall"</span> resultType=<span class="string">"Destineinfo"</span>&gt;</span><br><span class="line">SELECT * FROM destineinfo</span><br><span class="line">&lt;/select&gt;</span><br><span class="line">&lt;/mapper&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="创建测试类"><a href="#创建测试类" class="headerlink" title="创建测试类"></a>创建测试类</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">public void <span class="function"><span class="title">testGetUserList</span></span>()&#123;</span><br><span class="line">SqlSession sqlSession=null;</span><br><span class="line">List&lt;Destineinfo&gt;userList=new ArrayList&lt;Destineinfo&gt;();</span><br><span class="line">try &#123;</span><br><span class="line">sqlSession=MyBatisUtil.CreateSqlSession();</span><br><span class="line">userList=sqlSession.getMapper(DestineinfoMapper.class).selall();</span><br><span class="line">&#125; catch (Exception e) &#123;</span><br><span class="line">// TODO: handle exception</span><br><span class="line">e.printStackTrace();</span><br><span class="line">&#125;finally &#123;</span><br><span class="line">MyBatisUtil.closeSqlSession(sqlSession);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (Destineinfo destineinfo : userList) &#123;</span><br><span class="line">logger.debug(<span class="string">"testGetUserList userCodeL"</span>+destineinfo.getId()+<span class="string">"--"</span>+destineinfo.getRoom_name()+<span class="string">"--"</span>+destineinfo.getDestine_name()+<span class="string">"------"</span>+destineinfo.getDestine_time());</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="mybatis核心对象"><a href="#mybatis核心对象" class="headerlink" title="mybatis核心对象"></a>mybatis核心对象</h2><h3 id="SqlSessionFactoryBuilder"><a href="#SqlSessionFactoryBuilder" class="headerlink" title="SqlSessionFactoryBuilder"></a>SqlSessionFactoryBuilder</h3><p>负责构建SqlSessionFactory，特点：用过就丢，SqlSessionFactory创建后就不不需要存在了</p>
+<h3 id="SqlSessionFactory"><a href="#SqlSessionFactory" class="headerlink" title="SqlSessionFactory"></a>SqlSessionFactory</h3><p>创建SqlSession实例的工厂，SqlSession通过SqlSessionFactory的openSession()来获取<br>openSession()的参数为bollean类型时，true为关闭事务控制，自动提交，不穿参数，默认为true<br>一旦创建始终存在,不建议创建多个</p>
+<h3 id="SqlSession"><a href="#SqlSession" class="headerlink" title="SqlSession"></a>SqlSession</h3><p>用于持久化操作的对象，类似与jdbc的connection，提供了面向数据库sql命令的所有方法<br>使用SqlSession的两种方法<br>通过sqlSession实例直接执行已映射的sql语句<br>通过mapper接口方法操作数据</p>
+<h2 id="mybatis-configl-xml的核心元素"><a href="#mybatis-configl-xml的核心元素" class="headerlink" title="mybatis-configl.xml的核心元素"></a>mybatis-configl.xml的核心元素</h2><h3 id="typeAliases"><a href="#typeAliases" class="headerlink" title="typeAliases"></a>typeAliases</h3><p>配置类型别名<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;typeAliases&gt;</span><br><span class="line">&lt;typeAlias <span class="built_in">alias</span>=<span class="string">"user"</span> <span class="built_in">type</span>=<span class="string">"cn.entity.User"</span>/&gt;</span><br><span class="line">&lt;typeAlias <span class="built_in">alias</span>=<span class="string">"product"</span> <span class="built_in">type</span>=<span class="string">"cn.entity.Product"</span>/&gt;</span><br><span class="line">&lt;package name=<span class="string">"cn.entity"</span>/&gt;</span><br><span class="line">&lt;/typeAliases&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="mappers"><a href="#mappers" class="headerlink" title="mappers"></a>mappers</h3><p>映射器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;mappers&gt;</span><br><span class="line">&lt;mapper resource=<span class="string">"cn/entity/ProductMapper.xml"</span>/&gt;</span><br><span class="line">&lt;mapper resource=<span class="string">"cn/entity/DestineinfoMapper.xml"</span>/&gt;</span><br><span class="line">&lt;/mappers&gt;</span><br></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -476,7 +448,7 @@ $ DECODE(VALUE,IF1,THEN1,IF2,THEN2,ELSE)：VALUE值为IF1,则进入THEN1..
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/01/2018-DJ-MAG/" rel="next" title="漫漫归家路">
+              <a href="/2018/11/05/漫漫归家路/" rel="next" title="漫漫归家路">
                 <i class="fa fa-chevron-left"></i> 漫漫归家路
               </a>
             
@@ -486,8 +458,8 @@ $ DECODE(VALUE,IF1,THEN1,IF2,THEN2,ELSE)：VALUE值为IF1,则进入THEN1..
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/01/Oracle数据库应用/" rel="prev" title="Oracle数据库应用">
-                Oracle数据库应用 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/06/MybatisSQL映射文件/" rel="prev" title="MybatisSQL映射文件">
+                MybatisSQL映射文件 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -647,7 +619,7 @@ $ DECODE(VALUE,IF1,THEN1,IF2,THEN2,ELSE)：VALUE值为IF1,则进入THEN1..
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Oracle简介"><span class="nav-number">1.</span> <span class="nav-text">Oracle简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oracle基本概念"><span class="nav-number">2.</span> <span class="nav-text">Oracle基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oracle重要的三个服务（建议全部设为手动，玩游戏的时候会卡的）"><span class="nav-number">3.</span> <span class="nav-text">Oracle重要的三个服务（建议全部设为手动，玩游戏的时候会卡的）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接Oracle数据库"><span class="nav-number">4.</span> <span class="nav-text">连接Oracle数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oracle数据类型（列举几个比较难理解的）"><span class="nav-number">5.</span> <span class="nav-text">Oracle数据类型（列举几个比较难理解的）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Oracle中的伪列"><span class="nav-number">6.</span> <span class="nav-text">Oracle中的伪列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查询数据不重复显示-DISTINCT"><span class="nav-number">7.</span> <span class="nav-text">查询数据不重复显示(DISTINCT)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合操作符"><span class="nav-number">8.</span> <span class="nav-text">集合操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接操作符（-）"><span class="nav-number">9.</span> <span class="nav-text">连接操作符（||）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL函数"><span class="nav-number">10.</span> <span class="nav-text">SQL函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析函数"><span class="nav-number">11.</span> <span class="nav-text">分析函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#今天我是听着THE-NIGHT-–-Avicii完成的"><span class="nav-number">12.</span> <span class="nav-text">今天我是听着THE NIGHT – Avicii完成的</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#部署mybatis"><span class="nav-number">1.</span> <span class="nav-text">部署mybatis</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#部署jar包"><span class="nav-number">1.1.</span> <span class="nav-text">部署jar包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建database-properties和mybatis-configl-xml文件"><span class="nav-number">1.2.</span> <span class="nav-text">创建database.properties和mybatis-configl.xml文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mybatis-configl-xml-最重要的核心文件"><span class="nav-number">1.3.</span> <span class="nav-text">mybatis-configl.xml 最重要的核心文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#util包下创建MyBatisUtil-java文件"><span class="nav-number">1.4.</span> <span class="nav-text">util包下创建MyBatisUtil.java文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dao层创建接口-以实体类名字-mapper命名"><span class="nav-number">1.5.</span> <span class="nav-text">dao层创建接口,以实体类名字+mapper命名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#entity层创建实体类和实体类名字-mapper-xml"><span class="nav-number">1.6.</span> <span class="nav-text">entity层创建实体类和实体类名字+mapper.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建测试类"><span class="nav-number">1.7.</span> <span class="nav-text">创建测试类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis核心对象"><span class="nav-number">2.</span> <span class="nav-text">mybatis核心对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SqlSessionFactoryBuilder"><span class="nav-number">2.1.</span> <span class="nav-text">SqlSessionFactoryBuilder</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SqlSessionFactory"><span class="nav-number">2.2.</span> <span class="nav-text">SqlSessionFactory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SqlSession"><span class="nav-number">2.3.</span> <span class="nav-text">SqlSession</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mybatis-configl-xml的核心元素"><span class="nav-number">3.</span> <span class="nav-text">mybatis-configl.xml的核心元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#typeAliases"><span class="nav-number">3.1.</span> <span class="nav-text">typeAliases</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mappers"><span class="nav-number">3.2.</span> <span class="nav-text">mappers</span></a></li></ol></li></ol></div>
             
 
           </div>
