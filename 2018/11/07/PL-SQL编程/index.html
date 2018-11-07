@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1A1918; /*��������ɫ*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1A1918; /*��Ӱ��ɫ*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1A1918;    /*�ϱ߿���ɫ*/
+        border-left-color: #1A1918;    /*��߿���ɫ*/
+    }
+</style>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="什么是PL/SQL呢？ PL/SQL是 Procedure Language &amp;amp; Structured Query Language 的缩写。ORACLE的SQL是支持ANSI(American national Standards Institute)和ISO92 (International Standards Organization)标准的产品。PL/SQL是对SQL语言存储过程语">
+<meta name="keywords" content="悲伤的橘子树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PL&#x2F;SQL编程">
+<meta property="og:url" content="http://fanke.com/2018/11/07/PL-SQL编程/index.html">
+<meta property="og:site_name" content="悲伤的橘子树">
+<meta property="og:description" content="什么是PL/SQL呢？ PL/SQL是 Procedure Language &amp;amp; Structured Query Language 的缩写。ORACLE的SQL是支持ANSI(American national Standards Institute)和ISO92 (International Standards Organization)标准的产品。PL/SQL是对SQL语言存储过程语">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-07T14:27:56.038Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PL&#x2F;SQL编程">
+<meta name="twitter:description" content="什么是PL/SQL呢？ PL/SQL是 Procedure Language &amp;amp; Structured Query Language 的缩写。ORACLE的SQL是支持ANSI(American national Standards Institute)和ISO92 (International Standards Organization)标准的产品。PL/SQL是对SQL语言存储过程语">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://fanke.com/2018/11/07/PL-SQL编程/">
+
+
+
+
+
+  <title>PL/SQL编程 | 悲伤的橘子树</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">悲伤的橘子树</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://fanke.com/2018/11/07/PL-SQL编程/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="樊可">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/obt.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="悲伤的橘子树">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">PL/SQL编程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T21:07:39+08:00">
+                2018-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Oracle/" itemprop="url" rel="index">
+                    <span itemprop="name">Oracle</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/07/PL-SQL编程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/07/PL-SQL编程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="什么是PL-SQL呢？"><a href="#什么是PL-SQL呢？" class="headerlink" title="什么是PL/SQL呢？"></a>什么是PL/SQL呢？</h3><p> PL/SQL是 Procedure Language &amp; Structured Query Language 的缩写。ORACLE的SQL是支持ANSI(American national Standards Institute)和ISO92 (International Standards Organization)标准的产品。PL/SQL是对SQL语言存储过程语言的扩展。从ORACLE6以后，ORACLE的RDBMS附带了PL/SQL。它现在已经成为一种过程处理语言，简称PL/SQL。目前的PL/SQL包括两部分，一部分是数据库引擎部分；另一部分是可嵌入到许多产品（如C语言，JAVA语言等）工具中的独立引擎。可以将这两部分称为：数据库PL/SQL和工具PL/SQL。两者的编程非常相似。都具有编程结构、语法和逻辑机制。工具PL/SQL另外还增加了用于支持工具（如ORACLE Forms）的句法，如：在窗体上设置按钮等</p>
+<h3 id="PL-SQL的优点"><a href="#PL-SQL的优点" class="headerlink" title="PL/SQL的优点"></a>PL/SQL的优点</h3><h5 id="有利于客户-服务器环境应用的运行"><a href="#有利于客户-服务器环境应用的运行" class="headerlink" title="有利于客户/服务器环境应用的运行"></a>有利于客户/服务器环境应用的运行</h5><p>对于客户/服务器环境来说，真正的瓶颈是网络上。无论网络多快，只要客户端与服务器进行大量的数据交换。应用运行的效率自然就回受到影响。如果使用PL/SQL进行编程，将这种具有大量数据处理的应用放在服务器端来执行。自然就省去了数据在网上的传输时间。</p>
+<h5 id="适合于客户环境"><a href="#适合于客户环境" class="headerlink" title="适合于客户环境"></a>适合于客户环境</h5><p>PL/SQL由于分为数据库PL/SQL部分和工具PL/SQL。对于客户端来说，PL/SQL可以嵌套到相应的工具中，客户端程序可以执行本地包含PL/SQL部分，也可以向服务发SQL命令或激活服务器端的PL/SQL程序运行。</p>
+<h5 id="过程化"><a href="#过程化" class="headerlink" title="过程化"></a>过程化</h5><p>PL/SQL是Oracle在标准SQL上的过程性扩展，不仅允许在PL/SQL程序内嵌入SQL语句，而且允许使用各种类型的条件分支语句和循环语句，可以多个应用程序之间共享其解决方案。</p>
+<h5 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h5><p>PL/SQL程序结构是一种描述性很强、界限分明的块结构、嵌套块结构，被分成单独的过程、函数、触发器，且可以把它们组合为程序包，提高程序的模块化能力。</p>
+<h5 id="运行错误的可处理性"><a href="#运行错误的可处理性" class="headerlink" title="运行错误的可处理性"></a>运行错误的可处理性</h5><p>使用PL/SQL提供的异常处理（EXCEPTION），开发人员可集中处理各种ORACLE错误和PL/SQL错误，或处理系统错误与自定义错误，以增强应用程序的健壮性。</p>
+<h5 id="提供大量内置程序包"><a href="#提供大量内置程序包" class="headerlink" title="提供大量内置程序包"></a>提供大量内置程序包</h5><p>ORACLE提供了大量的内置程序包。通过这些程序包能够实现DBS的一些低层操作、高级功能，不论对DBA还是应用开发人员都具有重要作用。</p>
+<p>当然还有其它的一些优点如：更好的性能、可移植性和兼容性、可维护性、易用性与快速性等。</p>
+<h3 id="PL-SQL可用的SQL语句"><a href="#PL-SQL可用的SQL语句" class="headerlink" title="PL/SQL可用的SQL语句"></a>PL/SQL可用的SQL语句</h3><p>PL/SQL是ORACLE系统的核心语言，现在ORACLE的许多部件都是由PL/SQL写成。在PL/SQL中可以使用的SQL语句有：</p>
+<p>INSERT，UPDATE，DELETE，SELECT INTO，COMMIT，ROLLBACK，SAVEPOINT。</p>
+<p>提示：在 PL/SQL中只能用 SQL语句中的 DML 部分，不能用 DDL 部分，如果要在PL/SQL中使用DDL(如CREATE table 等)的话，只能以动态的方式来使用。</p>
+<h3 id="一个PL-SQL块的组成（由三部分）"><a href="#一个PL-SQL块的组成（由三部分）" class="headerlink" title="一个PL/SQL块的组成（由三部分）"></a>一个PL/SQL块的组成（由三部分）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">DECLARE   </span><br><span class="line">    --声明部分: 在此声明PL/SQL用到的变量,类型及游标，以及局部的存储过程和函数 </span><br><span class="line">  BEGIN </span><br><span class="line">    -- 执行部分:  过程及SQL 语句  , 即程序的主要部分 </span><br><span class="line">  EXCEPTION </span><br><span class="line">    -- 执行异常部分: 错误处理 </span><br><span class="line">  END;</span><br></pre></td></tr></table></figure>
+<h3 id="常量和变量的声明"><a href="#常量和变量的声明" class="headerlink" title="常量和变量的声明"></a>常量和变量的声明</h3><p>ename varchar2【(20)】 【:=’EricHu’】;<br>· ename表示变量名称<br>· varchar2变量类型以及大小<br>· :=’EricHu’为初始化变量值</p>
+<h5 id="PL-SQL程序设计中的标识符定义与SQL-的标识符定义的要求相同。要求和限制有："><a href="#PL-SQL程序设计中的标识符定义与SQL-的标识符定义的要求相同。要求和限制有：" class="headerlink" title="PL/SQL程序设计中的标识符定义与SQL 的标识符定义的要求相同。要求和限制有："></a>PL/SQL程序设计中的标识符定义与SQL 的标识符定义的要求相同。要求和限制有：</h5><p>1.标识符名不能超过30字符；</p>
+<p>2.第一个字符必须为字母；</p>
+<p>3.不分大小写；</p>
+<p>4.不能用’-‘(减号);</p>
+<p>5.不能是SQL保留字。</p>
+<p>提示:  一般不要把变量名声明与表中字段名完全一样,如果这样可能得到不正确的结果.</p>
+<h3 id="变量与常量的赋值"><a href="#变量与常量的赋值" class="headerlink" title="变量与常量的赋值"></a>变量与常量的赋值</h3><p>1）variable  := expression ;<br>   variable 是一个PL/SQL变量, expression 是一个PL/SQL 表达式，也可以直接赋一个值<br>2） 字符及数字运算特点<br>空值加数字仍是空值：NULL + &lt; 数字&gt; = NULL<br>空值加（连接）字符，结果为字符：NULL || &lt;字符串&gt; = &lt; 字符串&gt;<br>3）数据库赋值<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/*数据库赋值是通过 SELECT语句来完成的，每次执行 SELECT语句就赋值一次，一般要求被赋值的变量与SELECT中的列名要一一对应*/</span><br><span class="line">DECLARE </span><br><span class="line">  emp_id    emp.empno%TYPE :=7788; </span><br><span class="line">  emp_name  emp.ename%TYPE; </span><br><span class="line">  wages     emp.sal%TYPE; </span><br><span class="line">BEGIN </span><br><span class="line">  SELECT ename, NVL(sal,0) + NVL(comm,0) INTO emp_name, wages  </span><br><span class="line">  FROM emp WHERE empno = emp_id; </span><br><span class="line">  DBMS_OUTPUT.PUT_LINE(emp_name||<span class="string">'----'</span>||to_char(wages)); </span><br><span class="line">END;</span><br></pre></td></tr></table></figure></p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">在PL/SQL里，可以使用两种符号来写注释，即：使用双 ‘-‘ ( 减号) 加注释</span><br><span class="line"></span><br><span class="line">    PL/SQL允许用 – 来写注释，它的作用范围是只能在一行有效。如：</span><br><span class="line"></span><br><span class="line">    V_Sal  NUMBER(12,2); -- 人员的工资变量。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">使用 /*   */  来加一行或多行注释，如：</span><br><span class="line"></span><br><span class="line">/***********************************************/</span><br><span class="line"></span><br><span class="line">/* 文件名： department_salary.sql      */</span><br><span class="line"></span><br><span class="line">/* 作 者： 樊可                     */</span><br><span class="line"></span><br><span class="line">/* 时 间： 2018-11-7                  */</span><br><span class="line"></span><br><span class="line">/***********************************************/</span><br></pre></td></tr></table></figure>
+<h3 id="PL-SQL数据类型"><a href="#PL-SQL数据类型" class="headerlink" title="PL/SQL数据类型"></a>PL/SQL数据类型</h3><h5 id="标量数据类型"><a href="#标量数据类型" class="headerlink" title="标量数据类型"></a>标量数据类型</h5><p>小声bb （其实就是普通数据类型）</p>
+<h5 id="LOB数据类型"><a href="#LOB数据类型" class="headerlink" title="LOB数据类型"></a>LOB数据类型</h5><p>存储大数据类型，详情请看Oracle数据库基础</p>
+<h5 id="属性类型"><a href="#属性类型" class="headerlink" title="属性类型"></a>属性类型</h5><p>1）%TYPE<br>定义一个变量，其数据类型与已经定义的某个数据变量(尤其是表的某一列)的数据类型相一致，这时可以使用%TYPE。</p>
+<p>使用%TYPE特性的优点在于：</p>
+<p>1.所引用的数据库列的数据类型可以不必知道；</p>
+<p>2.所引用的数据库列的数据类型可以实时改变，容易保持一致，也不用修改PL/SQL程序。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">DECLARE </span><br><span class="line">   -- 用%TYPE 类型定义与表相配的字段 </span><br><span class="line">   TYPE T_Record IS RECORD( </span><br><span class="line">        T_no emp.empno%TYPE, </span><br><span class="line">        T_name emp.ename%TYPE, </span><br><span class="line">        T_sal emp.sal%TYPE ); </span><br><span class="line">   -- 声明接收数据的变量 </span><br><span class="line">   v_emp T_Record; </span><br><span class="line">BEGIN </span><br><span class="line">   SELECT empno, ename, sal INTO v_emp FROM emp WHERE empno=7788; </span><br><span class="line">   DBMS_OUTPUT.PUT_LINE </span><br><span class="line">    (TO_CHAR(v_emp.t_no)||<span class="string">' '</span>||v_emp.t_name||<span class="string">'  '</span> || TO_CHAR(v_emp.t_sal)); </span><br><span class="line">END;</span><br></pre></td></tr></table></figure></p>
+<p>2）%ROWTYPE<br>PL/SQL 提供%ROWTYPE操作符, 返回一个记录类型, 其数据类型和数据库表的数据结构相一致。</p>
+<p>使用%ROWTYPE特性的优点在于：</p>
+<p>l         所引用的数据库中列的个数和数据类型可以不必知道；</p>
+<p>l         所引用的数据库中列的个数和数据类型可以实时改变，容易保持一致，也不用修改PL/SQL程序。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">DECLARE </span><br><span class="line">    v_empno emp.empno%TYPE :=&amp;no; </span><br><span class="line">    rec emp%ROWTYPE; </span><br><span class="line">BEGIN </span><br><span class="line">    SELECT * INTO rec FROM emp WHERE empno=v_empno; </span><br><span class="line">    DBMS_OUTPUT.PUT_LINE(<span class="string">'姓名:'</span>||rec.ename||<span class="string">'工资:'</span>||rec.sal||<span class="string">'工作时间:'</span>||rec.hiredate);  </span><br><span class="line">END;</span><br></pre></td></tr></table></figure></p>
+<h3 id="PL-SQL控制语句"><a href="#PL-SQL控制语句" class="headerlink" title="PL/SQL控制语句"></a>PL/SQL控制语句</h3><h5 id="条件控制"><a href="#条件控制" class="headerlink" title="条件控制"></a>条件控制</h5><p>IF语句）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">DECLARE</span><br><span class="line">v_countResult NUMBER ;</span><br><span class="line">BEGIN</span><br><span class="line">SELECT COUNT(empno) INTO v_countResult FROM emp ;</span><br><span class="line">IF v_countResult &gt; 10 THEN</span><br><span class="line">DBMS_OUTPUT.put_line(<span class="string">'EMP表的记录大于10条。'</span>) ;</span><br><span class="line">END IF ;</span><br><span class="line">END ;</span><br></pre></td></tr></table></figure></p>
+<p>IF…ELSE语句）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DECLARE</span><br><span class="line">v_countResult NUMBER ;</span><br><span class="line">BEGIN</span><br><span class="line">SELECT COUNT(deptno) INTO v_countResult FROM dept ;</span><br><span class="line">IF v_countResult &gt; 10 THEN</span><br><span class="line">DBMS_OUTPUT.put_line(<span class="string">'DEPT表的记录大于10条。'</span>) ;</span><br><span class="line">ELSE</span><br><span class="line">DBMS_OUTPUT.put_line(<span class="string">'DEPT表的记录小于10条。'</span>) ;</span><br><span class="line">END IF ;</span><br><span class="line">END ;</span><br></pre></td></tr></table></figure></p>
+<p>IF…ELSIF…ELSE语句）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">DECLARE</span><br><span class="line">v_countResult NUMBER ;</span><br><span class="line">BEGIN</span><br><span class="line">SELECT COUNT(empno) INTO v_countResult FROM emp ;</span><br><span class="line">IF v_countResult &gt; 10 THEN</span><br><span class="line">DBMS_OUTPUT.put_line(<span class="string">'EMP表的记录大于10条。'</span>) ;</span><br><span class="line">ELSIF v_countResult &lt; 10 THEN</span><br><span class="line">DBMS_OUTPUT.put_line(<span class="string">'EMP表的记录小于10条。'</span>) ;</span><br><span class="line">ELSE</span><br><span class="line">DBMS_OUTPUT.put_line(<span class="string">'EMP表的记录等于10条。'</span>) ;</span><br><span class="line">END IF ;</span><br><span class="line">END ;</span><br></pre></td></tr></table></figure></p>
+<p>CASE语句）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CASE 条件表达式</span><br><span class="line">    WHEN 条件表达式结果1 THEN</span><br><span class="line">    语句段1</span><br><span class="line">    WHEN 条件表达式结果2 THEN</span><br><span class="line">    语句段2</span><br><span class="line">    [ELSE]</span><br><span class="line">END CASE</span><br></pre></td></tr></table></figure></p>
+<h5 id="循环控制"><a href="#循环控制" class="headerlink" title="循环控制"></a>循环控制</h5><p>用于重复执行的系列语句。包括LOOP和EXIT语句，使用EXIT语句可以立即退出循环; 使用EXIT WHEN</p>
+<p>语句可以根据条件结束循环。有3种类型循环，包括LOOP循环、WHILE循环、FOR循环。</p>
+<p>LOOP）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">LOOP</span><br><span class="line">要执行的语句;</span><br><span class="line">EXIT WHEN &lt;条件语句&gt;  --条件满足，退出循环语句</span><br><span class="line">END LOOP;</span><br></pre></td></tr></table></figure></p>
+<p>WHILE）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">WHILE &lt;布尔表达式&gt; LOOP</span><br><span class="line">要执行的语句;</span><br><span class="line">END LOOP;</span><br></pre></td></tr></table></figure></p>
+<p>FOR）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FOR 循环计数器 IN [REVERSE] 下限 .... 上限 LOOP</span><br><span class="line">要执行的语句;</span><br><span class="line">END LOOP;</span><br></pre></td></tr></table></figure></p>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><h5 id="PL-SQL预定义异常"><a href="#PL-SQL预定义异常" class="headerlink" title="PL/SQL预定义异常"></a>PL/SQL预定义异常</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">ACCESS_INTO_NULL</span><br><span class="line">在未初始化对象时出现</span><br><span class="line"></span><br><span class="line">CASE_NOT_FOUND</span><br><span class="line">CASE语句中的选项与用户输入的数据不匹配时出现</span><br><span class="line"></span><br><span class="line">COLLECTION_IS_NULL</span><br><span class="line">给尚未初始化的表或数组赋值时出现</span><br><span class="line"></span><br><span class="line">CORSOR_ALREADY_OPEN</span><br><span class="line">在用户试图重新打开已经打开的游标时出现。在重新打开游标前必须先将其关闭</span><br><span class="line"></span><br><span class="line">DUP_VAL_ON_INDEX</span><br><span class="line">在用户试图将重复的值存储在使用唯一索引的数据库列中时出现</span><br><span class="line"></span><br><span class="line">INVALID_CURSOR</span><br><span class="line">在执行非法游标运算（如打开一个尚未打开的游标）时出现</span><br><span class="line"></span><br><span class="line">INVALID_NUMBER</span><br><span class="line">在将字符串转换为数字时出现</span><br><span class="line"></span><br><span class="line">LOGIN_DENIED</span><br><span class="line">在输入的用户名或密码无效时出现</span><br><span class="line"></span><br><span class="line">NO_DATA_FOUND</span><br><span class="line">在表中不存在请求的行时出现。此外，当程序引用已经删除的元素时，也会引发NO_DATA_FOUND异常</span><br><span class="line"></span><br><span class="line">STORAGE_ERROR</span><br><span class="line">在内存损环或PL/SQL耗尽内存时出现</span><br><span class="line"></span><br><span class="line">TOO_MANY_ROWS</span><br><span class="line">在执行SELECT INTO语句后返回多行时出现</span><br><span class="line"></span><br><span class="line">VALUE_ERROR</span><br><span class="line">产生大小限制错误时出现。例如，变量中的列值超出变量的大小</span><br><span class="line"></span><br><span class="line">ZERO_DIVIDE</span><br><span class="line">以零作为除数时出现</span><br></pre></td></tr></table></figure>
+<h5 id="异常处理语法"><a href="#异常处理语法" class="headerlink" title="异常处理语法"></a>异常处理语法</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">BEGIN</span><br><span class="line">sequence_of_statements;</span><br><span class="line">EXCEPTION</span><br><span class="line">WHEN &lt;exception_name1&gt; THEN</span><br><span class="line">sequence_of_statements;</span><br><span class="line">WHEN &lt;exception_name2&gt; THEN</span><br><span class="line">sequence_of_statements;</span><br><span class="line">WHEN OTHERS THEN --这里的OTHERS处理程序除之前异常类型外的所有异常。PL/SQL块只能有一个OTHERS</span><br><span class="line">sequence_of_statements;</span><br><span class="line">END;</span><br><span class="line">--可以使用函数SQLCODE和SQLERRM来返回错误代码和错误文本信息。</span><br></pre></td></tr></table></figure>
+<h5 id="处理用户自定义异常"><a href="#处理用户自定义异常" class="headerlink" title="处理用户自定义异常"></a>处理用户自定义异常</h5><p>（1）在PL/SQL块的定义部分定义异常情况：</p>
+<p>&lt;异常情况&gt; EXCEPTION;</p>
+<p>（2）抛出异常情况：</p>
+<p>RAISE &lt;异常情况&gt;;</p>
+<p>（3）在PL/SQL块的异常情况处理部分对异常情况做出相应的处理。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">例，查询编号为7788的雇员的福利补助comm列。</span><br><span class="line"></span><br><span class="line">DECLARE</span><br><span class="line">v_comm employee.comm%TYPE;</span><br><span class="line">e_comm_is_null EXCEPTION; --定义异常类型变量</span><br><span class="line">BEGIN</span><br><span class="line">SELECT comm INTO v_comm FROM employee WHERE empno=7788;</span><br><span class="line">IF v_comm IS NULL THEN</span><br><span class="line">RAISE e_comm_is_null;</span><br><span class="line">END IF;</span><br><span class="line">EXCEPTION</span><br><span class="line">WHEN NO_DATA_FOUND THEN</span><br><span class="line">DBMS_OUTPUT.PUT_LINE(‘雇员不存在！错误为：’||SQLCODE||SQLERRM);</span><br><span class="line">WHEN E_COM_IS_NULL THEN</span><br><span class="line">DBMS_OUTPUT.PUT_LINE(‘该雇员无补助！’);</span><br><span class="line">WHEN OTHERS THEN</span><br><span class="line">DBMS_OUTPUT.PUT_LINE(‘出现其他异常’);</span><br><span class="line">END;</span><br></pre></td></tr></table></figure></p>
+<h5 id="RAISE-APPLICATION-ERROR"><a href="#RAISE-APPLICATION-ERROR" class="headerlink" title="RAISE_APPLICATION_ERROR"></a>RAISE_APPLICATION_ERROR</h5><p>RAISE_APPLICATION_ERROR存储过程可以重新定义异常错误消息，为应用程序提供一种与Oracle交互的方法。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">DECLARE</span><br><span class="line">......</span><br><span class="line">BEGIN</span><br><span class="line">......</span><br><span class="line">IF v_com IS NULL THEN</span><br><span class="line">RAISE_APPLICATION_ERROR(-20001,’该雇员无补助’);</span><br><span class="line">END IF;</span><br><span class="line">END;</span><br></pre></td></tr></table></figure></p>
+<h3 id="游标"><a href="#游标" class="headerlink" title="游标"></a>游标</h3><h4 id="显示游标"><a href="#显示游标" class="headerlink" title="显示游标"></a>显示游标</h4><p>显式游标的使用步聚：</p>
+<p>1）声明游标</p>
+<p>CURSOR cursor_name [(parameter [,paramter]….)]</p>
+<p>[RETURN return_type] IS select_statements;</p>
+<p>–cursor_name指游标的名称。</p>
+<p>–parameter用于为游标指定输入参数。在指定数据类型时，不能使用长度约束。</p>
+<p>–return_type用于定义游标提取的行的类型。</p>
+<p>–select_statement 指游标定义的查询语句。</p>
+<p>2）打开游标</p>
+<p>　　OPEN cursor_name[ (parameters) ];</p>
+<p>3）提取游标</p>
+<p>　　FETCH cursor_name INTO variables;</p>
+<p>　　–variables是变量名</p>
+<p>4）关闭游标</p>
+<p>　　CLOSE cursor_name;</p>
+<p>  例子<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">DECLARE</span><br><span class="line">name employee.ename%TYPE;</span><br><span class="line">sal employee.sal%TYPE; --定义两个变量来存放ename和sal的内容</span><br><span class="line">CURSOR emp_cursor  --声明游标</span><br><span class="line">IS SELECT ename,sal FROM employee;</span><br><span class="line">BEGIN</span><br><span class="line">OPEN emp_cursor;</span><br><span class="line">LOOP</span><br><span class="line">FETCH emp_cursor INTO name, sal;</span><br><span class="line">EXIT WHEN emp_cursor%NOTFOUND;</span><br><span class="line">DBMS_OUTPUT.PUT_LINE(‘第’||emp_cursor%ROWCOUNT||’个雇员：’||name||sal);</span><br><span class="line">END LOOP;</span><br><span class="line">CLOSE emp_cursor;</span><br><span class="line">END;</span><br></pre></td></tr></table></figure></p>
+<h5 id="显式游标属性"><a href="#显式游标属性" class="headerlink" title="显式游标属性"></a>显式游标属性</h5><p>1）%FOUND：只有在DML语句影响一行或多行时，%FOUND属性才返回TRUE;</p>
+<p>2）%NOTFOUND：%NOTFOUND属性与%FOUND属性的作用正好相反。如果DML语句没有影响任何行，则%NOTFOUND属性返回TRUE;</p>
+<p>3）%ROWCOUNT：%ROWCOUNT属性返回DML语句影响的行数。如果DML语句没有影响任何行，则%ROWCOUNT属性将返回0;</p>
+<p>4）%ISOPEN：%ISOPEN属性返回游标是否已打开。</p>
+<h4 id="使用显式游标删除或更新"><a href="#使用显式游标删除或更新" class="headerlink" title="使用显式游标删除或更新"></a>使用显式游标删除或更新</h4><p>使用游标时，如果处理过程中需要删除或更新行，在定义游标时必须使用SELECT….FOR UPDATE语句; 而在执行DELETE和UPDATE时使用WHERE CURRENT OF子句指定游标的当前行。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">声明更新游标语法：</span><br><span class="line"></span><br><span class="line">CURSOR cursor_name IS </span><br><span class="line">select_statement FOR UPDATE [OF culumns];</span><br><span class="line">--SELECT...  FOR UPDATE[OF columns]为更新查询，锁定选择的行。[OF columns]可以不是SELECT后的列</span><br><span class="line"></span><br><span class="line">--（1）当选择单表更新查询时，可以受省略OF子句;</span><br><span class="line"></span><br><span class="line">--（2）当选择多个表更新查询时，被锁定的行来源于OF 子句后声明的列所在的表中的行。就是你选哪个表的属性就更新哪个表</span><br></pre></td></tr></table></figure></p>
+<p>例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DECLARE</span><br><span class="line">CURSOR emp_cursor IS SELECT ename, sal FROM employee e INNER JOIN dept d ON </span><br><span class="line">e.deptno= d.deptno</span><br><span class="line">FOR UPDATE OF SAL;</span><br><span class="line">....</span><br><span class="line">UPDATE employee SET sal=sal+100 WHERE CURRENT OF emp_cursor;</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用循环游标简化游标的读取"><a href="#使用循环游标简化游标的读取" class="headerlink" title="使用循环游标简化游标的读取"></a>使用循环游标简化游标的读取</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">FOR record_index IN cursor_name</span><br><span class="line">LOOP</span><br><span class="line">executable_statements</span><br><span class="line">END LOOP;</span><br></pre></td></tr></table></figure>
+<p>–record_index是PL/SQL声明的记录变量。此变量的属性声明为%ROWTYPE类型作用域在循环之内。</p>
+<p>循环游标的特性：<br>1）在游标中提取了所有记录之后自动终止。<br>2）提取和处理游标中的每一条记录。<br>3）如果在提取记录之后%NOTFOUND属性返回TRUE，则终止循环。<br>4）如果未返回行，则不进入循环。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DECLARE</span><br><span class="line">CURSOR emp_cursor IS </span><br><span class="line">SELECT ename, sal FROM  employee;</span><br><span class="line">BEGIN</span><br><span class="line">FOR emp_record IN emp_cursor </span><br><span class="line">LOOP</span><br><span class="line">DBMS_OUTPUT.PUT_LINE(‘第’||emp_cursor%ROWCOUNT||’个雇员：’||emp_record.ename||</span><br><span class="line">emp_record.sal);</span><br><span class="line">END LOOP;</span><br><span class="line">END;</span><br></pre></td></tr></table></figure></p>
+<h3 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h3><h4 id="子程序"><a href="#子程序" class="headerlink" title="子程序"></a>子程序</h4><p>子程序是已命名的PL/SQL块，它们存储在数据库中，包括存储过程和函数。使用存储过程执行操作，使用函数执行操作并返回值<br>1.声明部分，包括类型、游标、常量、异常和嵌套子程序的使用。退出子程序后雩不复存在。</p>
+<p>2.可执行部分，包括赋值、控制执行过程以及操纵Oracle数据的语句。</p>
+<p>3.异常处理部分，包括异常处理程序，负责处理执行存储过程中出现的异常。</p>
+<p>子程序的优点：</p>
+<p>1）模块化：通过子种序，可以将程序分解为可管理的、明确的逻辑模块。</p>
+<p>2）可重用性：子程序在创建并执行后，就可以在任意数目的应用程序中使用。</p>
+<p>3）可维护性：子程序可以简化维护操作，因为如果一个子程序受到影响，则只需要修改该子程序的定义。</p>
+<p>4）安全性：用户可以设置权限，使得访问数据的唯一方式就是用户提供的存储过程。这样也可以保证正确性。</p>
+<h4 id="创建存储过程"><a href="#创建存储过程" class="headerlink" title="创建存储过程"></a>创建存储过程</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE [OR REPLACE] PROCEDURE procedure_name</span><br><span class="line">[(parameter_list)]</span><br><span class="line">[IS|AS]</span><br><span class="line">[local_declarations]</span><br><span class="line">BEGIN</span><br><span class="line">execetable_statements</span><br><span class="line">[EXCEPTION]</span><br><span class="line">[exception_handlers]</span><br><span class="line">END [procedure_name];</span><br></pre></td></tr></table></figure>
+<p>–procedure_name：存储过程的名称。</p>
+<p>–parameter_list：参数列表，可选。</p>
+<p>–local_declarations：局部声明，可选。</p>
+<p>–executable_statements：可执行语句。</p>
+<p>–excetption_handlers：异常处理程序，可选。</p>
+<p>–OR REPLACE：可选。如果包含OR REPLACE语句，当系统中有这个存储过程时，将覆盖。如果不包含，当系统中有这个存储过程时，将报异常。</p>
+<p>–声明时，数据类型不能带大小。如NUMBER(4)，只能写成NUMBER。</p>
+<p>–声明时可以给定默认值，如：job VARCHAR2 DEFAULT ‘CLEAK’ 如果调用时不揭定该参数，自动默认值。</p>
+<h4 id="调用存储过程（需要通过授权才能使用）"><a href="#调用存储过程（需要通过授权才能使用）" class="headerlink" title="调用存储过程（需要通过授权才能使用）"></a>调用存储过程（需要通过授权才能使用）</h4><h5 id="用命令调用"><a href="#用命令调用" class="headerlink" title="用命令调用"></a>用命令调用</h5><p>EXEC[UTE] procedure_name (parameter_list);<br>–EXECUTE：执行命令，可以缩写为EXEC</p>
+<p>参数的传递方式：<br>按位置传递，例：EXEC add_employee(1111,’MARY’,2000,’MANAGER’,10);</p>
+<p>按名称传递，即在调用时按名称对应。名称的对应关系是最重要的，次序不重要。</p>
+<p>例：EXEC add_employee(dno=&gt;10,name=&gt;’MARY’,salary=&gt;2000,job=&gt;’MANAGER’);</p>
+<p>还有个混合方法传递，如果有一个是按名称传递的，那后面的参数都是按位置传</p>
+<h5 id="PL-SQL块中使用"><a href="#PL-SQL块中使用" class="headerlink" title="PL/SQL块中使用"></a>PL/SQL块中使用</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BEGIN</span><br><span class="line">　add_employee(2111,’MARY’,2000,’MANAGER’,10);</span><br><span class="line">END;</span><br></pre></td></tr></table></figure>
+<h5 id="参数模式"><a href="#参数模式" class="headerlink" title="参数模式"></a>参数模式</h5><p>在存储过程中参数传递的模式有3种：IN、OUT、IN OUT，即输入 、输出、输入/输出参数。</p>
+<p>IN模式只能将实参传递给形参，进入函数内部，函数返回时，实参值不变。结论参数传递 模式。</p>
+<p>OUT模式会忽略调用时的实参值，在函数内部可写，函数返回时实参的值改变。</p>
+<p>IN OUT模式具有前再种模式的特性。即调用时，实参的值总是传递给形参;结束时，形参的值传递给实参</p>
+<p>可以在参数列表中为IN参数赋默认值。但是OUT和INT OUT参数不可以赋默认值。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE OR REPLACE PROCEDURE QueryEmp</span><br><span class="line">(</span><br><span class="line">v_empno IN employee.empno%TYPE DEFAULT 1000, --默认编号为1000</span><br><span class="line">v_ename OUT employee.ename%TYPE,</span><br><span class="line">v_sal IN OUT employee.sal%TYPE</span><br><span class="line">)</span><br><span class="line">AS</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<h4 id="存储过程的访问权限"><a href="#存储过程的访问权限" class="headerlink" title="存储过程的访问权限"></a>存储过程的访问权限</h4><p>–授权<br>GRANT EXECUTE ON add_employee TO A_oe;</p>
+<p>–撤销<br>REVOKE EXECUTE ON add_employee FROM A_oe;</p>
+<p>–删除存储过程<br>DROP PROCEDURE procedure_name;</p>
+<p>啊！！ 拜拜</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/07/人间失格/" rel="next" title="人间失格">
+                <i class="fa fa-chevron-left"></i> 人间失格
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/07/Hibernate入门/" rel="prev" title="Hibernate入门">
+                Hibernate入门 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/obt.jpg" alt="樊可">
+            
+              <p class="site-author-name" itemprop="name">樊可</p>
+              <p class="site-description motion-element" itemprop="description">不相信自己的人没有努力的价值。   -- 迈特凯</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Fankekeke" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/5384373842?is_all=1" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1258846421@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是PL-SQL呢？"><span class="nav-number">1.</span> <span class="nav-text">什么是PL/SQL呢？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PL-SQL的优点"><span class="nav-number">2.</span> <span class="nav-text">PL/SQL的优点</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#有利于客户-服务器环境应用的运行"><span class="nav-number">2.0.1.</span> <span class="nav-text">有利于客户/服务器环境应用的运行</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#适合于客户环境"><span class="nav-number">2.0.2.</span> <span class="nav-text">适合于客户环境</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#过程化"><span class="nav-number">2.0.3.</span> <span class="nav-text">过程化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#模块化"><span class="nav-number">2.0.4.</span> <span class="nav-text">模块化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#运行错误的可处理性"><span class="nav-number">2.0.5.</span> <span class="nav-text">运行错误的可处理性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#提供大量内置程序包"><span class="nav-number">2.0.6.</span> <span class="nav-text">提供大量内置程序包</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#PL-SQL可用的SQL语句"><span class="nav-number">3.</span> <span class="nav-text">PL/SQL可用的SQL语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一个PL-SQL块的组成（由三部分）"><span class="nav-number">4.</span> <span class="nav-text">一个PL/SQL块的组成（由三部分）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常量和变量的声明"><span class="nav-number">5.</span> <span class="nav-text">常量和变量的声明</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#PL-SQL程序设计中的标识符定义与SQL-的标识符定义的要求相同。要求和限制有："><span class="nav-number">5.0.1.</span> <span class="nav-text">PL/SQL程序设计中的标识符定义与SQL 的标识符定义的要求相同。要求和限制有：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量与常量的赋值"><span class="nav-number">6.</span> <span class="nav-text">变量与常量的赋值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注释"><span class="nav-number">7.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PL-SQL数据类型"><span class="nav-number">8.</span> <span class="nav-text">PL/SQL数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#标量数据类型"><span class="nav-number">8.0.1.</span> <span class="nav-text">标量数据类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#LOB数据类型"><span class="nav-number">8.0.2.</span> <span class="nav-text">LOB数据类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#属性类型"><span class="nav-number">8.0.3.</span> <span class="nav-text">属性类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PL-SQL控制语句"><span class="nav-number">9.</span> <span class="nav-text">PL/SQL控制语句</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#条件控制"><span class="nav-number">9.0.1.</span> <span class="nav-text">条件控制</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#循环控制"><span class="nav-number">9.0.2.</span> <span class="nav-text">循环控制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常处理"><span class="nav-number">10.</span> <span class="nav-text">异常处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#PL-SQL预定义异常"><span class="nav-number">10.0.1.</span> <span class="nav-text">PL/SQL预定义异常</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#异常处理语法"><span class="nav-number">10.0.2.</span> <span class="nav-text">异常处理语法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#处理用户自定义异常"><span class="nav-number">10.0.3.</span> <span class="nav-text">处理用户自定义异常</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RAISE-APPLICATION-ERROR"><span class="nav-number">10.0.4.</span> <span class="nav-text">RAISE_APPLICATION_ERROR</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#游标"><span class="nav-number">11.</span> <span class="nav-text">游标</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#显示游标"><span class="nav-number">11.1.</span> <span class="nav-text">显示游标</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#显式游标属性"><span class="nav-number">11.1.1.</span> <span class="nav-text">显式游标属性</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用显式游标删除或更新"><span class="nav-number">11.2.</span> <span class="nav-text">使用显式游标删除或更新</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用循环游标简化游标的读取"><span class="nav-number">12.</span> <span class="nav-text">使用循环游标简化游标的读取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储过程"><span class="nav-number">13.</span> <span class="nav-text">存储过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#子程序"><span class="nav-number">13.1.</span> <span class="nav-text">子程序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建存储过程"><span class="nav-number">13.2.</span> <span class="nav-text">创建存储过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调用存储过程（需要通过授权才能使用）"><span class="nav-number">13.3.</span> <span class="nav-text">调用存储过程（需要通过授权才能使用）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#用命令调用"><span class="nav-number">13.3.1.</span> <span class="nav-text">用命令调用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PL-SQL块中使用"><span class="nav-number">13.3.2.</span> <span class="nav-text">PL/SQL块中使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参数模式"><span class="nav-number">13.3.3.</span> <span class="nav-text">参数模式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存储过程的访问权限"><span class="nav-number">13.4.</span> <span class="nav-text">存储过程的访问权限</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">樊可</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访问数<i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'qBi0aBkxrd0a61dRtSDJjK8M-gzGzoHsz',
+        appKey: 'gcHEadNXDusN49dVUsIK3Be9',
+        placeholder: '俺要评论..',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
