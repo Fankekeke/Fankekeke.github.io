@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1A1918; /*��������ɫ*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1A1918; /*��Ӱ��ɫ*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1A1918;    /*�ϱ߿���ɫ*/
+        border-left-color: #1A1918;    /*��߿���ɫ*/
+    }
+</style>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="今天来学习HQL语句 编写HQL语句from子句  例：from com.entity.Dept;                    from Dept dept;–为持久化类Dept指定了别名dept；可省略包名 select子句 例：select dept from Dept as dept;                    select dept.DeptName from Dep">
+<meta name="keywords" content="悲伤的橘子树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HQL实用技术">
+<meta property="og:url" content="http://fanke.com/2018/11/08/HQL实用技术/index.html">
+<meta property="og:site_name" content="悲伤的橘子树">
+<meta property="og:description" content="今天来学习HQL语句 编写HQL语句from子句  例：from com.entity.Dept;                    from Dept dept;–为持久化类Dept指定了别名dept；可省略包名 select子句 例：select dept from Dept as dept;                    select dept.DeptName from Dep">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-08T14:20:34.739Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HQL实用技术">
+<meta name="twitter:description" content="今天来学习HQL语句 编写HQL语句from子句  例：from com.entity.Dept;                    from Dept dept;–为持久化类Dept指定了别名dept；可省略包名 select子句 例：select dept from Dept as dept;                    select dept.DeptName from Dep">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://fanke.com/2018/11/08/HQL实用技术/">
+
+
+
+
+
+  <title>HQL实用技术 | 悲伤的橘子树</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">悲伤的橘子树</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://fanke.com/2018/11/08/HQL实用技术/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="樊可">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/obt.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="悲伤的橘子树">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HQL实用技术</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-08T21:24:14+08:00">
+                2018-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/SSH/" itemprop="url" rel="index">
+                    <span itemprop="name">SSH</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/08/HQL实用技术/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/08/HQL实用技术/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天来学习HQL语句</p>
+<h3 id="编写HQL语句"><a href="#编写HQL语句" class="headerlink" title="编写HQL语句"></a>编写HQL语句</h3><h4 id="from子句"><a href="#from子句" class="headerlink" title="from子句"></a>from子句</h4><p>  例：from com.entity.Dept;<br>                    from Dept dept;–为持久化类Dept指定了别名dept；可省略包名</p>
+<h4 id="select子句"><a href="#select子句" class="headerlink" title="select子句"></a>select子句</h4><p> 例：select dept from Dept as dept;<br>                    select dept.DeptName from Dept as dept;–选取单个属性，可选择多个</p>
+<h4 id="where子句"><a href="#where子句" class="headerlink" title="where子句"></a>where子句</h4><p>例：from Dept where DeptName=’SALES’;<br>                    from Dept dept where dept.DeptName=’SALES’;<br>                    from Dept dept where dept.location is not null;–查询地址不为空的部门</p>
+<h4 id="使用表达式"><a href="#使用表达式" class="headerlink" title="使用表达式"></a>使用表达式</h4><p> 例：from Dept dept where lower(dept.DeptName)=’sales’;–lower()把字符串中的字母转换成小写<br>                    from Emp where year(hireDate)=1980;–year()用于获取日期字段的年份</p>
+<h4 id="order-by子句"><a href="#order-by子句" class="headerlink" title="order by子句"></a>order by子句</h4><p> 例：from Emp order by hireDate asc<br>                    from Emp order by hireDate,salary desc;</p>
+<h3 id="执行HQL语句"><a href="#执行HQL语句" class="headerlink" title="执行HQL语句"></a>执行HQL语句</h3><p> 执行HQL语句步骤<br>                    1、获取session对象<br>                    2、编写HQL语句<br>                    3、创建Query对象<br>                    4、执行查询</p>
+<p>先给大家看一些简单的例子吧</p>
+<h4 id="DAO层"><a href="#DAO层" class="headerlink" title="DAO层"></a>DAO层</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line">// 查询</span><br><span class="line">public List&lt;User&gt; <span class="function"><span class="title">findAllUser</span></span>() &#123;</span><br><span class="line">	<span class="built_in">return</span> this.currentSession().createQuery(<span class="string">"from User"</span>).list();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Iterator返回</span><br><span class="line">public Iterator&lt;User&gt; <span class="function"><span class="title">findAllUser_iterate</span></span>() &#123;</span><br><span class="line">	<span class="built_in">return</span> this.currentSession().createQuery(<span class="string">"from User"</span>).iterate();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 根据姓名查询</span><br><span class="line">public Iterator&lt;User&gt; <span class="function"><span class="title">findAllUserByName</span></span>() &#123;</span><br><span class="line">	<span class="built_in">return</span> this.currentSession().createQuery(<span class="string">"from User where name='李钰洋'"</span>).iterate();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 获取唯一结果</span><br><span class="line">public Long <span class="function"><span class="title">countUser</span></span>() &#123;</span><br><span class="line">	<span class="built_in">return</span> (Long) this.currentSession().createQuery(<span class="string">"select count(id) from User"</span>).uniqueResult();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 参数查询,位置从0开始</span><br><span class="line">public List&lt;User&gt; findUserByName(String name) &#123;</span><br><span class="line">	<span class="built_in">return</span> this.currentSession().createQuery(<span class="string">"from User where name=?"</span>).setString(0, name).list();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 按参数名绑定</span><br><span class="line">public List&lt;User&gt; findUserByName1(String name) &#123;</span><br><span class="line">	<span class="built_in">return</span> this.currentSession().createQuery(<span class="string">"from User where name=:name1"</span>).setString(<span class="string">"name1"</span>, name).list();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 多参数查询 +结合位置</span><br><span class="line">public List&lt;User&gt; findByCoditions(Object[] param) &#123;</span><br><span class="line">	Query query = this.currentSession().createQuery(<span class="string">"from User where name=? and telephone=?"</span>);</span><br><span class="line">	<span class="keyword">if</span> (param != null &amp;&amp; param.length != 0) &#123;</span><br><span class="line">		<span class="keyword">for</span> (int i = 0; i &lt; param.length; i++) &#123;</span><br><span class="line">			query.setParameter(i, param[i]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> query.list();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 多参数查询 +结合名称 赛高</span><br><span class="line">public List&lt;User&gt; findByCoditions(User param) &#123;</span><br><span class="line">	Query query = this.currentSession().createQuery(<span class="string">"from User where name=:name and telephone=:telephone"</span>);</span><br><span class="line">	query.setProperties(param); // 赛高</span><br><span class="line">	<span class="built_in">return</span> query.list();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 多参数查询 +结合名称 赛高 动态hql</span><br><span class="line">public List&lt;User&gt; findByCoditions(String hql, User param) &#123;</span><br><span class="line">	Query query = this.currentSession().createQuery(hql);</span><br><span class="line">	query.setProperties(param); // 赛高</span><br><span class="line">	<span class="built_in">return</span> query.list();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 多参数查询 +结合名称 赛高 动态hql map</span><br><span class="line">public List&lt;User&gt; findByCoditions(String hql, Map&lt;String, Object&gt; param) &#123;</span><br><span class="line">	Query query = this.currentSession().createQuery(hql);</span><br><span class="line">	query.setProperties(param); // 赛高</span><br><span class="line">	<span class="built_in">return</span> query.list();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 分页</span><br><span class="line">public List&lt;User&gt; findByPage(int pageNo, int pageSize) &#123;</span><br><span class="line">	<span class="built_in">return</span> this.currentSession().createQuery(<span class="string">"from User order by id"</span>).setFirstResult((pageNo - 1) * pageSize)</span><br><span class="line">			.setMaxResults(pageSize).list();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 根据id降序获取前3</span><br><span class="line">public List&lt;User&gt; findByOrder(int topSize) &#123;</span><br><span class="line">	<span class="built_in">return</span> this.currentSession().createQuery(<span class="string">"from User order by id"</span>).setMaxResults(topSize).list();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 投影查询</span><br><span class="line">public List <span class="function"><span class="title">findByProjection</span></span>() &#123;</span><br><span class="line">	<span class="built_in">return</span> this.currentSession().createQuery(<span class="string">"select name from User"</span>).list();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 投影查询 查多列</span><br><span class="line">public List&lt;Object[]&gt; <span class="function"><span class="title">findByProjection2</span></span>() &#123;</span><br><span class="line">	<span class="built_in">return</span> this.currentSession().createQuery(<span class="string">"select name,telephone from User"</span>).list();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//构造函数封装对象</span><br><span class="line">public List&lt;User&gt; <span class="function"><span class="title">findByProjection3</span></span>() &#123;</span><br><span class="line">	<span class="built_in">return</span> this.currentSession().createQuery(<span class="string">"select new User(name,telephone) from User"</span>).list();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="SERVICE层"><a href="#SERVICE层" class="headerlink" title="SERVICE层"></a>SERVICE层</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br></pre></td><td class="code"><pre><span class="line">// 查询</span><br><span class="line">public List&lt;User&gt; <span class="function"><span class="title">findAllUser</span></span>() &#123;</span><br><span class="line">	Transaction tx = null;</span><br><span class="line">	List&lt;User&gt; list = new ArrayList&lt;User&gt;();</span><br><span class="line">	try &#123;</span><br><span class="line">		UserDao userDao = new UserDao();</span><br><span class="line">		tx = userDao.currentSession().beginTransaction();</span><br><span class="line">		list = userDao.findAllUser();</span><br><span class="line">		tx.commit();</span><br><span class="line">	&#125; catch (HibernateException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">if</span> (tx != null) &#123;</span><br><span class="line">			tx.rollback();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Iterator返回</span><br><span class="line">public Iterator&lt;User&gt; <span class="function"><span class="title">findAllUser_Iterator</span></span>() &#123;</span><br><span class="line">	Transaction tx = null;</span><br><span class="line">	Iterator&lt;User&gt; list = null;</span><br><span class="line">	try &#123;</span><br><span class="line">		UserDao userDao = new UserDao();</span><br><span class="line">		tx = userDao.currentSession().beginTransaction();</span><br><span class="line">		list = userDao.findAllUser_iterate();</span><br><span class="line">		User u = new User();</span><br><span class="line">		<span class="keyword">while</span> (list.hasNext()) &#123;</span><br><span class="line">			u = list.next();</span><br><span class="line">			System.out.println(u.getName() + <span class="string">"艸"</span>);</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		tx.commit();</span><br><span class="line">	&#125; catch (HibernateException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">if</span> (tx != null) &#123;</span><br><span class="line">			tx.rollback();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 根据姓名Iterator返回</span><br><span class="line">public Iterator&lt;User&gt; <span class="function"><span class="title">findAllUser_IteratorByName</span></span>() &#123;</span><br><span class="line">	Transaction tx = null;</span><br><span class="line">	Iterator&lt;User&gt; list = null;</span><br><span class="line">	try &#123;</span><br><span class="line">		UserDao userDao = new UserDao();</span><br><span class="line">		tx = userDao.currentSession().beginTransaction();</span><br><span class="line">		list = userDao.findAllUserByName();</span><br><span class="line">		User u = new User();</span><br><span class="line">		<span class="keyword">while</span> (list.hasNext()) &#123;</span><br><span class="line">			u = list.next();</span><br><span class="line">			System.out.println(u.getName() + <span class="string">"\\"</span> + u.getTelephone());</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		tx.commit();</span><br><span class="line">	&#125; catch (HibernateException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">if</span> (tx != null) &#123;</span><br><span class="line">			tx.rollback();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 返回唯一结果</span><br><span class="line">public Long <span class="function"><span class="title">findAllUser_count</span></span>() &#123;</span><br><span class="line">	Transaction tx = null;</span><br><span class="line">	Long count = null;</span><br><span class="line">	try &#123;</span><br><span class="line">		UserDao userDao = new UserDao();</span><br><span class="line">		tx = userDao.currentSession().beginTransaction();</span><br><span class="line">		count = userDao.countUser();</span><br><span class="line"></span><br><span class="line">		tx.commit();</span><br><span class="line">	&#125; catch (HibernateException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">if</span> (tx != null) &#123;</span><br><span class="line">			tx.rollback();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 查询+参数</span><br><span class="line">public List&lt;User&gt; findAllUser_Name(String name) &#123;</span><br><span class="line">	Transaction tx = null;</span><br><span class="line">	List&lt;User&gt; list = new ArrayList&lt;User&gt;();</span><br><span class="line">	try &#123;</span><br><span class="line">		UserDao userDao = new UserDao();</span><br><span class="line">		tx = userDao.currentSession().beginTransaction();</span><br><span class="line">		list = userDao.findUserByName(name);</span><br><span class="line">		tx.commit();</span><br><span class="line">	&#125; catch (HibernateException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">if</span> (tx != null) &#123;</span><br><span class="line">			tx.rollback();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 查询+名称参数</span><br><span class="line">public List&lt;User&gt; findAllUser_Name1(String name) &#123;</span><br><span class="line">	Transaction tx = null;</span><br><span class="line">	List&lt;User&gt; list = new ArrayList&lt;User&gt;();</span><br><span class="line">	try &#123;</span><br><span class="line">		UserDao userDao = new UserDao();</span><br><span class="line">		tx = userDao.currentSession().beginTransaction();</span><br><span class="line">		list = userDao.findUserByName1(name);</span><br><span class="line">		tx.commit();</span><br><span class="line">	&#125; catch (HibernateException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">if</span> (tx != null) &#123;</span><br><span class="line">			tx.rollback();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 查询+多参数</span><br><span class="line">public List&lt;User&gt; findAllbyCondinitions(Object[] param) &#123;</span><br><span class="line">	Transaction tx = null;</span><br><span class="line">	List&lt;User&gt; list = new ArrayList&lt;User&gt;();</span><br><span class="line">	try &#123;</span><br><span class="line">		UserDao userDao = new UserDao();</span><br><span class="line">		tx = userDao.currentSession().beginTransaction();</span><br><span class="line">		list = userDao.findByCoditions(param);</span><br><span class="line">		tx.commit();</span><br><span class="line">	&#125; catch (HibernateException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">if</span> (tx != null) &#123;</span><br><span class="line">			tx.rollback();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 查询+多参数</span><br><span class="line">public List&lt;User&gt; findAllbyCondinitions(User param) &#123;</span><br><span class="line">	Transaction tx = null;</span><br><span class="line">	List&lt;User&gt; list = new ArrayList&lt;User&gt;();</span><br><span class="line">	try &#123;</span><br><span class="line">		UserDao userDao = new UserDao();</span><br><span class="line">		tx = userDao.currentSession().beginTransaction();</span><br><span class="line">		list = userDao.findByCoditions(param);</span><br><span class="line">		tx.commit();</span><br><span class="line">	&#125; catch (HibernateException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">if</span> (tx != null) &#123;</span><br><span class="line">			tx.rollback();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 查询+多参数 动态hql</span><br><span class="line">public List&lt;User&gt; findAllbyCondinitions1(User param) &#123;</span><br><span class="line">	Transaction tx = null;</span><br><span class="line">	List&lt;User&gt; list = new ArrayList&lt;User&gt;();</span><br><span class="line">	try &#123;</span><br><span class="line">		UserDao userDao = new UserDao();</span><br><span class="line">		tx = userDao.currentSession().beginTransaction();</span><br><span class="line">		StringBuilder hql = new StringBuilder(<span class="string">"from User where 1=1"</span>);</span><br><span class="line">		<span class="keyword">if</span> (param.getName() != null &amp;&amp; param.getName().length() != 0) &#123;</span><br><span class="line">			hql.append(<span class="string">" and name=:name"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (param.getTelephone() != null &amp;&amp; param.getTelephone().length() != 0) &#123;</span><br><span class="line">			hql.append(<span class="string">" and telephone=:telephone"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		list = userDao.findByCoditions(hql.toString(), param);</span><br><span class="line">		tx.commit();</span><br><span class="line">	&#125; catch (HibernateException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">if</span> (tx != null) &#123;</span><br><span class="line">			tx.rollback();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 查询+多参数 动态hql</span><br><span class="line">public List&lt;User&gt; findAllbyCondinitions2(Map&lt;String, Object&gt; param) &#123;</span><br><span class="line">	Transaction tx = null;</span><br><span class="line">	List&lt;User&gt; list = new ArrayList&lt;User&gt;();</span><br><span class="line">	try &#123;</span><br><span class="line">		UserDao userDao = new UserDao();</span><br><span class="line">		tx = userDao.currentSession().beginTransaction();</span><br><span class="line">		StringBuilder hql = new StringBuilder(<span class="string">"from User where 1=1"</span>);</span><br><span class="line">		<span class="keyword">if</span> (param.get(<span class="string">"name"</span>) != null &amp; ((String) param.get(<span class="string">"name"</span>)).length() != 0) &#123;</span><br><span class="line">			hql.append(<span class="string">" and name=:name"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (param.get(<span class="string">"telephone"</span>) != null &amp; ((String) param.get(<span class="string">"telephone"</span>)).length() != 0) &#123;</span><br><span class="line">			hql.append(<span class="string">" and telephone=:telephone"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		list = userDao.findByCoditions(hql.toString(), param);</span><br><span class="line">		tx.commit();</span><br><span class="line">	&#125; catch (HibernateException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">if</span> (tx != null) &#123;</span><br><span class="line">			tx.rollback();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 查询分页</span><br><span class="line">public List&lt;User&gt; findAllbyCondinitions3(int pageNo, int pageSize) &#123;</span><br><span class="line">	Transaction tx = null;</span><br><span class="line">	List&lt;User&gt; list = new ArrayList&lt;User&gt;();</span><br><span class="line">	try &#123;</span><br><span class="line">		UserDao userDao = new UserDao();</span><br><span class="line">		tx = userDao.currentSession().beginTransaction();</span><br><span class="line">		list = userDao.findByPage(pageNo, pageSize);</span><br><span class="line">		tx.commit();</span><br><span class="line">	&#125; catch (HibernateException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">if</span> (tx != null) &#123;</span><br><span class="line">			tx.rollback();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 根据id降序查询</span><br><span class="line">public List&lt;User&gt; findAllbyCondinitions4(int topSize) &#123;</span><br><span class="line">	Transaction tx = null;</span><br><span class="line">	List&lt;User&gt; list = new ArrayList&lt;User&gt;();</span><br><span class="line">	try &#123;</span><br><span class="line">		UserDao userDao = new UserDao();</span><br><span class="line">		tx = userDao.currentSession().beginTransaction();</span><br><span class="line">		list = userDao.findByOrder(topSize);</span><br><span class="line">	&#125; catch (HibernateException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">if</span> (tx != null) &#123;</span><br><span class="line">			tx.rollback();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 投影查询</span><br><span class="line">public List&lt;Object&gt; <span class="function"><span class="title">findAllbyCondinitions5</span></span>() &#123;</span><br><span class="line">	Transaction tx = null;</span><br><span class="line">	List&lt;Object&gt; list = null;</span><br><span class="line">	try &#123;</span><br><span class="line">		UserDao userDao = new UserDao();</span><br><span class="line">		tx = userDao.currentSession().beginTransaction();</span><br><span class="line">		list = userDao.findByProjection();</span><br><span class="line">	&#125; catch (HibernateException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">if</span> (tx != null) &#123;</span><br><span class="line">			tx.rollback();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 投影查询 object数组</span><br><span class="line">public List&lt;Object[]&gt; <span class="function"><span class="title">findAllbyCondinitions6</span></span>() &#123;</span><br><span class="line">	Transaction tx = null;</span><br><span class="line">	List&lt;Object[]&gt; list = null;</span><br><span class="line">	try &#123;</span><br><span class="line">		UserDao userDao = new UserDao();</span><br><span class="line">		tx = userDao.currentSession().beginTransaction();</span><br><span class="line">		list = userDao.findByProjection2();</span><br><span class="line">	&#125; catch (HibernateException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">if</span> (tx != null) &#123;</span><br><span class="line">			tx.rollback();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 投影查询 构造函数对象</span><br><span class="line">public List&lt;User&gt; <span class="function"><span class="title">findAllbyCondinitions7</span></span>() &#123;</span><br><span class="line">	Transaction tx = null;</span><br><span class="line">	List&lt;User&gt; list = null;</span><br><span class="line">	try &#123;</span><br><span class="line">		UserDao userDao = new UserDao();</span><br><span class="line">		tx = userDao.currentSession().beginTransaction();</span><br><span class="line">		list = userDao.findByProjection3();</span><br><span class="line">	&#125; catch (HibernateException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">		<span class="keyword">if</span> (tx != null) &#123;</span><br><span class="line">			tx.rollback();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> list;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="参数绑定形式"><a href="#参数绑定形式" class="headerlink" title="参数绑定形式"></a>参数绑定形式</h3><h4 id="按参数位置绑定"><a href="#按参数位置绑定" class="headerlink" title="按参数位置绑定"></a>按参数位置绑定</h4><p>例：Query query = session.createQuery（”from Emp where job=? and salary&gt;?”）；<br>                query.setString(0,job);–第一个参数位置为零<br>                query.setDouble(1,salary);</p>
+<h4 id="按参数名称绑定"><a href="#按参数名称绑定" class="headerlink" title="按参数名称绑定"></a>按参数名称绑定</h4><p> 例：Query query = session.createQuery(“from Emp where job=:empJob and salary&gt;:empSalary”);<br>                query.setString(“empJob”,empJob);<br>                query.setDouble(“empSalary”,empSalary);</p>
+<p>//注意这里的所有属性包括表名都是.hbm.xml文件映射来的持久化类属性</p>
+<h4 id="绑定各种类型的参数"><a href="#绑定各种类型的参数" class="headerlink" title="绑定各种类型的参数"></a>绑定各种类型的参数</h4><p> setBoolean():绑定类型为Boolean的参数<br>            setByte():绑定类型为Byte的参数<br>            setDouble():绑定类型为Double的参数<br>            setDate():绑定类型为Date的参数<br>            setString():绑定类型为String的参数<br>            以上方法都有两种重载方式 如：<br>                setString(int position,String val);–按位置绑定参数<br>                setString(String name,String val);–按名称绑定参数</p>
+<h4 id="setParameter-方法：绑定任意类型参数"><a href="#setParameter-方法：绑定任意类型参数" class="headerlink" title="setParameter()方法：绑定任意类型参数"></a>setParameter()方法：绑定任意类型参数</h4><p>该方法使用object类型作为HQL参数的类型，当不便指定参数的类型师，使用setParameter()方法</p>
+<h4 id="setProperties-直接放入一个对象-赛高"><a href="#setProperties-直接放入一个对象-赛高" class="headerlink" title="setProperties(直接放入一个对象)赛高"></a>setProperties(直接放入一个对象)赛高</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;User&gt; findByCoditions(User param) &#123;</span><br><span class="line">		Query query = this.currentSession().createQuery(<span class="string">"from User where name=:name and telephone=:telephone"</span>);</span><br><span class="line">		query.setProperties(param); // 赛高</span><br><span class="line">		<span class="built_in">return</span> query.list();</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    -----</span><br><span class="line">    </span><br><span class="line">    public List&lt;User&gt; findAllbyCondinitions(User param) &#123;</span><br><span class="line">		Transaction tx = null;</span><br><span class="line">		List&lt;User&gt; list = new ArrayList&lt;User&gt;();</span><br><span class="line">		try &#123;</span><br><span class="line">			UserDao userDao = new UserDao();</span><br><span class="line">			tx = userDao.currentSession().beginTransaction();</span><br><span class="line">			list = userDao.findByCoditions(param);</span><br><span class="line">			tx.commit();</span><br><span class="line">		&#125; catch (HibernateException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			<span class="keyword">if</span> (tx != null) &#123;</span><br><span class="line">				tx.rollback();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> list;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>//前提是字段一致，并且不为空（动态hql除外）</p>
+<h4 id="使用uniqueResult-方法获取唯一结果"><a href="#使用uniqueResult-方法获取唯一结果" class="headerlink" title="使用uniqueResult()方法获取唯一结果"></a>使用uniqueResult()方法获取唯一结果</h4><p>当查询结果不唯一时，不能使用query.uniqueResult()方法，否则会报错</p>
+<h3 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h3><h4 id="LIST"><a href="#LIST" class="headerlink" title="LIST()"></a>LIST()</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;User&gt; <span class="function"><span class="title">findAllUser</span></span>() &#123;</span><br><span class="line">	<span class="built_in">return</span> this.currentSession().createQuery(<span class="string">"from User"</span>).list();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">--service使用list集合</span><br><span class="line"></span><br><span class="line">public List&lt;User&gt; <span class="function"><span class="title">findAllUser</span></span>() &#123;</span><br><span class="line">		Transaction tx = null;</span><br><span class="line">		List&lt;User&gt; list = new ArrayList&lt;User&gt;();</span><br><span class="line">		try &#123;</span><br><span class="line">			UserDao userDao = new UserDao();</span><br><span class="line">			tx = userDao.currentSession().beginTransaction();</span><br><span class="line">			list = userDao.findAllUser();</span><br><span class="line">			tx.commit();</span><br><span class="line">		&#125; catch (HibernateException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			<span class="keyword">if</span> (tx != null) &#123;</span><br><span class="line">				tx.rollback();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> list;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="ITERATE"><a href="#ITERATE" class="headerlink" title="ITERATE()"></a>ITERATE()</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public Iterator&lt;User&gt; <span class="function"><span class="title">findAllUser_iterate</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> this.currentSession().createQuery(<span class="string">"from User"</span>).iterate();</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">--service使用Iterator&lt;&gt;</span><br><span class="line"></span><br><span class="line">	public Iterator&lt;User&gt; <span class="function"><span class="title">findAllUser_Iterator</span></span>() &#123;</span><br><span class="line">		Transaction tx = null;</span><br><span class="line">		Iterator&lt;User&gt; list = null;</span><br><span class="line">		try &#123;</span><br><span class="line">			UserDao userDao = new UserDao();</span><br><span class="line">			tx = userDao.currentSession().beginTransaction();</span><br><span class="line">			list = userDao.findAllUser_iterate();</span><br><span class="line">			User u = new User();</span><br><span class="line">			<span class="keyword">while</span> (list.hasNext()) &#123;</span><br><span class="line">				u = list.next();</span><br><span class="line">				System.out.println(u.getName() + <span class="string">"艸"</span>);</span><br><span class="line"></span><br><span class="line">			&#125;</span><br><span class="line">			tx.commit();</span><br><span class="line">		&#125; catch (HibernateException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			<span class="keyword">if</span> (tx != null) &#123;</span><br><span class="line">				tx.rollback();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> list;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>//ITERATE()要比LIST()效率好，但是ITERATE必须在service层输出或赋值，它是先查主键id，再去查找数据</p>
+<h4 id="动态查询"><a href="#动态查询" class="headerlink" title="动态查询"></a>动态查询</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;User&gt; findByCoditions(String hql, User param) &#123;</span><br><span class="line">		Query query = this.currentSession().createQuery(hql);</span><br><span class="line">		query.setProperties(param); // 赛高</span><br><span class="line">		<span class="built_in">return</span> query.list();</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    ---主要的service</span><br><span class="line">    public List&lt;User&gt; findAllbyCondinitions1(User param) &#123;</span><br><span class="line">		Transaction tx = null;</span><br><span class="line">		List&lt;User&gt; list = new ArrayList&lt;User&gt;();</span><br><span class="line">		try &#123;</span><br><span class="line">			UserDao userDao = new UserDao();</span><br><span class="line">			tx = userDao.currentSession().beginTransaction();</span><br><span class="line">			StringBuilder hql = new StringBuilder(<span class="string">"from User where 1=1"</span>);</span><br><span class="line">			<span class="keyword">if</span> (param.getName() != null &amp;&amp; param.getName().length() != 0) &#123;</span><br><span class="line">				hql.append(<span class="string">" and name=:name"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (param.getTelephone() != null &amp;&amp; param.getTelephone().length() != 0) &#123;</span><br><span class="line">				hql.append(<span class="string">" and telephone=:telephone"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			list = userDao.findByCoditions(hql.toString(), param);</span><br><span class="line">			tx.commit();</span><br><span class="line">		&#125; catch (HibernateException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			<span class="keyword">if</span> (tx != null) &#123;</span><br><span class="line">				tx.rollback();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> list;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="动态查询-map参数"><a href="#动态查询-map参数" class="headerlink" title="动态查询 map参数"></a>动态查询 map参数</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;User&gt; findByCoditions(String hql, Map&lt;String, Object&gt; param) &#123;</span><br><span class="line">		Query query = this.currentSession().createQuery(hql);</span><br><span class="line">		query.setProperties(param); // 赛高</span><br><span class="line">		<span class="built_in">return</span> query.list();</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    ---service</span><br><span class="line">    </span><br><span class="line">    public List&lt;User&gt; findAllbyCondinitions2(Map&lt;String, Object&gt; param) &#123;</span><br><span class="line">		Transaction tx = null;</span><br><span class="line">		List&lt;User&gt; list = new ArrayList&lt;User&gt;();</span><br><span class="line">		try &#123;</span><br><span class="line">			UserDao userDao = new UserDao();</span><br><span class="line">			tx = userDao.currentSession().beginTransaction();</span><br><span class="line">			StringBuilder hql = new StringBuilder(<span class="string">"from User where 1=1"</span>);</span><br><span class="line">			<span class="keyword">if</span> (param.get(<span class="string">"name"</span>) != null &amp; ((String) param.get(<span class="string">"name"</span>)).length() != 0) &#123;</span><br><span class="line">				hql.append(<span class="string">" and name=:name"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (param.get(<span class="string">"telephone"</span>) != null &amp; ((String) param.get(<span class="string">"telephone"</span>)).length() != 0) &#123;</span><br><span class="line">				hql.append(<span class="string">" and telephone=:telephone"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			list = userDao.findByCoditions(hql.toString(), param);</span><br><span class="line">			tx.commit();</span><br><span class="line">		&#125; catch (HibernateException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			<span class="keyword">if</span> (tx != null) &#123;</span><br><span class="line">				tx.rollback();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> list;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h4><p>主要的是setFirstResult()与setMaxResults()<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;User&gt; findByPage(int pageNo, int pageSize) &#123;</span><br><span class="line">		<span class="built_in">return</span> this.currentSession().createQuery(<span class="string">"from User order by id"</span>).setFirstResult((pageNo - 1) * pageSize)</span><br><span class="line">				.setMaxResults(pageSize).list();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="获取前几个数据"><a href="#获取前几个数据" class="headerlink" title="获取前几个数据"></a>获取前几个数据</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;User&gt; findByOrder(int topSize) &#123;</span><br><span class="line">		<span class="built_in">return</span> this.currentSession().createQuery(<span class="string">"from User order by id"</span>).setMaxResults(topSize).list();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="投影查询-只获取单个"><a href="#投影查询-只获取单个" class="headerlink" title="投影查询(只获取单个)"></a>投影查询(只获取单个)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public List <span class="function"><span class="title">findByProjection</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> this.currentSession().createQuery(<span class="string">"select name from User"</span>).list();</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    ---service</span><br><span class="line">    </span><br><span class="line">    public List&lt;Object&gt; <span class="function"><span class="title">findAllbyCondinitions5</span></span>() &#123;</span><br><span class="line">		Transaction tx = null;</span><br><span class="line">		List&lt;Object&gt; list = null;</span><br><span class="line">		try &#123;</span><br><span class="line">			UserDao userDao = new UserDao();</span><br><span class="line">			tx = userDao.currentSession().beginTransaction();</span><br><span class="line">			list = userDao.findByProjection();</span><br><span class="line">		&#125; catch (HibernateException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">			<span class="keyword">if</span> (tx != null) &#123;</span><br><span class="line">				tx.rollback();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> list;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="投影查询-多个字段"><a href="#投影查询-多个字段" class="headerlink" title="投影查询(多个字段)"></a>投影查询(多个字段)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;Object[]&gt; <span class="function"><span class="title">findByProjection2</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> this.currentSession().createQuery(<span class="string">"select name,telephone from User"</span>).list();</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    ---<span class="built_in">test</span></span><br><span class="line">    </span><br><span class="line">    public void <span class="function"><span class="title">findPro2</span></span>() &#123;</span><br><span class="line">		List&lt;Object[]&gt; list = new UserBiz().findAllbyCondinitions6();</span><br><span class="line">		<span class="keyword">for</span> (Object[] object : list) &#123;</span><br><span class="line">			System.out.println(object[0] + <span class="string">"\t"</span> + object[1]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="将查询结果通过构造函数封装为对象"><a href="#将查询结果通过构造函数封装为对象" class="headerlink" title="将查询结果通过构造函数封装为对象"></a>将查询结果通过构造函数封装为对象</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public List&lt;User&gt; <span class="function"><span class="title">findByProjection3</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> this.currentSession().createQuery(<span class="string">"select new User(name,telephone) from User"</span>).list();</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    --构造方法</span><br><span class="line">    </span><br><span class="line">    public User(String name,String telephone)&#123;</span><br><span class="line">		this.name=name;</span><br><span class="line">		this.telephone=telephone;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/08/面试26问/" rel="next" title="面试26问">
+                <i class="fa fa-chevron-left"></i> 面试26问
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/08/Hibernate关系映射/" rel="prev" title="Hibernate关系映射">
+                Hibernate关系映射 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/obt.jpg" alt="樊可">
+            
+              <p class="site-author-name" itemprop="name">樊可</p>
+              <p class="site-description motion-element" itemprop="description">不相信自己的人没有努力的价值。   -- 迈特凯</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Fankekeke" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/5384373842?is_all=1" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1258846421@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#编写HQL语句"><span class="nav-number">1.</span> <span class="nav-text">编写HQL语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#from子句"><span class="nav-number">1.1.</span> <span class="nav-text">from子句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#select子句"><span class="nav-number">1.2.</span> <span class="nav-text">select子句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#where子句"><span class="nav-number">1.3.</span> <span class="nav-text">where子句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用表达式"><span class="nav-number">1.4.</span> <span class="nav-text">使用表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#order-by子句"><span class="nav-number">1.5.</span> <span class="nav-text">order by子句</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行HQL语句"><span class="nav-number">2.</span> <span class="nav-text">执行HQL语句</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DAO层"><span class="nav-number">2.1.</span> <span class="nav-text">DAO层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SERVICE层"><span class="nav-number">2.2.</span> <span class="nav-text">SERVICE层</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数绑定形式"><span class="nav-number">3.</span> <span class="nav-text">参数绑定形式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#按参数位置绑定"><span class="nav-number">3.1.</span> <span class="nav-text">按参数位置绑定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按参数名称绑定"><span class="nav-number">3.2.</span> <span class="nav-text">按参数名称绑定</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绑定各种类型的参数"><span class="nav-number">3.3.</span> <span class="nav-text">绑定各种类型的参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#setParameter-方法：绑定任意类型参数"><span class="nav-number">3.4.</span> <span class="nav-text">setParameter()方法：绑定任意类型参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#setProperties-直接放入一个对象-赛高"><span class="nav-number">3.5.</span> <span class="nav-text">setProperties(直接放入一个对象)赛高</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用uniqueResult-方法获取唯一结果"><span class="nav-number">3.6.</span> <span class="nav-text">使用uniqueResult()方法获取唯一结果</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询"><span class="nav-number">4.</span> <span class="nav-text">查询</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#LIST"><span class="nav-number">4.1.</span> <span class="nav-text">LIST()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ITERATE"><span class="nav-number">4.2.</span> <span class="nav-text">ITERATE()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态查询"><span class="nav-number">4.3.</span> <span class="nav-text">动态查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动态查询-map参数"><span class="nav-number">4.4.</span> <span class="nav-text">动态查询 map参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分页查询"><span class="nav-number">4.5.</span> <span class="nav-text">分页查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#获取前几个数据"><span class="nav-number">4.6.</span> <span class="nav-text">获取前几个数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#投影查询-只获取单个"><span class="nav-number">4.7.</span> <span class="nav-text">投影查询(只获取单个)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#投影查询-多个字段"><span class="nav-number">4.8.</span> <span class="nav-text">投影查询(多个字段)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将查询结果通过构造函数封装为对象"><span class="nav-number">4.9.</span> <span class="nav-text">将查询结果通过构造函数封装为对象</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">樊可</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访问数<i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'qBi0aBkxrd0a61dRtSDJjK8M-gzGzoHsz',
+        appKey: 'gcHEadNXDusN49dVUsIK3Be9',
+        placeholder: '俺要评论..',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
