@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="悲伤的橘子树">
 <meta property="og:description" content="hello，大家好，今天晚上来学习Hibernate 什么是Hibernate框架？Hibernate是一种ORM框架，全称为 Object_Relative DateBase-Mapping，在Java对象与关系数据库之间建立某种映射，以实现直接存取Java对象！比SSM的orm要强 Hibernate优缺点1.Hibernate优点：　　（1）对象/关系数据库映射(Basic O/R Mapp">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-07T15:01:19.297Z">
+<meta property="og:updated_time" content="2018-11-08T00:06:23.874Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hibernate入门">
 <meta name="twitter:description" content="hello，大家好，今天晚上来学习Hibernate 什么是Hibernate框架？Hibernate是一种ORM框架，全称为 Object_Relative DateBase-Mapping，在Java对象与关系数据库之间建立某种映射，以实现直接存取Java对象！比SSM的orm要强 Hibernate优缺点1.Hibernate优点：　　（1）对象/关系数据库映射(Basic O/R Mapp">
@@ -442,7 +442,7 @@
 <p>LOAD方法(需要在会话关闭之前测试查询)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public User loadUser(Serializable id)&#123;</span><br><span class="line">   <span class="built_in">return</span> (User)currentSession().load(User.class, id);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="增加操作"><a href="#增加操作" class="headerlink" title="增加操作"></a>增加操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public void save(User user)&#123;</span><br><span class="line">   currentSession().save(user);</span><br><span class="line">&#125;</span><br><span class="line">--还有个save-update(他会找主键，如果主键存在，那就修改，如果不存在，就添加)</span><br></pre></td></tr></table></figure>
 <h3 id="修改操作"><a href="#修改操作" class="headerlink" title="修改操作"></a>修改操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public void update(User user)&#123;</span><br><span class="line">   currentSession().update(user);</span><br><span class="line">&#125;</span><br><span class="line">--还有个save-update(他会找主键，如果主键存在，那就修改，如果不存在，就添加)</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">### 删除操作</span><br><span class="line">``` bash</span><br><span class="line">public void delete(User user)&#123;</span><br><span class="line">   currentSession().delete(user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public void delete(User user)&#123;</span><br><span class="line">   currentSession().delete(user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="hbm-xml文件（-dynamic-update-”true”）"><a href="#hbm-xml文件（-dynamic-update-”true”）" class="headerlink" title=".hbm.xml文件（ dynamic-update=”true”）"></a>.hbm.xml文件（ dynamic-update=”true”）</h3><p>表示动态更新，只更新变化的字段</p>
 
       
@@ -477,6 +477,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/08/面试26问/" rel="prev" title="面试26问">
+                面试26问 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -558,7 +562,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">23</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -635,7 +639,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Hibernate框架？"><span class="nav-number">1.</span> <span class="nav-text">什么是Hibernate框架？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hibernate优缺点"><span class="nav-number">1.1.</span> <span class="nav-text">Hibernate优缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hibernate环境搭建"><span class="nav-number">2.</span> <span class="nav-text">Hibernate环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引入相关jar包"><span class="nav-number">2.1.</span> <span class="nav-text">引入相关jar包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建Hibernate核心配置文件（hibernate-cfg-xml）"><span class="nav-number">2.2.</span> <span class="nav-text">创建Hibernate核心配置文件（hibernate.cfg.xml）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建持久化类和映射文件"><span class="nav-number">2.3.</span> <span class="nav-text">创建持久化类和映射文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#映射文件（为持久化类名-hbm-xml）"><span class="nav-number">2.3.1.</span> <span class="nav-text">映射文件（为持久化类名+hbm.xml）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进行持久化操作"><span class="nav-number">2.4.</span> <span class="nav-text">进行持久化操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按主键查询"><span class="nav-number">3.</span> <span class="nav-text">按主键查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增加操作"><span class="nav-number">4.</span> <span class="nav-text">增加操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改操作"><span class="nav-number">5.</span> <span class="nav-text">修改操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hbm-xml文件（-dynamic-update-”true”）"><span class="nav-number">6.</span> <span class="nav-text">.hbm.xml文件（ dynamic-update=”true”）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是Hibernate框架？"><span class="nav-number">1.</span> <span class="nav-text">什么是Hibernate框架？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hibernate优缺点"><span class="nav-number">1.1.</span> <span class="nav-text">Hibernate优缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hibernate环境搭建"><span class="nav-number">2.</span> <span class="nav-text">Hibernate环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引入相关jar包"><span class="nav-number">2.1.</span> <span class="nav-text">引入相关jar包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建Hibernate核心配置文件（hibernate-cfg-xml）"><span class="nav-number">2.2.</span> <span class="nav-text">创建Hibernate核心配置文件（hibernate.cfg.xml）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建持久化类和映射文件"><span class="nav-number">2.3.</span> <span class="nav-text">创建持久化类和映射文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#映射文件（为持久化类名-hbm-xml）"><span class="nav-number">2.3.1.</span> <span class="nav-text">映射文件（为持久化类名+hbm.xml）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进行持久化操作"><span class="nav-number">2.4.</span> <span class="nav-text">进行持久化操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按主键查询"><span class="nav-number">3.</span> <span class="nav-text">按主键查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增加操作"><span class="nav-number">4.</span> <span class="nav-text">增加操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改操作"><span class="nav-number">5.</span> <span class="nav-text">修改操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除操作"><span class="nav-number">6.</span> <span class="nav-text">删除操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hbm-xml文件（-dynamic-update-”true”）"><span class="nav-number">7.</span> <span class="nav-text">.hbm.xml文件（ dynamic-update=”true”）</span></a></li></ol></div>
             
 
           </div>
