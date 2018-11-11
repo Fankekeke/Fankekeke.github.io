@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1A1918; /*��������ɫ*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1A1918; /*��Ӱ��ɫ*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1A1918;    /*�ϱ߿���ɫ*/
+        border-left-color: #1A1918;    /*��߿���ɫ*/
+    }
+</style>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="BaseController.java(这个基类用来设置继承他的子类的持久化类的date属性)12345@InitBinder	public void initBinder(WebDataBinder dataBinder)&amp;#123;		System.out.println(&quot;initBinder=======================&quot;);		dataBinder.registerCus">
+<meta name="keywords" content="悲伤的橘子树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSM基础案例文件">
+<meta property="og:url" content="http://fanke.com/2018/11/11/SSM基础案例文件/index.html">
+<meta property="og:site_name" content="悲伤的橘子树">
+<meta property="og:description" content="BaseController.java(这个基类用来设置继承他的子类的持久化类的date属性)12345@InitBinder	public void initBinder(WebDataBinder dataBinder)&amp;#123;		System.out.println(&quot;initBinder=======================&quot;);		dataBinder.registerCus">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-11T14:53:54.497Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SSM基础案例文件">
+<meta name="twitter:description" content="BaseController.java(这个基类用来设置继承他的子类的持久化类的date属性)12345@InitBinder	public void initBinder(WebDataBinder dataBinder)&amp;#123;		System.out.println(&quot;initBinder=======================&quot;);		dataBinder.registerCus">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://fanke.com/2018/11/11/SSM基础案例文件/">
+
+
+
+
+
+  <title>SSM基础案例文件 | 悲伤的橘子树</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">悲伤的橘子树</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://fanke.com/2018/11/11/SSM基础案例文件/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="樊可">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/obt.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="悲伤的橘子树">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SSM基础案例文件</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-11T22:25:11+08:00">
+                2018-11-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/SSM/" itemprop="url" rel="index">
+                    <span itemprop="name">SSM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/11/SSM基础案例文件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/11/SSM基础案例文件/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="BaseController-java-这个基类用来设置继承他的子类的持久化类的date属性"><a href="#BaseController-java-这个基类用来设置继承他的子类的持久化类的date属性" class="headerlink" title="BaseController.java(这个基类用来设置继承他的子类的持久化类的date属性)"></a>BaseController.java(这个基类用来设置继承他的子类的持久化类的date属性)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@InitBinder</span><br><span class="line">	public void initBinder(WebDataBinder dataBinder)&#123;</span><br><span class="line">		System.out.println(<span class="string">"initBinder======================="</span>);</span><br><span class="line">		dataBinder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat(<span class="string">"yyyy-MM-dd"</span>), <span class="literal">true</span>));</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="dao层接口与xml"><a href="#dao层接口与xml" class="headerlink" title="dao层接口与xml"></a>dao层接口与xml</h3><h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">// 增加</span><br><span class="line">public int insertUser(User user);</span><br><span class="line"></span><br><span class="line">// 修改</span><br><span class="line">public int updateUser(User user);</span><br><span class="line"></span><br><span class="line">// 删除</span><br><span class="line">public int deleteUser(@Param(<span class="string">"uid"</span>) int uid);</span><br><span class="line"></span><br><span class="line">//删除地址</span><br><span class="line">public int deleteAddress(@Param(<span class="string">"uid"</span>) int uid);</span><br><span class="line"></span><br><span class="line">// 根据用户id查询地址信息</span><br><span class="line">public List&lt;User&gt; selectUser(@Param(<span class="string">"uid"</span>) int uid);</span><br><span class="line"></span><br><span class="line">// 根据地址id查询用户信息</span><br><span class="line">public List&lt;Address&gt; selectAddress(@Param(<span class="string">"addressid"</span>) int addressid);</span><br><span class="line"></span><br><span class="line">// 根据多个用户查询</span><br><span class="line">public List&lt;User&gt; selectUsers(UserVo vo);</span><br><span class="line"></span><br><span class="line">//动态trim模糊查询</span><br><span class="line">public List&lt;User&gt;seleteUserByUser(User user);</span><br><span class="line"></span><br><span class="line">//登录</span><br><span class="line">public User login(User user);</span><br><span class="line"></span><br><span class="line">//模糊查询</span><br><span class="line">public List&lt;User&gt;getUserList(User user);</span><br><span class="line"></span><br><span class="line">//根据id获取用户信息</span><br><span class="line">public User getUserById(@Param(<span class="string">"uid"</span>) int uid);</span><br><span class="line"></span><br><span class="line">//获取所有用户</span><br><span class="line">public List&lt;User&gt;getUsers();</span><br></pre></td></tr></table></figure>
+<h4 id="xml-mapper映射"><a href="#xml-mapper映射" class="headerlink" title="xml(mapper映射)"></a>xml(mapper映射)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span> ?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper</span><br><span class="line">PUBLIC <span class="string">"-//mybatis.org//DTD Mapper 3.0//EN"</span></span><br><span class="line"><span class="string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span>&gt;</span><br><span class="line">&lt;mapper namespace=<span class="string">"cn.dao.UserMapper"</span>&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- 增加 --&gt;</span><br><span class="line">	&lt;insert id=<span class="string">"insertUser"</span> parameterType=<span class="string">"User"</span>&gt;</span><br><span class="line">		INSERT INTO</span><br><span class="line">		user_info(user_name,user_pwd,user_birthday)VALUES(<span class="comment">#&#123;userName&#125;,#&#123;userPwd&#125;,#&#123;userBirthday&#125;)</span></span><br><span class="line">	&lt;/insert&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- 动态trim修改 --&gt;</span><br><span class="line">	&lt;update id=<span class="string">"updateUser"</span> parameterType=<span class="string">"User"</span>&gt;</span><br><span class="line">		UPDATE user_info</span><br><span class="line">		&lt;trim prefix=<span class="string">"set"</span> suffixOverrides=<span class="string">","</span>&gt;</span><br><span class="line">			&lt;<span class="keyword">if</span> <span class="built_in">test</span>=<span class="string">"userName!=null and userName!=''"</span>&gt;</span><br><span class="line">				user_name=<span class="comment">#&#123;userName&#125;,</span></span><br><span class="line">			&lt;/<span class="keyword">if</span>&gt;</span><br><span class="line">			&lt;<span class="keyword">if</span> <span class="built_in">test</span>=<span class="string">"userPwd!=null and userPwd!=''"</span>&gt;</span><br><span class="line">				user_pwd=<span class="comment">#&#123;userPwd&#125;,</span></span><br><span class="line">			&lt;/<span class="keyword">if</span>&gt;</span><br><span class="line">			&lt;<span class="keyword">if</span> <span class="built_in">test</span>=<span class="string">"userBirthday!=null and userBirthday!=''"</span>&gt;</span><br><span class="line">				user_birthday=<span class="comment">#&#123;userBirthday&#125;,</span></span><br><span class="line">			&lt;/<span class="keyword">if</span>&gt;</span><br><span class="line">		&lt;/trim&gt;</span><br><span class="line">		<span class="built_in">where</span> id=<span class="comment">#&#123;id&#125;</span></span><br><span class="line">	&lt;/update&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- 删除 --&gt;</span><br><span class="line">	&lt;delete id=<span class="string">"deleteUser"</span> parameterType=<span class="string">"int"</span>&gt;</span><br><span class="line">		DELETE from user_info</span><br><span class="line">		WHERE id=<span class="comment">#&#123;uid&#125;</span></span><br><span class="line">	&lt;/delete&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- 删除地址 --&gt;</span><br><span class="line">	&lt;delete id=<span class="string">"deleteAddress"</span> parameterType=<span class="string">"int"</span>&gt;</span><br><span class="line">		DELETE from</span><br><span class="line">		address_info WHERE user_id=<span class="comment">#&#123;uid&#125;</span></span><br><span class="line">	&lt;/delete&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- trim查询user --&gt;</span><br><span class="line">	&lt;select id=<span class="string">"seleteUserByUser"</span> resultMap=<span class="string">"UserList"</span></span><br><span class="line">		parameterType=<span class="string">"User"</span>&gt;</span><br><span class="line">		SELECT *FROM user_info WHERE user_name=<span class="comment">#&#123;userName&#125; and</span></span><br><span class="line">		user_pwd=<span class="comment">#&#123;userPwd&#125;</span></span><br><span class="line">	&lt;/select&gt;</span><br><span class="line">	&lt;resultMap <span class="built_in">type</span>=<span class="string">"User"</span> id=<span class="string">"UserList"</span>&gt;</span><br><span class="line">		&lt;result property=<span class="string">"id"</span> column=<span class="string">"id"</span> /&gt;</span><br><span class="line">		&lt;result property=<span class="string">"userName"</span> column=<span class="string">"user_name"</span> /&gt;</span><br><span class="line">		&lt;result property=<span class="string">"userPwd"</span> column=<span class="string">"user_pwd"</span> /&gt;</span><br><span class="line">		&lt;result property=<span class="string">"userBirthday"</span> column=<span class="string">"user_birthday"</span> /&gt;</span><br><span class="line">	&lt;/resultMap&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- 根据用户id查询地址信息 --&gt;</span><br><span class="line">	&lt;select id=<span class="string">"selectUser"</span> parameterType=<span class="string">"User"</span> resultMap=<span class="string">"getAddress"</span>&gt;</span><br><span class="line">		SELECT *</span><br><span class="line">		FROM user_info u,address_info a WHERE a.user_id=u.id AND</span><br><span class="line">		u.id=<span class="comment">#&#123;uid&#125;</span></span><br><span class="line">	&lt;/select&gt;</span><br><span class="line">	&lt;resultMap <span class="built_in">type</span>=<span class="string">"User"</span> id=<span class="string">"getAddress"</span>&gt;</span><br><span class="line">		&lt;result property=<span class="string">"id"</span> column=<span class="string">"id"</span> /&gt;</span><br><span class="line">		&lt;result property=<span class="string">"userName"</span> column=<span class="string">"user_name"</span> /&gt;</span><br><span class="line">		&lt;result property=<span class="string">"userPwd"</span> column=<span class="string">"user_pwd"</span> /&gt;</span><br><span class="line">		&lt;result property=<span class="string">"userBirthday"</span> column=<span class="string">"user_birthday"</span> /&gt;</span><br><span class="line">		&lt;collection property=<span class="string">"addresses"</span> ofType=<span class="string">"Address"</span>&gt;</span><br><span class="line">			&lt;result property=<span class="string">"id"</span> column=<span class="string">"id"</span> /&gt;</span><br><span class="line">			&lt;result property=<span class="string">"addressName"</span> column=<span class="string">"address_name"</span> /&gt;</span><br><span class="line">			&lt;result property=<span class="string">"userId"</span> column=<span class="string">"user_id"</span> /&gt;</span><br><span class="line">		&lt;/collection&gt;</span><br><span class="line">	&lt;/resultMap&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- 根据地址id查询用户信息 --&gt;</span><br><span class="line">	&lt;select id=<span class="string">"selectAddress"</span> resultMap=<span class="string">"getUser"</span>&gt;</span><br><span class="line">		SELECT * FROM user_info</span><br><span class="line">		u,address_info a WHERE a.user_id=u.id AND</span><br><span class="line">		a.id=<span class="comment">#&#123;addressid&#125;</span></span><br><span class="line">	&lt;/select&gt;</span><br><span class="line">	&lt;resultMap <span class="built_in">type</span>=<span class="string">"Address"</span> id=<span class="string">"getUser"</span>&gt;</span><br><span class="line">		&lt;result property=<span class="string">"id"</span> column=<span class="string">"id"</span> /&gt;</span><br><span class="line">		&lt;result property=<span class="string">"addressName"</span> column=<span class="string">"address_name"</span> /&gt;</span><br><span class="line">		&lt;result property=<span class="string">"userId"</span> column=<span class="string">"user_id"</span> /&gt;</span><br><span class="line">		&lt;association property=<span class="string">"user"</span> javaType=<span class="string">"User"</span>&gt;</span><br><span class="line">			&lt;result property=<span class="string">"id"</span> column=<span class="string">"id"</span> /&gt;</span><br><span class="line">			&lt;result property=<span class="string">"userName"</span> column=<span class="string">"user_name"</span> /&gt;</span><br><span class="line">			&lt;result property=<span class="string">"userPwd"</span> column=<span class="string">"user_pwd"</span> /&gt;</span><br><span class="line">			&lt;result property=<span class="string">"userBirthday"</span> column=<span class="string">"user_birthday"</span> /&gt;</span><br><span class="line">		&lt;/association&gt;</span><br><span class="line">	&lt;/resultMap&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- 根据多个用户查询 --&gt;</span><br><span class="line">	&lt;select id=<span class="string">"selectUsers"</span> parameterType=<span class="string">"UserVo"</span> resultMap=<span class="string">"UserList"</span>&gt;</span><br><span class="line">		SELECT * FROM user_info</span><br><span class="line">		&lt;<span class="built_in">where</span>&gt;</span><br><span class="line">			&lt;foreach collection=<span class="string">"list"</span> item=<span class="string">"id"</span> open=<span class="string">"and ("</span> close=<span class="string">")"</span></span><br><span class="line">				separator=<span class="string">"or"</span>&gt;</span><br><span class="line">				id=<span class="comment">#&#123;id&#125;</span></span><br><span class="line">			&lt;/foreach&gt;</span><br><span class="line">		&lt;/<span class="built_in">where</span>&gt;</span><br><span class="line">	&lt;/select&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- 登录 --&gt;</span><br><span class="line">	&lt;select id=<span class="string">"login"</span> resultMap=<span class="string">"UserList"</span> parameterType=<span class="string">"User"</span>&gt;</span><br><span class="line">		SELECT *</span><br><span class="line">		FROM user_info WHERE user_name=<span class="comment">#&#123;userName&#125; and user_pwd=#&#123;userPwd&#125;</span></span><br><span class="line">	&lt;/select&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- 模糊查询 --&gt;</span><br><span class="line">	&lt;select id=<span class="string">"getUserList"</span> resultMap=<span class="string">"UserList"</span> parameterType=<span class="string">"User"</span>&gt;</span><br><span class="line">		SELECT * FROM user_info</span><br><span class="line">		&lt;trim prefix=<span class="string">"where"</span> prefixOverrides=<span class="string">"and | or"</span>&gt;</span><br><span class="line">			&lt;<span class="keyword">if</span> <span class="built_in">test</span>=<span class="string">"userName!=null and userName!=''"</span>&gt;</span><br><span class="line">				and user_name like CONCAT(<span class="string">'%'</span>,<span class="comment">#&#123;userName&#125;,'%')</span></span><br><span class="line">			&lt;/<span class="keyword">if</span>&gt;</span><br><span class="line">			&lt;<span class="keyword">if</span> <span class="built_in">test</span>=<span class="string">"id!=null and id!=''"</span>&gt;</span><br><span class="line">				and id=<span class="comment">#&#123;id&#125;</span></span><br><span class="line">			&lt;/<span class="keyword">if</span>&gt;</span><br><span class="line">		&lt;/trim&gt;</span><br><span class="line">	&lt;/select&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- 根据id获取用户信息 --&gt;</span><br><span class="line">	&lt;select id=<span class="string">"getUserById"</span> resultMap=<span class="string">"UserList"</span>&gt;</span><br><span class="line">		select * from user_info <span class="built_in">where</span> id=<span class="comment">#&#123;uid&#125;</span></span><br><span class="line">	&lt;/select&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- 获取所有用户 --&gt;</span><br><span class="line">	&lt;select id=<span class="string">"getUsers"</span> resultMap=<span class="string">"UserList"</span>&gt;</span><br><span class="line">		select * from user_info</span><br><span class="line">	&lt;/select&gt;</span><br><span class="line"></span><br><span class="line">&lt;/mapper&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="pojo类-持久化类包括JSR-303验证"><a href="#pojo类-持久化类包括JSR-303验证" class="headerlink" title="pojo类(持久化类包括JSR-303验证)"></a>pojo类(持久化类包括JSR-303验证)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//id</span><br><span class="line">	private int id;</span><br><span class="line">	</span><br><span class="line">	//name</span><br><span class="line">	@NotEmpty(message=<span class="string">"用户名称不能为空"</span>)</span><br><span class="line">	private String userName;</span><br><span class="line">	</span><br><span class="line">	//<span class="built_in">pwd</span></span><br><span class="line">	@NotEmpty(message=<span class="string">"用户密码不能为空"</span>)</span><br><span class="line">	private String userPwd;</span><br><span class="line">	</span><br><span class="line">	//birthday</span><br><span class="line">	@JSONField(format=<span class="string">"yyyy-MM-dd"</span>)</span><br><span class="line">	private Date userBirthday;</span><br></pre></td></tr></table></figure>
+<h3 id="service层-实现类"><a href="#service层-实现类" class="headerlink" title="service层(实现类)"></a>service层(实现类)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line">@Service(<span class="string">"userServiceImpl"</span>)</span><br><span class="line">public class UserServiceImpl implements UserService &#123;</span><br><span class="line">	</span><br><span class="line">	@Autowired</span><br><span class="line">	@Qualifier(<span class="string">"userMapper"</span>)</span><br><span class="line">	private UserMapper userMapper;</span><br><span class="line"></span><br><span class="line">	public UserMapper <span class="function"><span class="title">getUserMapper</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> userMapper;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setUserMapper(UserMapper userMapper) &#123;</span><br><span class="line">		this.userMapper = userMapper;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public int addUser(User user) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		<span class="built_in">return</span> userMapper.insertUser(user);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public int modifyUser(User user) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		<span class="built_in">return</span> userMapper.updateUser(user);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public int removerUser(int uid) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		userMapper.deleteAddress(uid);</span><br><span class="line">		<span class="built_in">return</span> userMapper.deleteUser(uid);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public List&lt;User&gt; findUser(int uid) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		<span class="built_in">return</span> userMapper.selectUser(uid);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public List&lt;Address&gt; findAddress(int addressid) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		<span class="built_in">return</span> userMapper.selectAddress(addressid);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public List&lt;User&gt; findUsers(UserVo vo) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		<span class="built_in">return</span> userMapper.selectUsers(vo);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public List&lt;User&gt; findUserByUser(User user) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		<span class="built_in">return</span> userMapper.seleteUserByUser(user);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public int deleteAddress(int uid) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		<span class="built_in">return</span> userMapper.deleteAddress(uid);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public User login(User user) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		<span class="built_in">return</span> userMapper.login(user);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public List&lt;User&gt; getUserList(User user) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		<span class="built_in">return</span> userMapper.getUserList(user);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public User getUserById(int uid) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		<span class="built_in">return</span> userMapper.getUserById(uid);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public List&lt;User&gt; <span class="function"><span class="title">getUsers</span></span>() &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		<span class="built_in">return</span> userMapper.getUsers();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="logger-AOP"><a href="#logger-AOP" class="headerlink" title="logger(AOP)"></a>logger(AOP)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 定义切面</span><br><span class="line"> * @author F117</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">@Aspect</span><br><span class="line">public class logger &#123;</span><br><span class="line">	private static final Logger LOGGER=Logger.getLogger(logger.class);</span><br><span class="line">	@Pointcut(<span class="string">"execution(* cn.service..*.*(..))"</span>)</span><br><span class="line">	public void <span class="function"><span class="title">Pointcut</span></span>()&#123;&#125;</span><br><span class="line">	</span><br><span class="line">	@AfterReturning(pointcut=<span class="string">"Pointcut()"</span>,returning=<span class="string">"returnCalue"</span>)</span><br><span class="line">	public void afterReturning(JoinPoint jp,Object returnCalue)&#123;</span><br><span class="line">		LOGGER.info(<span class="string">"调用"</span>+jp.getTarget()+<span class="string">"的"</span>+jp.getSignature().getName()+<span class="string">"方法,返回值"</span>+returnCalue);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Around(<span class="string">"Pointcut()"</span>)</span><br><span class="line">	public Object aroundLogger(ProceedingJoinPoint jp) throws Throwable&#123;</span><br><span class="line">		LOGGER.info(<span class="string">"调用"</span>+jp.getTarget()+<span class="string">"的"</span>+jp.getSignature().getName()+<span class="string">"方法,方法入参"</span>+Arrays.toString(jp.getArgs()));</span><br><span class="line">		try &#123;</span><br><span class="line">			Object result=jp.proceed();</span><br><span class="line">			LOGGER.info(<span class="string">"调用"</span>+jp.getTarget()+<span class="string">"的"</span>+jp.getSignature().getName()+<span class="string">"方法,返回值"</span>+result);</span><br><span class="line">			<span class="built_in">return</span> result;</span><br><span class="line">		&#125; catch (Throwable e) &#123;</span><br><span class="line">			// TODO: handle exception</span><br><span class="line">			throw e;</span><br><span class="line">		&#125;finally &#123;</span><br><span class="line">			LOGGER.info(<span class="string">"====&gt;"</span>+jp.getSignature().getName()+<span class="string">"方法结束"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="StringToDateConverter-自定义转换器"><a href="#StringToDateConverter-自定义转换器" class="headerlink" title="StringToDateConverter(自定义转换器)"></a>StringToDateConverter(自定义转换器)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class StringToDateConverter implements Converter&lt;String, Date&gt; &#123;</span><br><span class="line"></span><br><span class="line">	private String dataPattern;</span><br><span class="line">	</span><br><span class="line">	public StringToDateConverter(String dataPattern) &#123;</span><br><span class="line">		System.out.println(<span class="string">"StringToDateConverter conver"</span>+dataPattern);</span><br><span class="line">		this.dataPattern=dataPattern;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	@Override</span><br><span class="line">	public Date convert(String s) &#123;</span><br><span class="line">		// TODO Auto-generated method stub</span><br><span class="line">		Date date=null;</span><br><span class="line">		try &#123;</span><br><span class="line">			date= new SimpleDateFormat(dataPattern).parse(s);</span><br><span class="line">			System.out.println(<span class="string">"convert date:"</span>+date);</span><br><span class="line">		&#125; catch (ParseException e) &#123;</span><br><span class="line">			// TODO Auto-generated catch block</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> date;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="applicationContextl-xml"><a href="#applicationContextl-xml" class="headerlink" title="applicationContextl.xml"></a>applicationContextl.xml</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;beans xmlns=<span class="string">"http://www.springframework.org/schema/beans"</span></span><br><span class="line">	xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> xmlns:p=<span class="string">"http://www.springframework.org/schema/p"</span></span><br><span class="line">	xmlns:aop=<span class="string">"http://www.springframework.org/schema/aop"</span> xmlns:tx=<span class="string">"http://www.springframework.org/schema/tx"</span></span><br><span class="line">	xmlns:context=<span class="string">"http://www.springframework.org/schema/context"</span></span><br><span class="line">	xsi:schemaLocation=<span class="string">"http://www.springframework.org/schema/beans</span></span><br><span class="line"><span class="string">    http://www.springframework.org/schema/beans/spring-beans-3.2.xsd</span></span><br><span class="line"><span class="string">    http://www.springframework.org/schema/aop</span></span><br><span class="line"><span class="string">    http://www.springframework.org/schema/aop/spring-aop-3.2.xsd</span></span><br><span class="line"><span class="string">    http://www.springframework.org/schema/tx</span></span><br><span class="line"><span class="string">    http://www.springframework.org/schema/tx/spring-tx-3.2.xsd </span></span><br><span class="line"><span class="string">    http://www.springframework.org/schema/context</span></span><br><span class="line"><span class="string">    http://www.springframework.org/schema/context/spring-context-3.2.xsd"</span>&gt;</span><br><span class="line"></span><br><span class="line">	&lt;context:component-scan base-package=<span class="string">"cn.service"</span>&gt;&lt;/context:component-scan&gt;</span><br><span class="line">	&lt;context:component-scan base-package=<span class="string">"cn.controller"</span>&gt;&lt;/context:component-scan&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;aop:aspectj-autoproxy&gt;&lt;/aop:aspectj-autoproxy&gt;</span><br><span class="line">	&lt;bean class=<span class="string">"cn.tool.logger"</span> /&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- 读取数据库配置文件 --&gt;</span><br><span class="line">	&lt;context:property-placeholder location=<span class="string">"classpath:database.properties"</span> /&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- JNDI获取数据源(使用dbcp连接池) --&gt;</span><br><span class="line">	&lt;bean class=<span class="string">"org.apache.commons.dbcp.BasicDataSource"</span></span><br><span class="line">		destroy-method=<span class="string">"close"</span> scope=<span class="string">"singleton"</span> id=<span class="string">"dataSource"</span>&gt;</span><br><span class="line">		&lt;property name=<span class="string">"driverClassName"</span> value=<span class="string">"<span class="variable">$&#123;driver&#125;</span>"</span> /&gt;</span><br><span class="line">		&lt;property name=<span class="string">"url"</span> value=<span class="string">"<span class="variable">$&#123;url&#125;</span>"</span> /&gt;</span><br><span class="line">		&lt;property name=<span class="string">"username"</span> value=<span class="string">"<span class="variable">$&#123;user&#125;</span>"</span> /&gt;</span><br><span class="line">		&lt;property name=<span class="string">"password"</span> value=<span class="string">"<span class="variable">$&#123;password&#125;</span>"</span> /&gt;</span><br><span class="line">		&lt;property name=<span class="string">"initialSize"</span> value=<span class="string">"<span class="variable">$&#123;initialSize&#125;</span>"</span> /&gt;</span><br><span class="line">		&lt;property name=<span class="string">"maxActive"</span> value=<span class="string">"<span class="variable">$&#123;maxActive&#125;</span>"</span> /&gt;</span><br><span class="line">		&lt;property name=<span class="string">"maxIdle"</span> value=<span class="string">"<span class="variable">$&#123;maxIdle&#125;</span>"</span> /&gt;</span><br><span class="line">		&lt;property name=<span class="string">"minIdle"</span> value=<span class="string">"<span class="variable">$&#123;minIdle&#125;</span>"</span> /&gt;</span><br><span class="line">		&lt;property name=<span class="string">"maxWait"</span> value=<span class="string">"<span class="variable">$&#123;maxWait&#125;</span>"</span> /&gt;</span><br><span class="line">		&lt;property name=<span class="string">"removeAbandonedTimeout"</span> value=<span class="string">"<span class="variable">$&#123;removeAbandonedTimeout&#125;</span>"</span> /&gt;</span><br><span class="line">		&lt;property name=<span class="string">"removeAbandoned"</span> value=<span class="string">"<span class="variable">$&#123;removeAbandoned&#125;</span>"</span> /&gt;</span><br><span class="line">		&lt;!-- sql 心跳 --&gt;</span><br><span class="line">		&lt;property name=<span class="string">"testWhileIdle"</span> value=<span class="string">"true"</span> /&gt;</span><br><span class="line">		&lt;property name=<span class="string">"testOnBorrow"</span> value=<span class="string">"false"</span> /&gt;</span><br><span class="line">		&lt;property name=<span class="string">"testOnReturn"</span> value=<span class="string">"false"</span> /&gt;</span><br><span class="line">		&lt;property name=<span class="string">"validationQuery"</span> value=<span class="string">"select 1"</span> /&gt;</span><br><span class="line">		&lt;property name=<span class="string">"timeBetweenEvictionRunsMillis"</span> value=<span class="string">"60000"</span> /&gt;</span><br><span class="line">		&lt;property name=<span class="string">"numTestsPerEvictionRun"</span> value=<span class="string">"<span class="variable">$&#123;maxActive&#125;</span>"</span> /&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- 配置SqlSessionFactoryBean --&gt;</span><br><span class="line">	&lt;bean id=<span class="string">"sqlSessionFactory"</span> class=<span class="string">"org.mybatis.spring.SqlSessionFactoryBean"</span>&gt;</span><br><span class="line">		&lt;property name=<span class="string">"dataSource"</span> ref=<span class="string">"dataSource"</span>&gt;&lt;/property&gt;</span><br><span class="line">		&lt;property name=<span class="string">"configLocation"</span> value=<span class="string">"classpath:mybatis-configl.xml"</span>&gt;&lt;/property&gt;</span><br><span class="line"></span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- 配置Dao --&gt;</span><br><span class="line">	&lt;bean class=<span class="string">"org.mybatis.spring.mapper.MapperScannerConfigurer"</span>&gt;</span><br><span class="line">		&lt;property name=<span class="string">"basePackage"</span> value=<span class="string">"cn.dao"</span>&gt;&lt;/property&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- 事务管理器 --&gt;</span><br><span class="line">	&lt;bean id=<span class="string">"txManager"</span></span><br><span class="line">		class=<span class="string">"org.springframework.jdbc.datasource.DataSourceTransactionManager"</span>&gt;</span><br><span class="line">		&lt;property name=<span class="string">"dataSource"</span> ref=<span class="string">"dataSource"</span>&gt;&lt;/property&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- 事务增强 --&gt;</span><br><span class="line">	&lt;tx:advice id=<span class="string">"txAdvice"</span> transaction-manager=<span class="string">"txManager"</span>&gt;</span><br><span class="line">		&lt;tx:attributes&gt;</span><br><span class="line">			&lt;tx:method name=<span class="string">"*"</span> propagation=<span class="string">"REQUIRED"</span> /&gt;</span><br><span class="line">		&lt;/tx:attributes&gt;</span><br><span class="line">	&lt;/tx:advice&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- 配置切面 --&gt;</span><br><span class="line">	&lt;aop:config&gt;</span><br><span class="line">		&lt;aop:pointcut expression=<span class="string">"execution(* cn.service..*.*(..))"</span></span><br><span class="line">			id=<span class="string">"myPoint"</span> /&gt;</span><br><span class="line">		&lt;aop:advisor advice-ref=<span class="string">"txAdvice"</span> pointcut-ref=<span class="string">"myPoint"</span> /&gt;</span><br><span class="line">	&lt;/aop:config&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="database-properties"><a href="#database-properties" class="headerlink" title="database.properties"></a>database.properties</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">driver=com.mysql.jdbc.Driver</span><br><span class="line">url=jdbc:mysql://localhost:3306/sm_db?useUnicode=<span class="literal">true</span>&amp;characterEncoding=utf-8</span><br><span class="line">user=root</span><br><span class="line">password=root</span><br><span class="line">minIdle=45</span><br><span class="line">maxIdle=50</span><br><span class="line">initialSize=5</span><br><span class="line">maxActive=100</span><br><span class="line">maxWait=100</span><br><span class="line">removeAbandonedTimeout=180</span><br><span class="line">removeAbandoned=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h3 id="log4j-properties"><a href="#log4j-properties" class="headerlink" title="log4j.properties"></a>log4j.properties</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">log4j.rootLogger=DEBUG,CONSOLE,file</span><br><span class="line"><span class="comment">#log4j.rootLogger=ERROR,ROLLING_FILE</span></span><br><span class="line">log4j.logger.cn.smbms.dao=debug</span><br><span class="line">log4j.logger.com.ibatis=debug </span><br><span class="line">log4j.logger.com.ibatis.common.jdbc.SimpleDataSource=debug </span><br><span class="line">log4j.logger.com.ibatis.common.jdbc.ScriptRunner=debug </span><br><span class="line">log4j.logger.com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate=debug </span><br><span class="line">log4j.logger.java.sql.Connection=debug </span><br><span class="line">log4j.logger.java.sql.Statement=debug </span><br><span class="line">log4j.logger.java.sql.PreparedStatement=debug </span><br><span class="line">log4j.logger.java.sql.ResultSet=debug </span><br><span class="line">log4j.logger.org.tuckey.web.filters.urlrewrite.UrlRewriteFilter=debug</span><br><span class="line"></span><br><span class="line"><span class="comment">######################################################################################</span></span><br><span class="line"><span class="comment"># Console Appender  \u65e5\u5fd7\u5728\u63a7\u5236\u8f93\u51fa\u914d\u7f6e</span></span><br><span class="line"><span class="comment">######################################################################################</span></span><br><span class="line">log4j.appender.CONSOLE=org.apache.log4j.ConsoleAppender</span><br><span class="line">log4j.appender.Threshold=error</span><br><span class="line">log4j.appender.CONSOLE.Target=System.out</span><br><span class="line">log4j.appender.CONSOLE.layout=org.apache.log4j.PatternLayout</span><br><span class="line">log4j.appender.CONSOLE.layout.ConversionPattern= [%p] %d %c - %m%n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">######################################################################################</span></span><br><span class="line"><span class="comment"># DailyRolling File  \u6bcf\u5929\u4ea7\u751f\u4e00\u4e2a\u65e5\u5fd7\u6587\u4ef6\uff0c\u6587\u4ef6\u540d\u683c\u5f0f:log2009-09-11</span></span><br><span class="line"><span class="comment">######################################################################################</span></span><br><span class="line">log4j.appender.file=org.apache.log4j.DailyRollingFileAppender</span><br><span class="line">log4j.appender.file.DatePattern=yyyy-MM-dd</span><br><span class="line">log4j.appender.file.File=log.log</span><br><span class="line">log4j.appender.file.Append=<span class="literal">true</span></span><br><span class="line">log4j.appender.file.Threshold=error</span><br><span class="line">log4j.appender.file.layout=org.apache.log4j.PatternLayout</span><br><span class="line">log4j.appender.file.layout.ConversionPattern=%d&#123;yyyy-M<span class="_">-d</span> HH:mm:ss&#125;%x[%5p](%F:%L) %m%n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">log4j.logger.com.opensymphony.xwork2=error</span><br></pre></td></tr></table></figure>
+<h3 id="mybatis-configl-xml"><a href="#mybatis-configl-xml" class="headerlink" title="mybatis-configl.xml"></a>mybatis-configl.xml</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;!DOCTYPE configuration</span><br><span class="line">PUBLIC <span class="string">"-//mybatis.org//DTD Config 3.0//EN"</span></span><br><span class="line"><span class="string">"http://mybatis.org/dtd/mybatis-3-config.dtd"</span>&gt;</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!-- 配置mybatis的<span class="built_in">log</span>实现为LOG4J --&gt;</span><br><span class="line">	&lt;settings&gt;</span><br><span class="line">		&lt;!-- &lt;setting name=<span class="string">"logImpl"</span> value=<span class="string">"LOG4J"</span> /&gt; --&gt;</span><br><span class="line">		&lt;setting name=<span class="string">"lazyLoadingEnabled"</span> value=<span class="string">"false"</span>/&gt;</span><br><span class="line">		&lt;setting name=<span class="string">"autoMappingBehavior"</span> value=<span class="string">"FULL"</span>/&gt;</span><br><span class="line">	&lt;/settings&gt;</span><br><span class="line">	&lt;typeAliases&gt;</span><br><span class="line">	&lt;package name=<span class="string">"cn.pojo"</span>/&gt;</span><br><span class="line">	&lt;/typeAliases&gt;</span><br><span class="line"></span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="springmvc-servlet-xml"><a href="#springmvc-servlet-xml" class="headerlink" title="springmvc-servlet.xml"></a>springmvc-servlet.xml</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;beans xmlns=<span class="string">"http://www.springframework.org/schema/beans"</span></span><br><span class="line">	xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> xmlns:mvc=<span class="string">"http://www.springframework.org/schema/mvc"</span></span><br><span class="line">	xmlns:p=<span class="string">"http://www.springframework.org/schema/p"</span> xmlns:context=<span class="string">"http://www.springframework.org/schema/context"</span></span><br><span class="line">	xsi:schemaLocation=<span class="string">"</span></span><br><span class="line"><span class="string">        http://www.springframework.org/schema/beans</span></span><br><span class="line"><span class="string">        http://www.springframework.org/schema/beans/spring-beans.xsd</span></span><br><span class="line"><span class="string">        http://www.springframework.org/schema/context</span></span><br><span class="line"><span class="string">        http://www.springframework.org/schema/context/spring-context.xsd</span></span><br><span class="line"><span class="string">        http://www.springframework.org/schema/mvc</span></span><br><span class="line"><span class="string">        http://www.springframework.org/schema/mvc/spring-mvc.xsd"</span>&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- 配置处理器映射 HandlerMapping --&gt;</span><br><span class="line">	&lt;!-- &lt;bean name=<span class="string">"/index.html"</span> class=<span class="string">"cn.smbms.controller.IndexController"</span> </span><br><span class="line">		/&gt; --&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- &lt;bean name=<span class="string">"/welcome"</span> class=<span class="string">"cn.smbms.controller.IndexController"</span> /&gt; --&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- &lt;bean id=<span class="string">"conversionService"</span> class=<span class="string">"org.springframework.context.support.ConversionServiceFactoryBean"</span>&gt; </span><br><span class="line">		&lt;/bean&gt; --&gt;</span><br><span class="line">	&lt;context:component-scan base-package=<span class="string">"cn.controller"</span> /&gt;</span><br><span class="line">	&lt;!-- 自定义转换器 --&gt;</span><br><span class="line">	&lt;bean id=<span class="string">"myConversionService"</span> class=<span class="string">"org.springframework.context.support.ConversionServiceFactoryBean"</span>&gt; </span><br><span class="line">		&lt;property name=<span class="string">"converters"</span>&gt; &lt;list&gt; &lt;bean class=<span class="string">"cn.tool.StringToDateConverter"</span>&gt; </span><br><span class="line">		&lt;constructor-arg <span class="built_in">type</span>=<span class="string">"java.lang.String"</span> value=<span class="string">"yyyy-MM-dd"</span> /&gt; &lt;/bean&gt; &lt;/list&gt; </span><br><span class="line">		&lt;/property&gt; &lt;/bean&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;mvc:annotation-driven&gt;</span><br><span class="line">		&lt;!-- 消息转换器 --&gt;</span><br><span class="line">		&lt;mvc:message-converters&gt;</span><br><span class="line">			&lt;bean class=<span class="string">"org.springframework.http.converter.StringHttpMessageConverter"</span>&gt;</span><br><span class="line">				&lt;property name=<span class="string">"supportedMediaTypes"</span>&gt;</span><br><span class="line">					&lt;list&gt;</span><br><span class="line">						&lt;value&gt;application/json;charset=UTF-8&lt;/value&gt;</span><br><span class="line">					&lt;/list&gt;</span><br><span class="line">				&lt;/property&gt;</span><br><span class="line">			&lt;/bean&gt;</span><br><span class="line">			&lt;bean</span><br><span class="line">				class=<span class="string">"com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter"</span>&gt;</span><br><span class="line">				&lt;property name=<span class="string">"supportedMediaTypes"</span>&gt;</span><br><span class="line">					&lt;list&gt;</span><br><span class="line">						&lt;value&gt;application/json;charset=UTF-8&lt;/value&gt;</span><br><span class="line">					&lt;/list&gt;</span><br><span class="line">				&lt;/property&gt;</span><br><span class="line">				&lt;property name=<span class="string">"features"</span>&gt;</span><br><span class="line">					&lt;list&gt;</span><br><span class="line">						&lt;value&gt;WriteDateUseDateFormat&lt;/value&gt;</span><br><span class="line">					&lt;/list&gt;</span><br><span class="line">				&lt;/property&gt;</span><br><span class="line">			&lt;/bean&gt;</span><br><span class="line">		&lt;/mvc:message-converters&gt;</span><br><span class="line"></span><br><span class="line">	&lt;/mvc:annotation-driven&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- 完成视图的对应 --&gt;</span><br><span class="line">	&lt;!-- 对转向页面的路径解析。prefix：前缀， suffix：后缀 --&gt;</span><br><span class="line">	&lt;!-- &lt;bean class=<span class="string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt; </span><br><span class="line">		&lt;property name=<span class="string">"prefix"</span> value=<span class="string">"/WEB-INF/jsp/"</span> /&gt; &lt;property name=<span class="string">"suffix"</span> </span><br><span class="line">		value=<span class="string">".jsp"</span> /&gt; &lt;/bean&gt; --&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&lt;!-- 配置多视图解析器 ：允许统一的内容数据呈现在不同的view中 --&gt;</span><br><span class="line">	&lt;bean</span><br><span class="line">		class=<span class="string">"org.springframework.web.servlet.view.ContentNegotiatingViewResolver"</span>&gt;</span><br><span class="line">		&lt;!-- 支持参数匹配 --&gt;</span><br><span class="line">		&lt;property name=<span class="string">"favorParameter"</span> value=<span class="string">"true"</span> /&gt;</span><br><span class="line">		&lt;property name=<span class="string">"mediaTypes"</span>&gt;</span><br><span class="line">			&lt;map&gt;</span><br><span class="line">				&lt;entry key=<span class="string">"html"</span> value=<span class="string">"text/html;charset=UTF-8"</span>&gt;&lt;/entry&gt;</span><br><span class="line">				&lt;entry key=<span class="string">"json"</span> value=<span class="string">"application/json;charset=UTF-8"</span>&gt;&lt;/entry&gt;</span><br><span class="line">				&lt;entry key=<span class="string">"xml"</span> value=<span class="string">"application/xml;charset=UTF-8"</span>&gt;&lt;/entry&gt;</span><br><span class="line">			&lt;/map&gt;</span><br><span class="line">		&lt;/property&gt;</span><br><span class="line">		&lt;!-- 网页视图解析器 --&gt;</span><br><span class="line">		&lt;property name=<span class="string">"viewResolvers"</span>&gt;</span><br><span class="line">			&lt;list&gt;</span><br><span class="line">				&lt;bean</span><br><span class="line">					class=<span class="string">"org.springframework.web.servlet.view.InternalResourceViewResolver"</span>&gt;</span><br><span class="line">					&lt;property name=<span class="string">"prefix"</span> value=<span class="string">"/WEB-INF/jsp/"</span> /&gt;</span><br><span class="line">					&lt;property name=<span class="string">"suffix"</span> value=<span class="string">".jsp"</span> /&gt;</span><br><span class="line">				&lt;/bean&gt;</span><br><span class="line">			&lt;/list&gt;</span><br><span class="line">		&lt;/property&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">	&lt;mvc:resources location=<span class="string">"/statics/"</span> mapping=<span class="string">"/statics/**"</span>&gt;&lt;/mvc:resources&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- 全局异常的配置 --&gt;</span><br><span class="line">	&lt;bean</span><br><span class="line">		class=<span class="string">"org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"</span>&gt;</span><br><span class="line">		&lt;property name=<span class="string">"exceptionMappings"</span>&gt;</span><br><span class="line">			&lt;props&gt;</span><br><span class="line">				&lt;prop key=<span class="string">"java.lang.RuntimeException"</span>&gt;error&lt;/prop&gt;</span><br><span class="line">			&lt;/props&gt;</span><br><span class="line">		&lt;/property&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">	&lt;!-- 配置MulitpartResolver，用于文件上传 --&gt;</span><br><span class="line">	&lt;bean id=<span class="string">"multipartResolver"</span></span><br><span class="line">		class=<span class="string">"org.springframework.web.multipart.commons.CommonsMultipartResolver"</span>&gt;</span><br><span class="line">		&lt;property name=<span class="string">"maxUploadSize"</span> value=<span class="string">"5000000"</span> /&gt;</span><br><span class="line">		&lt;property name=<span class="string">"defaultEncoding"</span> value=<span class="string">"utf-8"</span> /&gt;</span><br><span class="line">	&lt;/bean&gt;</span><br><span class="line"></span><br><span class="line">&lt;/beans&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="web-xml"><a href="#web-xml" class="headerlink" title="web.xml"></a>web.xml</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;web-app xmlns:xsi=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> xmlns=<span class="string">"http://java.sun.com/xml/ns/javaee"</span> xsi:schemaLocation=<span class="string">"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"</span> id=<span class="string">"WebApp_ID"</span> version=<span class="string">"3.0"</span>&gt;</span><br><span class="line">  &lt;display-name&gt;CG09&lt;/display-name&gt;</span><br><span class="line">   &lt;!-- 配置环境参数，指定spring配置文件的所在目录--&gt;</span><br><span class="line">  &lt;context-param&gt;</span><br><span class="line">    &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</span><br><span class="line">    &lt;param-value&gt;classpath:applicationContextl.xml&lt;/param-value&gt;</span><br><span class="line">  &lt;/context-param&gt;</span><br><span class="line">  &lt;!-- 配置spring的ContextLoaderListener监听器，初始化spring容器--&gt;</span><br><span class="line">  &lt;listener&gt;</span><br><span class="line">    &lt;listener-class&gt;</span><br><span class="line">   		org.springframework.web.context.ContextLoaderListener</span><br><span class="line">  	&lt;/listener-class&gt;</span><br><span class="line">  &lt;/listener&gt;</span><br><span class="line">  &lt;welcome-file-list&gt;</span><br><span class="line">    &lt;welcome-file&gt;index.html&lt;/welcome-file&gt;</span><br><span class="line">    &lt;welcome-file&gt;index.htm&lt;/welcome-file&gt;</span><br><span class="line">    &lt;welcome-file&gt;index.jsp&lt;/welcome-file&gt;</span><br><span class="line">    &lt;welcome-file&gt;default.html&lt;/welcome-file&gt;</span><br><span class="line">    &lt;welcome-file&gt;default.htm&lt;/welcome-file&gt;</span><br><span class="line">    &lt;welcome-file&gt;default.jsp&lt;/welcome-file&gt;</span><br><span class="line">  &lt;/welcome-file-list&gt;</span><br><span class="line">  &lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;</span><br><span class="line">  		org.springframework.web.servlet.DispatcherServlet</span><br><span class="line">  	&lt;/servlet-class&gt;</span><br><span class="line">    &lt;init-param&gt;</span><br><span class="line">      &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</span><br><span class="line">      &lt;param-value&gt;classpath:springmvc-servlet.xml&lt;/param-value&gt;</span><br><span class="line">    &lt;/init-param&gt;</span><br><span class="line">    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</span><br><span class="line">  &lt;/servlet&gt;</span><br><span class="line">  &lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;/&lt;/url-pattern&gt;</span><br><span class="line">  &lt;/servlet-mapping&gt;</span><br><span class="line">  &lt;filter&gt;</span><br><span class="line">    &lt;filter-name&gt;characterEncoding&lt;/filter-name&gt;</span><br><span class="line">    &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter &lt;/filter-class&gt;</span><br><span class="line">    &lt;init-param&gt;</span><br><span class="line">      &lt;param-name&gt;encoding&lt;/param-name&gt;</span><br><span class="line">      &lt;param-value&gt;UTF-8&lt;/param-value&gt;</span><br><span class="line">    &lt;/init-param&gt;</span><br><span class="line">  &lt;/filter&gt;</span><br><span class="line">  &lt;filter-mapping&gt;</span><br><span class="line">    &lt;filter-name&gt;characterEncoding&lt;/filter-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;</span><br><span class="line">  &lt;/filter-mapping&gt;</span><br><span class="line">  &lt;context-param&gt;</span><br><span class="line">    &lt;param-name&gt;log4jConfigLocation&lt;/param-name&gt;</span><br><span class="line">    &lt;param-value&gt;classpath:log4j.properties&lt;/param-value&gt;</span><br><span class="line">  &lt;/context-param&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;listener&gt;</span><br><span class="line">    &lt;listener-class&gt;</span><br><span class="line">			org.springframework.web.util.Log4jConfigListener</span><br><span class="line">		&lt;/listener-class&gt;</span><br><span class="line">  &lt;/listener&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;context-param&gt;</span><br><span class="line"></span><br><span class="line">&lt;param-name&gt;webAppRootKey&lt;/param-name&gt;</span><br><span class="line"></span><br><span class="line">&lt;param-value&gt; app.root &lt;/param-value&gt;</span><br><span class="line"></span><br><span class="line">&lt;/context-param&gt;</span><br><span class="line">  </span><br><span class="line">&lt;/web-app&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="UserController-核心"><a href="#UserController-核心" class="headerlink" title="UserController(核心)"></a>UserController(核心)</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">@RequestMapping(<span class="string">"/user"</span>)</span><br><span class="line">public class UserController extends BaseController &#123;</span><br><span class="line"></span><br><span class="line">	public UserService <span class="function"><span class="title">getUserService</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> userService;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setUserService(UserService userService) &#123;</span><br><span class="line">		this.userService = userService;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	private Logger logger = Logger.getLogger(UserController.class);</span><br><span class="line"></span><br><span class="line">	@Autowired</span><br><span class="line">	@Qualifier(<span class="string">"userServiceImpl"</span>)</span><br><span class="line">	private UserService userService;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	// 实现跳转到登录页</span><br><span class="line">	@RequestMapping(value = <span class="string">"/login.html"</span>)</span><br><span class="line">	public String <span class="function"><span class="title">login</span></span>() &#123;</span><br><span class="line">		logger.info(<span class="string">"用户跳转到登录页====================&gt;"</span>);</span><br><span class="line">		<span class="built_in">return</span> <span class="string">"login"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	// 主页面</span><br><span class="line">		@RequestMapping(value = <span class="string">"main.html"</span>)</span><br><span class="line">		public String <span class="function"><span class="title">hetmain</span></span>() &#123;</span><br><span class="line">			logger.info(<span class="string">"用户跳转到主页面====================&gt;"</span>);</span><br><span class="line">			<span class="built_in">return</span> <span class="string">"main"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	// 实现登录</span><br><span class="line">	@RequestMapping(value = <span class="string">"dologin.html"</span>, method = RequestMethod.POST)</span><br><span class="line">	public String doLogin(String userName, String userPwd, HttpSession session,</span><br><span class="line">			HttpServletRequest request,RedirectAttributes attr) throws Exception &#123;</span><br><span class="line">		logger.info(<span class="string">"登录中======================&gt;"</span>);</span><br><span class="line">		// 调用service方法进行用户匹配</span><br><span class="line">		User user=new User();</span><br><span class="line">		user.setUserName(userName);</span><br><span class="line">		user.setUserPwd(userPwd);</span><br><span class="line">		User user2=new User();</span><br><span class="line">		user2 = userService.login(user);</span><br><span class="line">		<span class="keyword">if</span>(null!=user2)&#123;//登陆成功 </span><br><span class="line">			 attr.addFlashAttribute(<span class="string">"u1"</span>, user2);</span><br><span class="line">   			 <span class="built_in">return</span> <span class="string">"redirect:/user/main.html"</span>;</span><br><span class="line">   		 </span><br><span class="line">   		 //response.sendRedirect(<span class="string">"jsp/frame.jsp"</span>)</span><br><span class="line">   	 &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">   		 request.setAttribute(<span class="string">"error"</span>,<span class="string">"用户名密码不正确"</span>);</span><br><span class="line">   		 <span class="built_in">return</span> <span class="string">"login"</span>;</span><br><span class="line">   	 &#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//根据用户id获取用户信息</span><br><span class="line">		@RequestMapping(value=<span class="string">"usermodify.html"</span>,method = RequestMethod.GET)</span><br><span class="line">		public String getUserByID(@RequestParam int id,Model model)&#123;</span><br><span class="line">			User user=new User();</span><br><span class="line">			user=userService.getUserById(id);</span><br><span class="line">			model.addAttribute(<span class="string">"user"</span>, user);</span><br><span class="line">			<span class="built_in">return</span> <span class="string">"toEditUserView"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		@RequestMapping(value=<span class="string">"usermodifysave.html"</span>,method=RequestMethod.POST)</span><br><span class="line">		public String modifyUserSave(User user,HttpSession session)&#123;</span><br><span class="line">			<span class="keyword">if</span>(userService.modifyUser(user)&gt;0)&#123;</span><br><span class="line">				<span class="built_in">return</span> <span class="string">"redirect:/user/userlist.html"</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">return</span> <span class="string">"toEditUserView"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		@RequestMapping(value=<span class="string">"userlist.html"</span>,method = RequestMethod.GET)</span><br><span class="line">		public String getUserList(Model model)&#123;</span><br><span class="line">			List&lt;User&gt;userList=new ArrayList&lt;User&gt;();</span><br><span class="line">			userList=userService.getUsers();</span><br><span class="line">			model.addAttribute(<span class="string">"userList"</span>, userList);</span><br><span class="line">			<span class="built_in">return</span> <span class="string">"userInfoList"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">		</span><br><span class="line">		//添加</span><br><span class="line">		@RequestMapping(value=<span class="string">"addUser.html"</span>,method=RequestMethod.GET)</span><br><span class="line">		public String add(@ModelAttribute(<span class="string">"user"</span>) User user,Model model)&#123;</span><br><span class="line">			<span class="built_in">return</span> <span class="string">"doSaveUserInfo"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		@RequestMapping(value=<span class="string">"addUsersave.html"</span>,method=RequestMethod.POST)</span><br><span class="line">		public String addSave(@Valid User user, BindingResult bindingResult, HttpSession session)&#123;</span><br><span class="line">			<span class="keyword">if</span>(bindingResult.hasErrors())&#123;</span><br><span class="line">				<span class="built_in">return</span> <span class="string">"doSaveUserInfo"</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			int num=userService.addUser(user);</span><br><span class="line">			System.out.println(<span class="string">"==================="</span>+num);</span><br><span class="line">			<span class="keyword">if</span>(num&gt;0)&#123;</span><br><span class="line">				<span class="built_in">return</span> <span class="string">"redirect:/user/userlist.html"</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">return</span> <span class="string">"doSaveUserInfo"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		@RequestMapping(value = <span class="string">"/error.html"</span>)</span><br><span class="line">		public String <span class="function"><span class="title">error</span></span>() &#123;</span><br><span class="line">			<span class="built_in">return</span> <span class="string">"error"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		@RequestMapping(value=<span class="string">"userdelete.html"</span>,method = RequestMethod.GET)</span><br><span class="line">		public String getUserByIDs(@RequestParam int id,Model model)&#123;</span><br><span class="line">			User user=new User();</span><br><span class="line">			user=userService.getUserById(id);</span><br><span class="line">			model.addAttribute(<span class="string">"user"</span>, user);</span><br><span class="line">			<span class="built_in">return</span> <span class="string">"deleteUserInfo"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		//删除</span><br><span class="line">		@RequestMapping(value=<span class="string">"/deleteUser.html"</span>,method=RequestMethod.POST)</span><br><span class="line">		public String deleteUser(@RequestParam int id)&#123;</span><br><span class="line">				int nums=userService.removerUser(id);</span><br><span class="line">				System.out.println(<span class="string">"===================&gt;"</span>+nums);</span><br><span class="line">				<span class="keyword">if</span>(nums&gt;=1)&#123;</span><br><span class="line">					<span class="built_in">return</span> <span class="string">"redirect:/user/userlist.html"</span>;</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					<span class="built_in">return</span> <span class="string">"error"</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="保存文件"><a href="#保存文件" class="headerlink" title="保存文件"></a>保存文件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">//跳转到新增appinfo页面</span><br><span class="line">	@RequestMapping(value=<span class="string">"/appinfoadd"</span>,method=RequestMethod.GET)</span><br><span class="line">	public String add(@ModelAttribute(<span class="string">"appInfo"</span>) AppInfo appInfo)&#123;</span><br><span class="line">		<span class="built_in">return</span> <span class="string">"developer/appinfoadd"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	//保存appinfo数据</span><br><span class="line">	@RequestMapping(value=<span class="string">"/appinfoaddsave"</span>,method=RequestMethod.POST)</span><br><span class="line">	public String addSave(AppInfo appInfo,HttpSession session,HttpServletRequest request,</span><br><span class="line">					@RequestParam(value=<span class="string">"a_logoPicPath"</span>,required= <span class="literal">false</span>) MultipartFile attach)&#123;		</span><br><span class="line">		</span><br><span class="line">		String logoPicPath =  null;</span><br><span class="line">		String logoLocPath =  null;</span><br><span class="line">		<span class="keyword">if</span>(!attach.isEmpty())&#123;</span><br><span class="line">			String path = request.getSession().getServletContext().getRealPath(<span class="string">"statics"</span>+java.io.File.separator+<span class="string">"uploadfiles"</span>);</span><br><span class="line">			logger.info(<span class="string">"uploadFile path: "</span> + path);</span><br><span class="line">			String oldFileName = attach.getOriginalFilename();//原文件名</span><br><span class="line">			String prefix = FilenameUtils.getExtension(oldFileName);//原文件后缀</span><br><span class="line">			int filesize = 500000;</span><br><span class="line">			<span class="keyword">if</span>(attach.getSize() &gt; filesize)&#123;//上传大小不得超过 50k</span><br><span class="line">				request.setAttribute(<span class="string">"fileUploadError"</span>, Constants.FILEUPLOAD_ERROR_4);</span><br><span class="line">				<span class="built_in">return</span> <span class="string">"developer/appinfoadd"</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(prefix.equalsIgnoreCase(<span class="string">"jpg"</span>) || prefix.equalsIgnoreCase(<span class="string">"png"</span>) </span><br><span class="line">			   ||prefix.equalsIgnoreCase(<span class="string">"jepg"</span>) || prefix.equalsIgnoreCase(<span class="string">"pneg"</span>))&#123;//上传图片格式</span><br><span class="line">				 String fileName = appInfo.getAPKName() + <span class="string">".jpg"</span>;//上传LOGO图片命名:apk名称.apk</span><br><span class="line">				 File targetFile = new File(path,fileName);</span><br><span class="line">				 <span class="keyword">if</span>(!targetFile.exists())&#123;</span><br><span class="line">					 targetFile.mkdirs();</span><br><span class="line">				 &#125;</span><br><span class="line">				 try &#123;</span><br><span class="line">					attach.transferTo(targetFile);</span><br><span class="line">				&#125; catch (Exception e) &#123;</span><br><span class="line">					// TODO Auto-generated catch block</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">					request.setAttribute(<span class="string">"fileUploadError"</span>, Constants.FILEUPLOAD_ERROR_2);</span><br><span class="line">					<span class="built_in">return</span> <span class="string">"developer/appinfoadd"</span>;</span><br><span class="line">				&#125; </span><br><span class="line">				 logoPicPath = request.getContextPath()+<span class="string">"/statics/uploadfiles/"</span>+fileName; //绝对路径</span><br><span class="line">				 logoLocPath = path+File.separator+fileName; //相对路径</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				request.setAttribute(<span class="string">"fileUploadError"</span>, Constants.FILEUPLOAD_ERROR_3);</span><br><span class="line">				<span class="built_in">return</span> <span class="string">"developer/appinfoadd"</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		appInfo.setCreatedBy(((DevUser)session.getAttribute(Constants.DEV_USER_SESSION)).getId());</span><br><span class="line">		appInfo.setCreationDate(new Date());</span><br><span class="line">		appInfo.setLogoPicPath(logoPicPath);</span><br><span class="line">		appInfo.setLogoLocPath(logoLocPath);</span><br><span class="line">		appInfo.setDevId(((DevUser)session.getAttribute(Constants.DEV_USER_SESSION)).getId());</span><br><span class="line">		appInfo.setStatus(1);</span><br><span class="line">		try &#123;</span><br><span class="line">			<span class="keyword">if</span>(appInfoService.add(appInfo))&#123;</span><br><span class="line">				<span class="built_in">return</span> <span class="string">"redirect:/dev/flatform/app/list"</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			// TODO Auto-generated catch block</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> <span class="string">"developer/appinfoadd"</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="JSP页面"><a href="#JSP页面" class="headerlink" title="JSP页面"></a>JSP页面</h3><h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> import=<span class="string">"java.util.*"</span> pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@ taglib uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> prefix=<span class="string">"c"</span>%&gt;</span><br><span class="line">&lt;%</span><br><span class="line">	String path = request.getContextPath();</span><br><span class="line">	String basePath = request.getScheme() + <span class="string">"://"</span> + request.getServerName() + <span class="string">":"</span> + request.getServerPort()</span><br><span class="line">			+ path + <span class="string">"/"</span>;</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE HTML PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;base href=<span class="string">"&lt;%=basePath%&gt;"</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;title&gt;My JSP <span class="string">'userInfoList.jsp'</span> starting page&lt;/title&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;a href=<span class="string">"user/addUser.html"</span>&gt;添加用户&lt;/a&gt;</span><br><span class="line">	&lt;h2&gt;用户列表&lt;/h2&gt;</span><br><span class="line">	&lt;table class=<span class="string">"providerTable"</span> cellpadding=<span class="string">"0"</span> cellspacing=<span class="string">"0"</span>&gt;</span><br><span class="line">		&lt;tr class=<span class="string">"firstTr"</span>&gt;</span><br><span class="line">			&lt;th width=<span class="string">"10%"</span>&gt;用户id&lt;/th&gt;</span><br><span class="line">			&lt;th width=<span class="string">"20%"</span>&gt;用户名称&lt;/th&gt;</span><br><span class="line">			&lt;th width=<span class="string">"10%"</span>&gt;用户密码&lt;/th&gt;</span><br><span class="line">			&lt;th width=<span class="string">"10%"</span>&gt;生日日期&lt;/th&gt;</span><br><span class="line">			&lt;th width=<span class="string">"10%"</span>&gt;操作&lt;/th&gt;</span><br><span class="line">		&lt;/tr&gt;</span><br><span class="line">		&lt;c:forEach var=<span class="string">"user"</span> items=<span class="string">"<span class="variable">$&#123;userList &#125;</span>"</span> varStatus=<span class="string">"status"</span></span><br><span class="line">			begin=<span class="string">"0"</span>&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td&gt;&lt;span&gt;<span class="variable">$&#123;user.id &#125;</span>&lt;/span&gt;&lt;/td&gt;</span><br><span class="line">				&lt;td&gt;&lt;span&gt;<span class="variable">$&#123;user.userName &#125;</span>&lt;/span&gt;&lt;/td&gt;</span><br><span class="line">				&lt;td&gt;&lt;span&gt;<span class="variable">$&#123;user.userPwd&#125;</span>&lt;/span&gt;&lt;/td&gt;</span><br><span class="line">				&lt;td&gt;&lt;span&gt;<span class="variable">$&#123;user.userBirthday.year+1900&#125;</span>-&lt;c:<span class="keyword">if</span></span><br><span class="line">							<span class="built_in">test</span>=<span class="string">"<span class="variable">$&#123;user.userBirthday.month+1 &lt; 10&#125;</span>"</span>&gt;0&lt;/c:<span class="keyword">if</span>&gt;<span class="variable">$&#123;user.userBirthday.month+1&#125;</span>-&lt;c:<span class="keyword">if</span></span><br><span class="line">							<span class="built_in">test</span>=<span class="string">"<span class="variable">$&#123;user.userBirthday.date &lt; 10&#125;</span>"</span>&gt;0&lt;/c:<span class="keyword">if</span>&gt;<span class="variable">$&#123;user.userBirthday.date&#125;</span>&lt;/span&gt;</span><br><span class="line">				&lt;/td&gt;</span><br><span class="line">				&lt;td&gt;&lt;a</span><br><span class="line">					href=<span class="string">"<span class="variable">$&#123;pageContext.request.contextPath&#125;</span>/user/usermodify.html?id=<span class="variable">$&#123;user.id &#125;</span>"</span>&gt;修改&lt;/a&gt;</span><br><span class="line">					&lt;a href=<span class="string">"<span class="variable">$&#123;pageContext.request.contextPath&#125;</span>/user/userdelete.html?id=<span class="variable">$&#123;user.id &#125;</span>"</span>&gt;删除&lt;/a&gt;&lt;/td&gt;</span><br><span class="line"></span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line">		&lt;/c:forEach&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> import=<span class="string">"java.util.*"</span> pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@taglib prefix=<span class="string">"fm"</span> uri=<span class="string">"http://www.springframework.org/tags/form"</span> %&gt;</span><br><span class="line">&lt;%</span><br><span class="line">String path = request.getContextPath();</span><br><span class="line">String basePath = request.getScheme()+<span class="string">"://"</span>+request.getServerName()+<span class="string">":"</span>+request.getServerPort()+path+<span class="string">"/"</span>;</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE HTML PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;base href=<span class="string">"&lt;%=basePath%&gt;"</span>&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;title&gt;My JSP <span class="string">'doSaveUserInfo.jsp'</span> starting page&lt;/title&gt;</span><br><span class="line">    </span><br><span class="line">	&lt;meta http-equiv=<span class="string">"pragma"</span> content=<span class="string">"no-cache"</span>&gt;</span><br><span class="line">	&lt;meta http-equiv=<span class="string">"cache-control"</span> content=<span class="string">"no-cache"</span>&gt;</span><br><span class="line">	&lt;meta http-equiv=<span class="string">"expires"</span> content=<span class="string">"0"</span>&gt;    </span><br><span class="line">	&lt;meta http-equiv=<span class="string">"keywords"</span> content=<span class="string">"keyword1,keyword2,keyword3"</span>&gt;</span><br><span class="line">	&lt;meta http-equiv=<span class="string">"description"</span> content=<span class="string">"This is my page"</span>&gt;</span><br><span class="line">	&lt;!--</span><br><span class="line">	&lt;link rel=<span class="string">"stylesheet"</span> <span class="built_in">type</span>=<span class="string">"text/css"</span> href=<span class="string">"styles.css"</span>&gt;</span><br><span class="line">	--&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;h2&gt;新增用户&lt;/h2&gt;</span><br><span class="line">    </span><br><span class="line">     &lt;fm:form method=<span class="string">"post"</span> modelAttribute=<span class="string">"user"</span> action=<span class="string">"<span class="variable">$&#123;pageContext.request.contextPath&#125;</span>/user/addUsersave.html"</span>&gt;</span><br><span class="line">    	&lt;fm:errors path=<span class="string">"userName"</span>/&gt;&lt;br/&gt;</span><br><span class="line">    	用户名称：&lt;fm:input path=<span class="string">"userName"</span>/&gt;&lt;br/&gt;</span><br><span class="line">    	&lt;fm:errors path=<span class="string">"userPwd"</span>/&gt;&lt;br/&gt;</span><br><span class="line">    	用户密码：&lt;fm:password path=<span class="string">"userPwd"</span>/&gt;&lt;br/&gt;</span><br><span class="line">    	&lt;fm:errors path=<span class="string">"userBirthday"</span>/&gt;&lt;br/&gt;</span><br><span class="line">    	用户生日：&lt;fm:input path=<span class="string">"userBirthday"</span> Class=<span class="string">"Wdate"</span> id=<span class="string">"birthday"</span> name=<span class="string">"userBirthday"</span> <span class="built_in">readonly</span>=<span class="string">"readonly"</span> /&gt;&lt;br/&gt;</span><br><span class="line">    	</span><br><span class="line">    	&lt;input <span class="built_in">type</span>=<span class="string">"submit"</span> value=<span class="string">"保存"</span>&gt;</span><br><span class="line">    &lt;/fm:form&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> &lt;body&gt;</span><br><span class="line">    &lt;h2&gt;用户修改页面&lt;/h2&gt;</span><br><span class="line">    &lt;form action=<span class="string">"<span class="variable">$&#123;pageContext.request.contextPath&#125;</span>/user/usermodifysave.html"</span> method=<span class="string">"post"</span>&gt;</span><br><span class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"hidden"</span> name=<span class="string">"id"</span> value=<span class="string">"<span class="variable">$&#123;user.id &#125;</span>"</span>&gt;&lt;br/&gt;</span><br><span class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"userName"</span> value=<span class="string">"<span class="variable">$&#123;user.userName &#125;</span>"</span>&gt;&lt;br/&gt;</span><br><span class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"userPwd"</span> value=<span class="string">"<span class="variable">$&#123;user.userPwd &#125;</span>"</span>&gt;&lt;br/&gt;</span><br><span class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"userBirthday"</span> value=<span class="string">"<span class="variable">$&#123;user.userBirthday &#125;</span>"</span>&gt;&lt;br/&gt;</span><br><span class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"submit"</span> value=<span class="string">"修改"</span>&gt;</span><br><span class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> value=<span class="string">"返回主页面"</span>&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">  </span><br><span class="line"><span class="comment">### 有形的东西迟早会凋零，但只有回忆是永远不会凋零的</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/08/Hibernate关系映射/" rel="next" title="Hibernate关系映射">
+                <i class="fa fa-chevron-left"></i> Hibernate关系映射
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/obt.jpg" alt="樊可">
+            
+              <p class="site-author-name" itemprop="name">樊可</p>
+              <p class="site-description motion-element" itemprop="description">不相信自己的人没有努力的价值。   -- 迈特凯</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Fankekeke" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/5384373842?is_all=1" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1258846421@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#BaseController-java-这个基类用来设置继承他的子类的持久化类的date属性"><span class="nav-number">1.</span> <span class="nav-text">BaseController.java(这个基类用来设置继承他的子类的持久化类的date属性)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dao层接口与xml"><span class="nav-number">2.</span> <span class="nav-text">dao层接口与xml</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接口"><span class="nav-number">2.1.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#xml-mapper映射"><span class="nav-number">2.2.</span> <span class="nav-text">xml(mapper映射)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pojo类-持久化类包括JSR-303验证"><span class="nav-number">3.</span> <span class="nav-text">pojo类(持久化类包括JSR-303验证)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#service层-实现类"><span class="nav-number">4.</span> <span class="nav-text">service层(实现类)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#logger-AOP"><span class="nav-number">5.</span> <span class="nav-text">logger(AOP)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StringToDateConverter-自定义转换器"><span class="nav-number">6.</span> <span class="nav-text">StringToDateConverter(自定义转换器)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#applicationContextl-xml"><span class="nav-number">7.</span> <span class="nav-text">applicationContextl.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#database-properties"><span class="nav-number">8.</span> <span class="nav-text">database.properties</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#log4j-properties"><span class="nav-number">9.</span> <span class="nav-text">log4j.properties</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mybatis-configl-xml"><span class="nav-number">10.</span> <span class="nav-text">mybatis-configl.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#springmvc-servlet-xml"><span class="nav-number">11.</span> <span class="nav-text">springmvc-servlet.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#web-xml"><span class="nav-number">12.</span> <span class="nav-text">web.xml</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UserController-核心"><span class="nav-number">13.</span> <span class="nav-text">UserController(核心)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#保存文件"><span class="nav-number">13.1.</span> <span class="nav-text">保存文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP页面"><span class="nav-number">14.</span> <span class="nav-text">JSP页面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#列表"><span class="nav-number">14.1.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加"><span class="nav-number">14.2.</span> <span class="nav-text">添加</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改"><span class="nav-number">14.3.</span> <span class="nav-text">修改</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">樊可</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访问数<i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'qBi0aBkxrd0a61dRtSDJjK8M-gzGzoHsz',
+        appKey: 'gcHEadNXDusN49dVUsIK3Be9',
+        placeholder: '俺要评论..',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
