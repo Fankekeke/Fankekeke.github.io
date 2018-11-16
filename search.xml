@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Oracle主键自增实现]]></title>
+    <url>%2F2018%2F11%2F16%2FOracle%E4%B8%BB%E9%94%AE%E8%87%AA%E5%A2%9E%E5%AE%9E%E7%8E%B0%2F</url>
+    <content type="text"><![CDATA[Oracle没有这个”auto_increment”属性，所以它没法像MySQL般在表内定义自增主键。但是，Oracle里的序列（SEQUENCE），可间接实现自增主键的作用。 序列（Sequence），又叫序列生成器，用于提供一系列的数字，开发人员使用序列生成唯一键。每次访问序列，序列按照一定的规律增加或者减少。序列的定义存储在SYSTEM表空间中，序列不像表，它不会占用磁盘空间。序列独立于事务，每次事务的提交和回滚都不会影响序列。 创建用户数据表1234567-- 创建用户数据表DROP TABLE DECTUSER;CREATE TABLE DECTUSER( USERID INTEGER PRIMARY KEY, NAME VARCHAR2(20), SEX VARCHAR2(2)); 创建自动增长序列12345-- 创建自动增长序列DROP SEQUENCE DECTUSER_tb_seq;CREATE SEQUENCE DECTUSER_tb_seq MINVALUE 1 MAXVALUE 99999999INCREMENT BY 1START WITH 1; 创建触发器1234567-- 创建触发器CREATE OR REPLACE TRIGGER DECTUSER_tb_triBEFORE INSERT ON DECTUSER FOR EACH ROWBEGINSELECT DECTUSER_tb_seq.nextval INTO :NEW.USERID FROM DUAL;END; 尝试添加数据12345-- 尝试添加数据INSERT INTO DECTUSER(NAME,SEX) VALUES('憨八龟','男')INSERT INTO DECTUSER(NAME,SEX) VALUES('小火龙','男')INSERT INTO DECTUSER(NAME,SEX) VALUES('杰尼龟','女')commit 结果12345 USERID NAME SEX---------- ---------------------------------------- ---------- 1 憨八龟 男 2 小火龙 男 3 杰尼龟 女]]></content>
+      <categories>
+        <category>Oracle</category>
+      </categories>
+  </entry>
+  <entry>
     <title><![CDATA[镜花水月]]></title>
     <url>%2F2018%2F11%2F14%2F%E9%95%9C%E8%8A%B1%E6%B0%B4%E6%9C%88%2F</url>
     <content type="text"><![CDATA[只要是人都是依靠自己的知识与认知并且被之束缚生活着的，那就叫做现实。但是知识与认知是模糊不清的东西，现实也许只是镜中花水中月，人都是活在自己的执念中的。]]></content>

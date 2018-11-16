@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="灵活配置DataSource使用属性文件配置数据源123456789101112&amp;lt;!-- 使用数据配置文件设置数据源 --&amp;gt;&amp;lt;beanclass=&quot;org.springframework.beans.factory.config.PropertyPlaceholderConfigurer&quot;&amp;gt;&amp;lt;property name=&quot;location&quot;&amp;gt;&amp;lt;value&amp;">
+<meta name="description" content="Oracle没有这个”auto_increment”属性，所以它没法像MySQL般在表内定义自增主键。但是，Oracle里的序列（SEQUENCE），可间接实现自增主键的作用。 序列（Sequence），又叫序列生成器，用于提供一系列的数字，开发人员使用序列生成唯一键。每次访问序列，序列按照一定的规律增加或者减少。序列的定义存储在SYSTEM表空间中，序列不像表，它不会占用磁盘空间。序列独立于事务">
 <meta name="keywords" content="悲伤的橘子树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring配置补充">
-<meta property="og:url" content="http://fanke.com/2018/11/06/Spring配置补充/index.html">
+<meta property="og:title" content="Oracle主键自增实现">
+<meta property="og:url" content="http://fanke.com/2018/11/16/Oracle主键自增实现/index.html">
 <meta property="og:site_name" content="悲伤的橘子树">
-<meta property="og:description" content="灵活配置DataSource使用属性文件配置数据源123456789101112&amp;lt;!-- 使用数据配置文件设置数据源 --&amp;gt;&amp;lt;beanclass=&quot;org.springframework.beans.factory.config.PropertyPlaceholderConfigurer&quot;&amp;gt;&amp;lt;property name=&quot;location&quot;&amp;gt;&amp;lt;value&amp;">
+<meta property="og:description" content="Oracle没有这个”auto_increment”属性，所以它没法像MySQL般在表内定义自增主键。但是，Oracle里的序列（SEQUENCE），可间接实现自增主键的作用。 序列（Sequence），又叫序列生成器，用于提供一系列的数字，开发人员使用序列生成唯一键。每次访问序列，序列按照一定的规律增加或者减少。序列的定义存储在SYSTEM表空间中，序列不像表，它不会占用磁盘空间。序列独立于事务">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-06T01:51:29.872Z">
+<meta property="og:updated_time" content="2018-11-16T07:37:35.813Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring配置补充">
-<meta name="twitter:description" content="灵活配置DataSource使用属性文件配置数据源123456789101112&amp;lt;!-- 使用数据配置文件设置数据源 --&amp;gt;&amp;lt;beanclass=&quot;org.springframework.beans.factory.config.PropertyPlaceholderConfigurer&quot;&amp;gt;&amp;lt;property name=&quot;location&quot;&amp;gt;&amp;lt;value&amp;">
+<meta name="twitter:title" content="Oracle主键自增实现">
+<meta name="twitter:description" content="Oracle没有这个”auto_increment”属性，所以它没法像MySQL般在表内定义自增主键。但是，Oracle里的序列（SEQUENCE），可间接实现自增主键的作用。 序列（Sequence），又叫序列生成器，用于提供一系列的数字，开发人员使用序列生成唯一键。每次访问序列，序列按照一定的规律增加或者减少。序列的定义存储在SYSTEM表空间中，序列不像表，它不会占用磁盘空间。序列独立于事务">
 
 
 
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="http://fanke.com/2018/11/06/Spring配置补充/">
+  <link rel="canonical" href="http://fanke.com/2018/11/16/Oracle主键自增实现/">
 
 
 
 
 
-  <title>Spring配置补充 | 悲伤的橘子树</title>
+  <title>Oracle主键自增实现 | 悲伤的橘子树</title>
   
 
 
@@ -310,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://fanke.com/2018/11/06/Spring配置补充/">
+    <link itemprop="mainEntityOfPage" href="http://fanke.com/2018/11/16/Oracle主键自增实现/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="樊可">
@@ -327,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Spring配置补充</h1>
+          <h1 class="post-title" itemprop="name headline">Oracle主键自增实现</h1>
         
 
         <div class="post-meta">
@@ -339,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T09:48:23+08:00">
-                2018-11-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-16T15:16:41+08:00">
+                2018-11-16
               </time>
             
 
@@ -362,8 +362,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/SSM/" itemprop="url" rel="index">
-                    <span itemprop="name">SSM</span>
+                  <a href="/categories/Oracle/" itemprop="url" rel="index">
+                    <span itemprop="name">Oracle</span>
                   </a>
                 </span>
 
@@ -380,8 +380,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/11/06/Spring配置补充/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/06/Spring配置补充/" itemprop="commentCount"></span>
+                <a href="/2018/11/16/Oracle主键自增实现/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/16/Oracle主键自增实现/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -414,12 +414,13 @@
       
 
       
-        <h3 id="灵活配置DataSource"><a href="#灵活配置DataSource" class="headerlink" title="灵活配置DataSource"></a>灵活配置DataSource</h3><h4 id="使用属性文件配置数据源"><a href="#使用属性文件配置数据源" class="headerlink" title="使用属性文件配置数据源"></a>使用属性文件配置数据源</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 使用数据配置文件设置数据源 --&gt;</span><br><span class="line">&lt;bean</span><br><span class="line">class=<span class="string">"org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"</span>&gt;</span><br><span class="line">&lt;property name=<span class="string">"location"</span>&gt;</span><br><span class="line">&lt;value&gt;classpath:database.properties&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br><span class="line">&lt;!-- 数据源在配置文件中 --&gt;</span><br><span class="line">&lt;bean id=<span class="string">"dataSource"</span> class=<span class="string">"org.apache.commons.dbcp.BasicDataSource"</span>&gt;</span><br><span class="line">&lt;property name=<span class="string">"driverClassName"</span> value=<span class="string">"<span class="variable">$&#123;driver&#125;</span>"</span>&gt;&lt;/property&gt; &lt;property</span><br><span class="line">name=<span class="string">"url"</span> value=<span class="string">"<span class="variable">$&#123;url&#125;</span>"</span>&gt;&lt;/property&gt; &lt;property name=<span class="string">"username"</span> value=<span class="string">"<span class="variable">$&#123;user&#125;</span>"</span>&gt;&lt;/property&gt;</span><br><span class="line">&lt;property name=<span class="string">"password"</span> value=<span class="string">"<span class="variable">$&#123;password&#125;</span>"</span>&gt;&lt;/property&gt; &lt;/bean&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="使用jndi数据源-Context节点下"><a href="#使用jndi数据源-Context节点下" class="headerlink" title="使用jndi数据源 Context节点下"></a>使用jndi数据源 Context节点下</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 使用jndi数据源 在tomcat content.xml配置 --&gt;</span><br><span class="line">&lt;Resource name=<span class="string">"jndi/smbms"</span> auth=<span class="string">"Container"</span> <span class="built_in">type</span>=<span class="string">"javax.sql.DataSource"</span></span><br><span class="line">maxActive=<span class="string">"100"</span> maxIdle=<span class="string">"30"</span> driverClassName=<span class="string">"com.mysql.jdbc.Driver"</span></span><br><span class="line">username=<span class="string">"root"</span> password=<span class="string">"123456"</span></span><br><span class="line">url=<span class="string">"jdbc:mysql://localhost:3306/smbms?useUnicode=true&amp;characterEncoding=utf-8"</span> /&gt;</span><br><span class="line">&lt;!-- &lt;bean id=<span class="string">"dataSource"</span> class=<span class="string">"org.springframework.jndi.JndiObjectFactoryBean"</span>&gt;</span><br><span class="line">&lt;property name=<span class="string">"jndiName"</span>&gt;</span><br><span class="line">&lt;value&gt;java:comp/env/jndi/smbms&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;/bean&gt; --&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="Spring中bean的作用域（scope属性）"><a href="#Spring中bean的作用域（scope属性）" class="headerlink" title="Spring中bean的作用域（scope属性）"></a>Spring中bean的作用域（scope属性）</h3><p>singleton 默认值：单利模式创建bean的实例，实例只有一个 安全差<br>prototype 每次从容器中获取bean时，都会创建一个新的bean<br>request web环境 针对每次请求都会创建一个新的bean<br>session web环境 同一个会话共享一个，不同会话使用不同的实例<br>使用注解指定作用域<br>@Scope（””）<br>@Service()</p>
-<h4 id="Spring自动装配"><a href="#Spring自动装配" class="headerlink" title="Spring自动装配"></a>Spring自动装配</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">autowire属性：</span><br><span class="line">no：不使用自动装配，bean依赖关系必须通过property定义</span><br><span class="line">bytype：根据属性类型进行装配，寻找容器中的全部bean，找出属性类型相同的bean，如果有多个抛出异常</span><br><span class="line">byName：根据属性名进行装配，找出id与属性的setter方法匹配的bean</span><br><span class="line">constructor：与bytype相似，但是用于构造器参数</span><br></pre></td></tr></table></figure>
-<h3 id="拆分Spring配置文件"><a href="#拆分Spring配置文件" class="headerlink" title="拆分Spring配置文件"></a>拆分Spring配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ApplicationContext ctx=new ClassPathXmlApplicationContext(<span class="string">"applicationContextl.xml</span></span><br><span class="line"><span class="string">applicationContextl-dao.xml</span></span><br><span class="line"><span class="string">applicationContextl-service.xml"</span>);</span><br><span class="line">使用import导入主配置文件</span><br><span class="line">&lt;import resource=<span class="string">""</span>/&gt;</span><br></pre></td></tr></table></figure>
-
+        <p>Oracle没有这个”auto_increment”属性，所以它没法像MySQL般在表内定义自增主键。<br>但是，Oracle里的序列（SEQUENCE），可间接实现自增主键的作用。</p>
+<p>序列（Sequence），又叫序列生成器，用于提供一系列的数字，开发人员使用序列生成唯一键。每次访问序列，序列按照一定的规律增加或者减少。<br>序列的定义存储在SYSTEM表空间中，序列不像表，它不会占用磁盘空间。<br>序列独立于事务，每次事务的提交和回滚都不会影响序列。</p>
+<h3 id="创建用户数据表"><a href="#创建用户数据表" class="headerlink" title="创建用户数据表"></a>创建用户数据表</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-- 创建用户数据表</span><br><span class="line">DROP TABLE DECTUSER;</span><br><span class="line">CREATE TABLE DECTUSER(</span><br><span class="line">       USERID INTEGER PRIMARY KEY,</span><br><span class="line">       NAME VARCHAR2(20),</span><br><span class="line">       SEX VARCHAR2(2)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="创建自动增长序列"><a href="#创建自动增长序列" class="headerlink" title="创建自动增长序列"></a>创建自动增长序列</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 创建自动增长序列</span><br><span class="line">DROP SEQUENCE DECTUSER_tb_seq;</span><br><span class="line">CREATE SEQUENCE DECTUSER_tb_seq MINVALUE 1 MAXVALUE 99999999</span><br><span class="line">INCREMENT BY 1</span><br><span class="line">START WITH 1;</span><br></pre></td></tr></table></figure>
+<h3 id="创建触发器"><a href="#创建触发器" class="headerlink" title="创建触发器"></a>创建触发器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-- 创建触发器</span><br><span class="line">CREATE OR REPLACE TRIGGER DECTUSER_tb_tri</span><br><span class="line">BEFORE INSERT ON DECTUSER </span><br><span class="line">FOR EACH ROW</span><br><span class="line">BEGIN</span><br><span class="line">SELECT DECTUSER_tb_seq.nextval INTO :NEW.USERID FROM DUAL;</span><br><span class="line">END;</span><br></pre></td></tr></table></figure>
+<h3 id="尝试添加数据"><a href="#尝试添加数据" class="headerlink" title="尝试添加数据"></a>尝试添加数据</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 尝试添加数据</span><br><span class="line">INSERT INTO DECTUSER(NAME,SEX) VALUES(<span class="string">'憨八龟'</span>,<span class="string">'男'</span>)</span><br><span class="line">INSERT INTO DECTUSER(NAME,SEX) VALUES(<span class="string">'小火龙'</span>,<span class="string">'男'</span>)</span><br><span class="line">INSERT INTO DECTUSER(NAME,SEX) VALUES(<span class="string">'杰尼龟'</span>,<span class="string">'女'</span>)</span><br><span class="line">commit</span><br></pre></td></tr></table></figure>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">    USERID NAME                                     SEX</span><br><span class="line">---------- ---------------------------------------- ----------</span><br><span class="line">         1 憨八龟                                   男</span><br><span class="line">         2 小火龙                                   男</span><br><span class="line">         3 杰尼龟                                   女</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -443,8 +444,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/06/Mybatis与Spring的整合/" rel="next" title="Mybatis与Spring的整合">
-                <i class="fa fa-chevron-left"></i> Mybatis与Spring的整合
+              <a href="/2018/11/14/镜花水月/" rel="next" title="镜花水月">
+                <i class="fa fa-chevron-left"></i> 镜花水月
               </a>
             
           </div>
@@ -452,10 +453,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/06/MVC体系结构和处理请求控制器/" rel="prev" title="MVC体系结构和处理请求控制器">
-                MVC体系结构和处理请求控制器 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -614,7 +611,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#灵活配置DataSource"><span class="nav-number">1.</span> <span class="nav-text">灵活配置DataSource</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用属性文件配置数据源"><span class="nav-number">1.1.</span> <span class="nav-text">使用属性文件配置数据源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用jndi数据源-Context节点下"><span class="nav-number">1.2.</span> <span class="nav-text">使用jndi数据源 Context节点下</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring中bean的作用域（scope属性）"><span class="nav-number">2.</span> <span class="nav-text">Spring中bean的作用域（scope属性）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring自动装配"><span class="nav-number">2.1.</span> <span class="nav-text">Spring自动装配</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拆分Spring配置文件"><span class="nav-number">3.</span> <span class="nav-text">拆分Spring配置文件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建用户数据表"><span class="nav-number">1.</span> <span class="nav-text">创建用户数据表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建自动增长序列"><span class="nav-number">2.</span> <span class="nav-text">创建自动增长序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建触发器"><span class="nav-number">3.</span> <span class="nav-text">创建触发器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#尝试添加数据"><span class="nav-number">4.</span> <span class="nav-text">尝试添加数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">5.</span> <span class="nav-text">结果</span></a></li></ol></div>
             
 
           </div>
