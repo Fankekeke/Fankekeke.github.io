@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1A1918; /*��������ɫ*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1A1918; /*��Ӱ��ɫ*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1A1918;    /*�ϱ߿���ɫ*/
+        border-left-color: #1A1918;    /*��߿���ɫ*/
+    }
+</style>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="HQL连接查询类型内连接 INNER JOIN 关键字表示内连接, 也可以省略 INNER 关键字 list() 方法的集合中存放的每个元素对应查询结果的一条记录, 每个元素都是对象数组类型，  如果希望 list() 方法的返回的集合仅包含 Department  对象, 可以在 HQL 查询语句中使用 SELECT 关键字  123456789101112131415161718public">
+<meta name="keywords" content="悲伤的橘子树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HQL连接查询和注解">
+<meta property="og:url" content="http://fanke.com/2018/11/19/HQL连接查询和注解/index.html">
+<meta property="og:site_name" content="悲伤的橘子树">
+<meta property="og:description" content="HQL连接查询类型内连接 INNER JOIN 关键字表示内连接, 也可以省略 INNER 关键字 list() 方法的集合中存放的每个元素对应查询结果的一条记录, 每个元素都是对象数组类型，  如果希望 list() 方法的返回的集合仅包含 Department  对象, 可以在 HQL 查询语句中使用 SELECT 关键字  123456789101112131415161718public">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-21T01:25:46.968Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HQL连接查询和注解">
+<meta name="twitter:description" content="HQL连接查询类型内连接 INNER JOIN 关键字表示内连接, 也可以省略 INNER 关键字 list() 方法的集合中存放的每个元素对应查询结果的一条记录, 每个元素都是对象数组类型，  如果希望 list() 方法的返回的集合仅包含 Department  对象, 可以在 HQL 查询语句中使用 SELECT 关键字  123456789101112131415161718public">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://fanke.com/2018/11/19/HQL连接查询和注解/">
+
+
+
+
+
+  <title>HQL连接查询和注解 | 悲伤的橘子树</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">悲伤的橘子树</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://fanke.com/2018/11/19/HQL连接查询和注解/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="樊可">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/obt.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="悲伤的橘子树">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HQL连接查询和注解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-19T21:04:32+08:00">
+                2018-11-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/SSH/" itemprop="url" rel="index">
+                    <span itemprop="name">SSH</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/19/HQL连接查询和注解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/19/HQL连接查询和注解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="HQL连接查询类型"><a href="#HQL连接查询类型" class="headerlink" title="HQL连接查询类型"></a>HQL连接查询类型</h3><h4 id="内连接"><a href="#内连接" class="headerlink" title="内连接"></a>内连接</h4><blockquote>
+<p>INNER JOIN 关键字表示内连接, 也可以省略 INNER 关键字<br> list() 方法的集合中存放的每个元素对应查询结果的一条记录, 每个元素都是对象数组类型，  如果希望 list() 方法的返回的集合仅包含 Department  对象, 可以在 HQL 查询语句中使用 SELECT 关键字</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public void <span class="function"><span class="title">testInnerJoin</span></span>()&#123;</span><br><span class="line">		Transaction tx = null;</span><br><span class="line">		try &#123;</span><br><span class="line">			Session session=HibernateUtil.currentSession();</span><br><span class="line">			tx=session.beginTransaction();</span><br><span class="line">			String hql = <span class="string">"from Depts d join d.emps"</span>;	//d.emps为Depts表中的emps属性</span><br><span class="line">			List&lt;Object[]&gt; result=session.createQuery(hql).list();</span><br><span class="line">			<span class="keyword">for</span> (Object[] object : result) &#123;</span><br><span class="line">				System.out.println(((Depts)object[0]).getDeptName());</span><br><span class="line">				System.out.println(<span class="string">"\t"</span>+((Emps)object[1]).getUserName());</span><br><span class="line">			&#125;</span><br><span class="line">			tx.commit();</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			<span class="keyword">if</span>(tx!=null)&#123;</span><br><span class="line">				tx.rollback();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="左外连接"><a href="#左外连接" class="headerlink" title="左外连接"></a>左外连接</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public void <span class="function"><span class="title">testLeftJoin</span></span>()&#123;</span><br><span class="line">		Transaction tx = null;</span><br><span class="line">		try &#123;</span><br><span class="line">			Session session=HibernateUtil.currentSession();</span><br><span class="line">			tx=session.beginTransaction();</span><br><span class="line">			String hql = <span class="string">"from Depts d left join d.emps"</span>; //from Emps e left join e.depts			</span><br><span class="line">			List&lt;Object[]&gt; result=session.createQuery(hql).list();</span><br><span class="line">			<span class="keyword">for</span> (Object[] object : result) &#123;</span><br><span class="line">				System.out.println(((Depts)object[0]).getDeptName());</span><br><span class="line">				System.out.println(<span class="string">"\t"</span>+((Emps)object[1]).getUserName());</span><br><span class="line">			&#125;</span><br><span class="line">			tx.commit();</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			<span class="keyword">if</span>(tx!=null)&#123;</span><br><span class="line">				tx.rollback();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="迫切连接"><a href="#迫切连接" class="headerlink" title="迫切连接"></a>迫切连接</h4><p>迫切连接必须用属性接受</p>
+<blockquote>
+<p>INNER JOIN FETCH 关键字表示迫切内连接, 也可以省略 INNER 关键字<br>list() 方法返回的集合中存放Department对象的引用, 每个Department对象的 Employee 集合都被初始化, 存放所有关联的 Employee 对象<br>LEFT JOIN FETCH 关键字表示迫切左外连接检索策略.</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">	 * 迫切左连接和迫切内连接，封装为最左边的属性，已经建立了关系</span><br><span class="line">	 * 普通连接和迫切连接的区别：关联属性的初始化状态</span><br><span class="line">	 */</span><br><span class="line">	@Test</span><br><span class="line">	public void <span class="function"><span class="title">testLeftJoinFetch</span></span>()&#123;</span><br><span class="line">		Transaction tx = null;</span><br><span class="line">		try &#123;</span><br><span class="line">			Session session=HibernateUtil.currentSession();</span><br><span class="line">			tx=session.beginTransaction();</span><br><span class="line">			String hql = <span class="string">"from Depts d left join fetch d.emps"</span>; 		</span><br><span class="line">			List&lt;Depts&gt; result=session.createQuery(hql).list();</span><br><span class="line">			<span class="keyword">for</span> (Depts depts : result) &#123;</span><br><span class="line">				System.out.println(depts.getDeptName());</span><br><span class="line">				<span class="keyword">for</span> (Emps emps : depts.getEmps()) &#123;</span><br><span class="line">					System.out.println(<span class="string">"\t"</span>+emps.getUserName());</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			tx.commit();</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			<span class="keyword">if</span>(tx!=null)&#123;</span><br><span class="line">				tx.rollback();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    @Test</span><br><span class="line">	public void <span class="function"><span class="title">testLeftJoinFetch1</span></span>()&#123;</span><br><span class="line">		Transaction tx = null;</span><br><span class="line">		try &#123;</span><br><span class="line">			Session session=HibernateUtil.currentSession();</span><br><span class="line">			tx=session.beginTransaction();</span><br><span class="line">			String hql = <span class="string">"from Emps e left join fetch e.depts"</span>; 		</span><br><span class="line">			List&lt;Emps&gt; result=session.createQuery(hql).list();</span><br><span class="line">			<span class="keyword">for</span> (Emps emps : result) &#123;</span><br><span class="line">				System.out.println(emps.getUserName());</span><br><span class="line">				System.out.println(<span class="string">"\t"</span>+emps.getDepts().getDeptName());</span><br><span class="line">			&#125;</span><br><span class="line">			tx.commit();</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			<span class="keyword">if</span>(tx!=null)&#123;</span><br><span class="line">				tx.rollback();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="等值连接-和普通内连接差不多"><a href="#等值连接-和普通内连接差不多" class="headerlink" title="等值连接(和普通内连接差不多)"></a>等值连接(和普通内连接差不多)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@Test</span><br><span class="line">	public void <span class="function"><span class="title">testLeftJoinFetch2</span></span>()&#123;</span><br><span class="line">		Transaction tx = null;</span><br><span class="line">		try &#123;</span><br><span class="line">			Session session=HibernateUtil.currentSession();</span><br><span class="line">			tx=session.beginTransaction();</span><br><span class="line">			String hql = <span class="string">"from Depts d,Emps e where d=e.depts"</span>; 		</span><br><span class="line">			List&lt;Object[]&gt; result=session.createQuery(hql).list();</span><br><span class="line">			<span class="keyword">for</span> (Object[] object : result) &#123;</span><br><span class="line">				System.out.println(((Depts)object[0]).getDeptName());</span><br><span class="line">				System.out.println(<span class="string">"\t"</span>+((Emps)object[1]).getUserName());</span><br><span class="line">			&#125;</span><br><span class="line">			tx.commit();</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			<span class="keyword">if</span>(tx!=null)&#123;</span><br><span class="line">				tx.rollback();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="隐式内连接"><a href="#隐式内连接" class="headerlink" title="隐式内连接"></a>隐式内连接</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">	 * 隐式内连接</span><br><span class="line">	 * from Emp e <span class="built_in">where</span> e.depts.deptName=<span class="string">''</span>  --用于<span class="built_in">where</span>子句</span><br><span class="line">	 * select empNo,empName,depts.deptName from Emps  --用于select子句</span><br><span class="line">	 * 根据关联关系自动使用等值连接，直接已对象的方式考虑条件</span><br><span class="line">	 */</span><br><span class="line">	@Test</span><br><span class="line">	public void <span class="function"><span class="title">testLeftJoinFetch3</span></span>()&#123;</span><br><span class="line">		Transaction tx = null;</span><br><span class="line">		try &#123;</span><br><span class="line">			Session session=HibernateUtil.currentSession();</span><br><span class="line">			tx=session.beginTransaction();</span><br><span class="line">			String hql = <span class="string">"from Emps e where e.depts.deptNo=1"</span>; 		</span><br><span class="line">			List result=session.createQuery(hql).list();</span><br><span class="line">			<span class="keyword">for</span> (Object object : result) &#123;</span><br><span class="line">				System.out.println(((Emps)object).getUserName()+<span class="string">"\t"</span>+((Emps)object).getDepts().getDeptName());</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">			tx.commit();</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			<span class="keyword">if</span>(tx!=null)&#123;</span><br><span class="line">				tx.rollback();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">     /**</span><br><span class="line">	 * 隐式内链接 select</span><br><span class="line">	 */</span><br><span class="line">	@Test</span><br><span class="line">	public void <span class="function"><span class="title">testLeftJoinFetch4</span></span>()&#123;</span><br><span class="line">		Transaction tx = null;</span><br><span class="line">		try &#123;</span><br><span class="line">			Session session=HibernateUtil.currentSession();</span><br><span class="line">			tx=session.beginTransaction();</span><br><span class="line">			String hql = <span class="string">"select userId,userName,depts.deptName from Emps"</span>; 		</span><br><span class="line">			List&lt;Object[]&gt; result=session.createQuery(hql).list();</span><br><span class="line">			<span class="keyword">for</span> (Object[] object : result) &#123;</span><br><span class="line">				System.out.println(object[0]+<span class="string">"\t"</span>+object[1]+<span class="string">"\t"</span>+object[2]);</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">			tx.commit();</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			<span class="keyword">if</span>(tx!=null)&#123;</span><br><span class="line">				tx.rollback();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="聚合函数"><a href="#聚合函数" class="headerlink" title="聚合函数"></a>聚合函数</h3><blockquote>
+<p>count(),avg(),max(),min()<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">	 * hql聚合函数 count(),avg(),max(),min()</span><br><span class="line">	 */</span><br><span class="line">	@Test</span><br><span class="line">	public void <span class="function"><span class="title">testLeftJoinFetch5</span></span>()&#123;</span><br><span class="line">		Transaction tx = null;</span><br><span class="line">		try &#123;</span><br><span class="line">			Session session=HibernateUtil.currentSession();</span><br><span class="line">			tx=session.beginTransaction();</span><br><span class="line">			/*String hql = <span class="string">"select count(userId),e.deptId from Emps e group by e.deptId"</span>;*/</span><br><span class="line">			/*String hql = <span class="string">"select max(userId),min(userId) from Emps"</span>; */</span><br><span class="line">			/*String hql = <span class="string">"select max(userId),min(userId),e.deptNo  from Emps e group by e.deptNo"</span>; */</span><br><span class="line">			/*String hql = <span class="string">"select max(e.userId),d.deptName from Emps e,Depts d where e.depts=d group by d.deptName"</span>;*/</span><br><span class="line">			/*String hql = <span class="string">"select max(e.userId),depts.deptName from Emps e group by depts.deptName"</span>;*/</span><br><span class="line">			String hql = <span class="string">"select max(e.userId),depts.deptName from Emps e group by depts.deptName having depts.deptName='暗-部'"</span>;</span><br><span class="line">			List&lt;Object[]&gt; list=session.createQuery(hql).list();</span><br><span class="line">			<span class="keyword">for</span> (Object[] objects : list) &#123;</span><br><span class="line">				System.out.println(objects[0]+<span class="string">"\t"</span>+objects[1]);</span><br><span class="line">			&#125;</span><br><span class="line">			tx.commit();</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			<span class="keyword">if</span>(tx!=null)&#123;</span><br><span class="line">				tx.rollback();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h3><blockquote>
+<p>如果子查询返回多条记录，则可以使用下面关键字：</p>
+<blockquote>
+<p>all:表示子查询语句返回的所有记录<br>        any:表示子查询语句返回的任意一条结果<br>        some:与”any”等价<br>        in:与”=any”等价<br>        exists:表示子查询语句至少返回一条记录</p>
+</blockquote>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">	 * 子查询</span><br><span class="line">	 */</span><br><span class="line">	@Test</span><br><span class="line">	public void <span class="function"><span class="title">testLeftJoinFetch6</span></span>()&#123;</span><br><span class="line">		Transaction tx = null;</span><br><span class="line">		try &#123;</span><br><span class="line">			Session session=HibernateUtil.currentSession();</span><br><span class="line">			tx=session.beginTransaction();</span><br><span class="line">			/*String hql = <span class="string">"select userId,userName,depts.deptName from Emps where userId &lt; (select max(userId) from Emps)"</span>; */</span><br><span class="line">			//any 任意一条</span><br><span class="line">			/*String hql = <span class="string">"select d.deptNo,d.deptName from Depts d where 5 &gt; any(select userId from Emps e where e.depts=d)"</span>;*/</span><br><span class="line">			//all 全部</span><br><span class="line">			/*String hql = <span class="string">"select d.deptNo,d.deptName from Depts d where 5 &gt; all(select userId from Emps e where e.depts=d)"</span>;*/</span><br><span class="line">			//<span class="keyword">in</span></span><br><span class="line">			/*String hql = <span class="string">"select d.deptNo,d.deptName from Depts d where 5 in(select userId from Emps e where e.depts=d)"</span>;*/</span><br><span class="line">			//size() 或.size</span><br><span class="line">			String hql = <span class="string">"select d.deptNo,d.deptName from Depts d where 5 &gt; all(select userId from Emps e where e.depts=d) and size(d.emps)&gt;0"</span>;</span><br><span class="line">			List&lt;Object[]&gt; result=session.createQuery(hql).list();</span><br><span class="line">			<span class="keyword">for</span> (Object[] object : result) &#123;</span><br><span class="line">				System.out.println(object[0]+<span class="string">"\t"</span>+object[1]+<span class="string">"\t"</span>);</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">			tx.commit();</span><br><span class="line">		&#125; catch (Exception e) &#123;</span><br><span class="line">			<span class="keyword">if</span>(tx!=null)&#123;</span><br><span class="line">				tx.rollback();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="操作集合的函数属性或属性"><a href="#操作集合的函数属性或属性" class="headerlink" title="操作集合的函数属性或属性"></a>操作集合的函数属性或属性</h3><blockquote>
+<p>size()或size:获取集合中的元素数目。<br>minIndex()或minIndex:对于建立索引的集合，获取最小的索引<br>maxIndex()或maxIndex:对于建立索引的集合，获取最大的索引。<br>minElement()或minElement:对于包含基本类型的元素集合，获得集合中取值最小的元素。<br>maxElement()或maxElement: 对于包含基本类型的元素集合，获得集合中取值最大的元素。<br>Elements();获取集合中的所有元素。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String hql = <span class="string">"select d.deptNo,d.deptName from Depts d where 5 &gt; all(select userId from Emps e where e.depts=d) and size(d.emps)&gt;0"</span>;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="查询性能优化"><a href="#查询性能优化" class="headerlink" title="查询性能优化"></a>查询性能优化</h3><blockquote>
+<p><strong>hibernate查询优化策略</strong><br>（1.）使用迫切左外连接，或迫切连接查询策略，配置二级缓存和查询等方式，减少select语句数目，降低访问数据库的频率。<br>（2.）使用延迟加载等方式避免加载多余不需要访问的数据。<br>（3.）使用Query接口的iterate（）方法减少select语句的字段，降低访问数据库的数据量，并结合缓存等机制减少数据库的访问次数，提高查询效率。</p>
+</blockquote>
+<blockquote>
+<p><strong>HQL优化</strong><br>（1.）避免使用or操作的不当。<br>（2.）避免使用not。<br>（3.）避免使用like的特殊形式。<br>（4.）避免使用having子句。<br>（5.）避免使用distinct。<br>（6.）索引在以下情况下失效，使用时注意。<br>                   对字段使用函数，该字段的索引将不起作用。如：substring（aa,1,2）=’xxx’<br>                   对字段进行计算，该字段的索引将不起作用。如：price+10。</p>
+</blockquote>
+<h3 id="hibernate注解"><a href="#hibernate注解" class="headerlink" title="hibernate注解"></a>hibernate注解</h3><h4 id="单对象操作"><a href="#单对象操作" class="headerlink" title="单对象操作"></a>单对象操作</h4><blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">@Entity　　---&gt;　　如果我们当前这个bean要设置成实体对象，就需要加上Entity这个注解</span><br><span class="line">@Table(name=<span class="string">"t_user"</span>)　　----&gt;　　设置数据库的表名</span><br><span class="line">public class User</span><br><span class="line">&#123;</span><br><span class="line">    private int id;</span><br><span class="line">    private String username;</span><br><span class="line">    private String password;</span><br><span class="line">    private Date born;</span><br><span class="line">    private Date registerDate;</span><br><span class="line"></span><br><span class="line">    @Column(name=<span class="string">"register_date"</span>)　　---&gt;　　Column中的name属性对应了数据库的该字段名字，里面还有其他属性，例如length，nullable等等</span><br><span class="line">    public Date getRegisterDate()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> registerDate;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setRegisterDate(Date registerDate)</span><br><span class="line">    &#123;</span><br><span class="line">        this.registerDate = registerDate;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Id　　---&gt;　　定义为数据库的主键ID　　(建议不要在属性上引入注解，因为属性是private的，如果引入注解会破坏其封装特性，所以建议在getter方法上加入注解)</span><br><span class="line">    @GeneratedValue　　----&gt;　　ID的生成策略为自动生成　　</span><br><span class="line">    public int getId()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setId(int id)</span><br><span class="line">    &#123;</span><br><span class="line">        this.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"> 　　............</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="一对多的映射-one-to-many"><a href="#一对多的映射-one-to-many" class="headerlink" title="一对多的映射(one-to-many)"></a>一对多的映射(one-to-many)</h4><blockquote>
+<p>ClassRoom类：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">@Entity</span><br><span class="line">@Table(name=<span class="string">"t_classroom"</span>)</span><br><span class="line">public class ClassRoom</span><br><span class="line">&#123;</span><br><span class="line">    private int id;</span><br><span class="line">    private String className;</span><br><span class="line">    private Set&lt;Student&gt; students;</span><br><span class="line">    </span><br><span class="line">    public ClassRoom()</span><br><span class="line">    &#123;</span><br><span class="line">        students = new HashSet&lt;Student&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void addStudent(Student student)</span><br><span class="line">    &#123;</span><br><span class="line">        students.add(student);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Id</span><br><span class="line">    @GeneratedValue</span><br><span class="line">    public int getId()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setId(int id)</span><br><span class="line">    &#123;</span><br><span class="line">        this.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getClassName()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> className;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setClassName(String className)</span><br><span class="line">    &#123;</span><br><span class="line">        this.className = className;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @OneToMany(mappedBy=<span class="string">"room"</span>)　　---&gt;　　OneToMany指定了一对多的关系，mappedBy=<span class="string">"room"</span>指定了由多的那一方来维护关联关系，mappedBy指的是多的一方对1的这一方的依赖的属性，(注意：如果没有指定由谁来维护关联关系，则系统会给我们创建一张中间表)</span><br><span class="line">    @LazyCollection(LazyCollectionOption.EXTRA)　　---&gt;　　LazyCollection属性设置成EXTRA指定了当如果查询数据的个数时候，只会发出一条 count(*)的语句，提高性能</span><br><span class="line">    public Set&lt;Student&gt; getStudents()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> students;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setStudents(Set&lt;Student&gt; students)</span><br><span class="line">    &#123;</span><br><span class="line">        this.students = students;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Student类</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">@Entity</span><br><span class="line">@Table(name=<span class="string">"t_student"</span>)</span><br><span class="line">public class Student</span><br><span class="line">&#123;</span><br><span class="line">    private int id;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line">    private ClassRoom room;</span><br><span class="line">    </span><br><span class="line">    @ManyToOne(fetch=FetchType.LAZY)　　---&gt; ManyToOne指定了多对一的关系，fetch=FetchType.LAZY属性表示在多的那一方通过延迟加载的方式加载对象(默认不是延迟加载)</span><br><span class="line">    @JoinColumn(name=<span class="string">"rid"</span>)　　---&gt;　　通过 JoinColumn 的name属性指定了外键的名称 rid　(注意：如果我们不通过JoinColum来指定外键的名称，系统会给我们声明一个名称)</span><br><span class="line">    public ClassRoom getRoom()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> room;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setRoom(ClassRoom room)</span><br><span class="line">    &#123;</span><br><span class="line">        this.room = room;</span><br><span class="line">    &#125;</span><br><span class="line">    @Id</span><br><span class="line">    @GeneratedValue</span><br><span class="line">    public int getId()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setId(int id)</span><br><span class="line">    &#123;</span><br><span class="line">        this.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    public String getName()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setName(String name)</span><br><span class="line">    &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    public int getAge()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setAge(int age)</span><br><span class="line">    &#123;</span><br><span class="line">        this.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="一对一映射-One-to-One"><a href="#一对一映射-One-to-One" class="headerlink" title="一对一映射(One-to-One)"></a>一对一映射(One-to-One)</h4><p>一对一关系这里定义了一个Person对象以及一个IDCard对象</p>
+<blockquote>
+<p>Person类</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">@Entity</span><br><span class="line">@Table(name=<span class="string">"t_person"</span>)</span><br><span class="line">public class Person</span><br><span class="line">&#123;</span><br><span class="line">    private int id;</span><br><span class="line">    private String name;</span><br><span class="line">    private IDCard card;</span><br><span class="line">    </span><br><span class="line">    @OneToOne(mappedBy=<span class="string">"person"</span>)　　---&gt;　　指定了OneToOne的关联关系，mappedBy同样指定由对方来进行维护关联关系</span><br><span class="line">    public IDCard getCard()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> card;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setCard(IDCard card)</span><br><span class="line">    &#123;</span><br><span class="line">        this.card = card;</span><br><span class="line">    &#125;</span><br><span class="line">    @Id</span><br><span class="line">    @GeneratedValue</span><br><span class="line">    public int getId()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setId(int id)</span><br><span class="line">    &#123;</span><br><span class="line">        this.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    public String getName()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setName(String name)</span><br><span class="line">    &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>IDCard类</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">@Entity</span><br><span class="line">@Table(name=<span class="string">"t_id_card"</span>)</span><br><span class="line">public class IDCard</span><br><span class="line">&#123;</span><br><span class="line">    private int id;</span><br><span class="line">    private String no;</span><br><span class="line">    private Person person;</span><br><span class="line">    </span><br><span class="line">    @Id</span><br><span class="line">    @GeneratedValue</span><br><span class="line">    public int getId()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setId(int id)</span><br><span class="line">    &#123;</span><br><span class="line">        this.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    public String getNo()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> no;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setNo(String no)</span><br><span class="line">    &#123;</span><br><span class="line">        this.no = no;</span><br><span class="line">    &#125;</span><br><span class="line">    @OneToOne　　---&gt;　　OnetoOne指定了一对一的关联关系，一对一中随便指定一方来维护映射关系，这里选择IDCard来进行维护</span><br><span class="line">    @JoinColumn(name=<span class="string">"pid"</span>)　　---&gt;　　指定外键的名字 pid</span><br><span class="line">    public Person getPerson()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> person;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setPerson(Person person)</span><br><span class="line">    &#123;</span><br><span class="line">        this.person = person;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>在判断到底是谁维护关联关系时，可以通过查看外键，哪个实体类定义了外键，哪个类就负责维护关联关系。</strong></p>
+</blockquote>
+<h4 id="Many-to-Many映射-多对多映射关系"><a href="#Many-to-Many映射-多对多映射关系" class="headerlink" title="Many-to-Many映射(多对多映射关系)"></a>Many-to-Many映射(多对多映射关系)</h4><p>通过中间表由任一一个多的一方来维护关联关系</p>
+<blockquote>
+<p>Teacher</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">@Entity</span><br><span class="line">@Table(name=<span class="string">"t_teacher"</span>)</span><br><span class="line">public class Teacher</span><br><span class="line">&#123;</span><br><span class="line">    private int id;</span><br><span class="line">    private String name;</span><br><span class="line">    private Set&lt;Course&gt; courses;</span><br><span class="line">    </span><br><span class="line">    public Teacher()</span><br><span class="line">    &#123;</span><br><span class="line">        courses = new HashSet&lt;Course&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    public void addCourse(Course course)</span><br><span class="line">    &#123;</span><br><span class="line">        courses.add(course);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    @Id</span><br><span class="line">    @GeneratedValue</span><br><span class="line">    public int getId()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setId(int id)</span><br><span class="line">    &#123;</span><br><span class="line">        this.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    public String getName()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setName(String name)</span><br><span class="line">    &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    @ManyToMany(mappedBy=<span class="string">"teachers"</span>)　　---&gt;　　表示由Course那一方来进行维护</span><br><span class="line">    public Set&lt;Course&gt; getCourses()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> courses;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setCourses(Set&lt;Course&gt; courses)</span><br><span class="line">    &#123;</span><br><span class="line">        this.courses = courses;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Course类</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">@Entity</span><br><span class="line">@Table(name=<span class="string">"t_course"</span>)</span><br><span class="line">public class Course</span><br><span class="line">&#123;</span><br><span class="line">    private int id;</span><br><span class="line">    private String name;</span><br><span class="line">    private Set&lt;Teacher&gt; teachers;</span><br><span class="line">    </span><br><span class="line">    public Course()</span><br><span class="line">    &#123;</span><br><span class="line">        teachers = new HashSet&lt;Teacher&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    public void addTeacher(Teacher teacher)</span><br><span class="line">    &#123;</span><br><span class="line">        teachers.add(teacher);</span><br><span class="line">    &#125;</span><br><span class="line">    @ManyToMany　　　---&gt;　ManyToMany指定多对多的关联关系</span><br><span class="line">    @JoinTable(name=<span class="string">"t_teacher_course"</span>, joinColumns=&#123; @JoinColumn(name=<span class="string">"cid"</span>)&#125;, </span><br><span class="line">    inverseJoinColumns=&#123; @JoinColumn(name = <span class="string">"tid"</span>) &#125;)　　---&gt;　　因为多对多之间会通过一张中间表来维护两表直接的关系，所以通过 JoinTable 这个注解来声明，name就是指定了中间表的名字，JoinColumns是一个 @JoinColumn类型的数组，表示的是我这方在对方中的外键名称，我方是Course，所以在对方外键的名称就是 rid，inverseJoinColumns也是一个 @JoinColumn类型的数组，表示的是对方在我这放中的外键名称，对方是Teacher，所以在我方外键的名称就是 tid</span><br><span class="line">    public Set&lt;Teacher&gt; getTeachers()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> teachers;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setTeachers(Set&lt;Teacher&gt; teachers)</span><br><span class="line">    &#123;</span><br><span class="line">        this.teachers = teachers;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Id</span><br><span class="line">    @GeneratedValue</span><br><span class="line">    public int getId()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setId(int id)</span><br><span class="line">    &#123;</span><br><span class="line">        this.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getName()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name)</span><br><span class="line">    &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>通过hibernate来进行插入操作的时候，不管是一对多、一对一还是多对多，都只需要记住一点，在哪个实体类声明了外键，就由哪个类来维护关系，在保存数据时，总是先保存的是没有维护关联关系的那一方的数据，后保存维护了关联关系的那一方的数据</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/16/Oracle主键自增实现/" rel="next" title="Oracle主键自增实现">
+                <i class="fa fa-chevron-left"></i> Oracle主键自增实现
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/21/Struts2入门/" rel="prev" title="Struts2入门">
+                Struts2入门 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/obt.jpg" alt="樊可">
+            
+              <p class="site-author-name" itemprop="name">樊可</p>
+              <p class="site-description motion-element" itemprop="description">不相信自己的人没有努力的价值。   -- 迈特凯</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Fankekeke" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/5384373842?is_all=1" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1258846421@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#HQL连接查询类型"><span class="nav-number">1.</span> <span class="nav-text">HQL连接查询类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内连接"><span class="nav-number">1.1.</span> <span class="nav-text">内连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#左外连接"><span class="nav-number">1.2.</span> <span class="nav-text">左外连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#迫切连接"><span class="nav-number">1.3.</span> <span class="nav-text">迫切连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#等值连接-和普通内连接差不多"><span class="nav-number">1.4.</span> <span class="nav-text">等值连接(和普通内连接差不多)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#隐式内连接"><span class="nav-number">1.5.</span> <span class="nav-text">隐式内连接</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚合函数"><span class="nav-number">2.</span> <span class="nav-text">聚合函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子查询"><span class="nav-number">3.</span> <span class="nav-text">子查询</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作集合的函数属性或属性"><span class="nav-number">4.</span> <span class="nav-text">操作集合的函数属性或属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查询性能优化"><span class="nav-number">5.</span> <span class="nav-text">查询性能优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hibernate注解"><span class="nav-number">6.</span> <span class="nav-text">hibernate注解</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单对象操作"><span class="nav-number">6.1.</span> <span class="nav-text">单对象操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一对多的映射-one-to-many"><span class="nav-number">6.2.</span> <span class="nav-text">一对多的映射(one-to-many)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一对一映射-One-to-One"><span class="nav-number">6.3.</span> <span class="nav-text">一对一映射(One-to-One)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Many-to-Many映射-多对多映射关系"><span class="nav-number">6.4.</span> <span class="nav-text">Many-to-Many映射(多对多映射关系)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">樊可</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访问数<i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'qBi0aBkxrd0a61dRtSDJjK8M-gzGzoHsz',
+        appKey: 'gcHEadNXDusN49dVUsIK3Be9',
+        placeholder: '俺要评论..',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
