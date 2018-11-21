@@ -193,20 +193,20 @@
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[Oracle数据库基础]]></title>
-    <url>%2F2018%2F11%2F01%2FOracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%2F</url>
-    <content type="text"><![CDATA[Oracle简介1$ 众所周知，Oracle是个数据库，是Oracle公司的核心产品，优越的数据安全性和完整性，以及跨操作系统，跨硬件平台，主要特点：支持多用户，大事务的事务处理，在保持数据安全性和完整性方面性能优越，支持分布式事务处理，具有可移植性 Oracle基本概念$ 数据库：这不是我们平时所说的数据库，它是磁盘上存储数据的集合 $ 全局数据库名：用于区分一个数据库的标识，要唯一 $ 数据库实例：每个启动的数据库都对应一个数据库实例，有这个实例来访问数据库中的数据 $ 表空间：数据库若干个表空间组成，... $ 数据文件：数据文件扩展名.dbf 是来存储数据库数据的文件 $ 控制文件：控制文件扩展名.ctl 一个二进制文件,根据控制文件查找数据文件 $ 日志文件：日志文件扩展名.log,记录数据更改信息 Oracle重要的三个服务（建议全部设为手动，玩游戏的时候会卡的）$ OracleServiceSID：Oracle数据库服务，对应名为SID（系统标识符）我的是orcl $ OracleOraDb11g_home1TNSListener：监听器服务，如果要远程链接数据库服务器，就必须启动它 $ OracleDBConsoleSID：嗯，这个是控制台服务 SID（系统标识符） 连接Oracle数据库$ SQL*PLUS：system/orcl@orclDB //system是当前用户，orcl为密码，orclDB为使用的网络服务名 $ PL/SQL Developer：直接输入登录ok了 Oracle数据类型（列举几个比较难理解的）$ NUMBER(P,S)：p是精度，标识数字的有效位数，不包括小数点后，s标识小数点右边的位数，是四舍五入的哦 $ Date：SYSDATE标识返回当前的日期和时间，SYSTIMESTAMP返回当前的日期和时间和时区（精确到毫秒）可怕 $ LOB数据类型（大对象）：CLOB(字符clob，存储大量文字),BLOB(二进制lob，存储视频，图片这类)，BFILE(二进制文件，存储二进制文件)，NCLOB(存储大的nchar数据) Oracle中的伪列就像是一个表列，但是它并没有存储到表中，可以查询伪列，但是不能增删改 $ ROWID：每行都有一个行地址，ROWID就是返回该行地址 $ ROWNUM：返回一个数值代表行的次序，可以限制返回的行数（ROWNUM=1可以查到数据，ROWNUM=2就查不到，ROWNUM&gt;N也差不到，ROWNUM&lt;11查询10条记录） 查询数据不重复显示(DISTINCT)SELECT DISTINCT stuNmae from student 集合操作符UNION：返回连个查询选定的所有不重复行UNION ALL：符合两个查询锁定的所有行，包括重复的行INTERSECT：只返回两个查询都有的行MINUS：只返回第一个选定而未被第二个选定的行 连接操作符（||）将两个或多个字符串合并为一个字符串 SQL函数常用的转换函数 $ TO_CHAR 转字符串 （TO_CHAR(SYSDATE，‘YYYY 年fmMM月fmDD日 HH24:MI:SS’)） $ TO_DATE 转日期类型 $ TO_NUMBER 转数值类型 其他函数 $ NVL(EXP1,EXP2)：如果EXP1的值为null，返回EXP2,否则返回EXP1 $ NVL2(EXP1,EXP2,EXP3)：如果EXP1为null，返回EXP3,否则返回EXP2 $ DECODE(VALUE,IF1,THEN1,IF2,THEN2,ELSE)：VALUE值为IF1,则进入THEN1.. 分析函数马上11点了.. 我先走了，自行百度 今天我是听着THE NIGHT – Avicii完成的]]></content>
-      <categories>
-        <category>Oracle</category>
-      </categories>
-  </entry>
-  <entry>
     <title><![CDATA[漫漫归家路]]></title>
     <url>%2F2018%2F11%2F01%2F2018-DJ-MAG%2F</url>
     <content type="text"><![CDATA[漫漫归家路其实我喊了一次又一次，每一次，都清醒的认识到果然没有人回应我，无论怎么呼唤，怎么祈祷，还是有无法实现的东西。 最后还是没能找到家，迷路了，累到了，然后，我决定不在呼唤无法给予我回应的东西。——《夏目友人帐》漫漫回家路]]></content>
       <tags>
         <tag>分享</tag>
       </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Oracle数据库基础]]></title>
+    <url>%2F2018%2F11%2F01%2FOracle%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%2F</url>
+    <content type="text"><![CDATA[Oracle简介1$ 众所周知，Oracle是个数据库，是Oracle公司的核心产品，优越的数据安全性和完整性，以及跨操作系统，跨硬件平台，主要特点：支持多用户，大事务的事务处理，在保持数据安全性和完整性方面性能优越，支持分布式事务处理，具有可移植性 Oracle基本概念$ 数据库：这不是我们平时所说的数据库，它是磁盘上存储数据的集合 $ 全局数据库名：用于区分一个数据库的标识，要唯一 $ 数据库实例：每个启动的数据库都对应一个数据库实例，有这个实例来访问数据库中的数据 $ 表空间：数据库若干个表空间组成，... $ 数据文件：数据文件扩展名.dbf 是来存储数据库数据的文件 $ 控制文件：控制文件扩展名.ctl 一个二进制文件,根据控制文件查找数据文件 $ 日志文件：日志文件扩展名.log,记录数据更改信息 Oracle重要的三个服务（建议全部设为手动，玩游戏的时候会卡的）$ OracleServiceSID：Oracle数据库服务，对应名为SID（系统标识符）我的是orcl $ OracleOraDb11g_home1TNSListener：监听器服务，如果要远程链接数据库服务器，就必须启动它 $ OracleDBConsoleSID：嗯，这个是控制台服务 SID（系统标识符） 连接Oracle数据库$ SQL*PLUS：system/orcl@orclDB //system是当前用户，orcl为密码，orclDB为使用的网络服务名 $ PL/SQL Developer：直接输入登录ok了 Oracle数据类型（列举几个比较难理解的）$ NUMBER(P,S)：p是精度，标识数字的有效位数，不包括小数点后，s标识小数点右边的位数，是四舍五入的哦 $ Date：SYSDATE标识返回当前的日期和时间，SYSTIMESTAMP返回当前的日期和时间和时区（精确到毫秒）可怕 $ LOB数据类型（大对象）：CLOB(字符clob，存储大量文字),BLOB(二进制lob，存储视频，图片这类)，BFILE(二进制文件，存储二进制文件)，NCLOB(存储大的nchar数据) Oracle中的伪列就像是一个表列，但是它并没有存储到表中，可以查询伪列，但是不能增删改 $ ROWID：每行都有一个行地址，ROWID就是返回该行地址 $ ROWNUM：返回一个数值代表行的次序，可以限制返回的行数（ROWNUM=1可以查到数据，ROWNUM=2就查不到，ROWNUM&gt;N也差不到，ROWNUM&lt;11查询10条记录） 查询数据不重复显示(DISTINCT)SELECT DISTINCT stuNmae from student 集合操作符UNION：返回连个查询选定的所有不重复行UNION ALL：符合两个查询锁定的所有行，包括重复的行INTERSECT：只返回两个查询都有的行MINUS：只返回第一个选定而未被第二个选定的行 连接操作符（||）将两个或多个字符串合并为一个字符串 SQL函数常用的转换函数 $ TO_CHAR 转字符串 （TO_CHAR(SYSDATE，‘YYYY 年fmMM月fmDD日 HH24:MI:SS’)） $ TO_DATE 转日期类型 $ TO_NUMBER 转数值类型 其他函数 $ NVL(EXP1,EXP2)：如果EXP1的值为null，返回EXP2,否则返回EXP1 $ NVL2(EXP1,EXP2,EXP3)：如果EXP1为null，返回EXP3,否则返回EXP2 $ DECODE(VALUE,IF1,THEN1,IF2,THEN2,ELSE)：VALUE值为IF1,则进入THEN1.. 分析函数马上11点了.. 我先走了，自行百度 今天我是听着THE NIGHT – Avicii完成的]]></content>
+      <categories>
+        <category>Oracle</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[试问老天，不抵抗是罪吗？]]></title>
