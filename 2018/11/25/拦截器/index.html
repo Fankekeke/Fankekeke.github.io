@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1A1918; /*��������ɫ*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1A1918; /*��Ӱ��ɫ*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1A1918;    /*�ϱ߿���ɫ*/
+        border-left-color: #1A1918;    /*��߿���ɫ*/
+    }
+</style>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="为什么需要拦截器  早期mvc框架将一些通用操作硬编码在核心控制器中，使框架灵活性不足，可扩展性低 Struts2将核心功能放到多个拦截器中实现，拦截器可自由选择和组合，增强了灵活性，有利于系统的解耦     什么是拦截器  Struts2大多数核心功能是通过拦截器实现的，每个拦截器完成某项功能 拦截器方法在Action执行之前和之后执行 拦截器栈  从结构上看，拦截器相当于多个拦截器的组成 从">
+<meta name="keywords" content="悲伤的橘子树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="拦截器">
+<meta property="og:url" content="http://fankekeke.com/2018/11/25/拦截器/index.html">
+<meta property="og:site_name" content="悲伤的橘子树">
+<meta property="og:description" content="为什么需要拦截器  早期mvc框架将一些通用操作硬编码在核心控制器中，使框架灵活性不足，可扩展性低 Struts2将核心功能放到多个拦截器中实现，拦截器可自由选择和组合，增强了灵活性，有利于系统的解耦     什么是拦截器  Struts2大多数核心功能是通过拦截器实现的，每个拦截器完成某项功能 拦截器方法在Action执行之前和之后执行 拦截器栈  从结构上看，拦截器相当于多个拦截器的组成 从">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-11-25T08:05:29.435Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="拦截器">
+<meta name="twitter:description" content="为什么需要拦截器  早期mvc框架将一些通用操作硬编码在核心控制器中，使框架灵活性不足，可扩展性低 Struts2将核心功能放到多个拦截器中实现，拦截器可自由选择和组合，增强了灵活性，有利于系统的解耦     什么是拦截器  Struts2大多数核心功能是通过拦截器实现的，每个拦截器完成某项功能 拦截器方法在Action执行之前和之后执行 拦截器栈  从结构上看，拦截器相当于多个拦截器的组成 从">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://fankekeke.com/2018/11/25/拦截器/">
+
+
+
+
+
+  <title>拦截器 | 悲伤的橘子树</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">悲伤的橘子树</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://fankekeke.com/2018/11/25/拦截器/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="樊可">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/obt.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="悲伤的橘子树">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">拦截器</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-25T14:13:19+08:00">
+                2018-11-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/SSH/" itemprop="url" rel="index">
+                    <span itemprop="name">SSH</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/25/拦截器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/11/25/拦截器/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p><strong>为什么需要拦截器</strong></p>
+<ul>
+<li>早期mvc框架将一些通用操作硬编码在核心控制器中，使框架灵活性不足，可扩展性低</li>
+<li>Struts2将核心功能放到多个拦截器中实现，拦截器可自由选择和组合，增强了灵活性，有利于系统的解耦</li>
+</ul>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>什么是拦截器</strong></p>
+<ul>
+<li>Struts2大多数核心功能是通过拦截器实现的，每个拦截器完成某项功能</li>
+<li>拦截器方法在Action执行之前和之后执行</li>
+<li>拦截器栈<blockquote>
+<ul>
+<li>从结构上看，拦截器相当于多个拦截器的组成</li>
+<li>从功能上看，拦截器栈也是拦截器</li>
+</ul>
+</blockquote>
+</li>
+<li>拦截器与过滤器原理相似</li>
+</ul>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>拦截器工作原理</strong><br>三阶段执行周期</p>
+<blockquote>
+<ul>
+<li>做一些Action执行前的预处理</li>
+<li>将控制交给后续拦截器或返回字符串</li>
+<li>做一些Action执行后的处理</li>
+</ul>
+</blockquote>
+</blockquote>
+<h3 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h3><h4 id="简单应用"><a href="#简单应用" class="headerlink" title="简单应用"></a>简单应用</h4><blockquote>
+<p><strong>创建拦截器类</strong><br>继承AbstractInterceptor类，重写intercept()<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">	public String intercept(ActionInvocation invocation) throws Exception &#123;</span><br><span class="line">		//预处理工作</span><br><span class="line">		long startTime=System.currentTimeMillis();</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"当前时间"</span>+startTime);</span><br><span class="line">		//执行后续拦截器或action</span><br><span class="line">		String tesult=invocation.invoke();</span><br><span class="line">		//后续处理工作</span><br><span class="line">		long endTime=System.currentTimeMillis();</span><br><span class="line">		System.out.println(<span class="string">"耗时："</span>+(endTime-startTime));</span><br><span class="line">		<span class="built_in">return</span> tesult;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>struts.xml配置</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;interceptors&gt;</span><br><span class="line">    		&lt;!-- 定义单个拦截器 --&gt;</span><br><span class="line">    		&lt;interceptor name=<span class="string">"myAuthorization"</span> class=<span class="string">"cn.ssh.interceptor.AuthorizationInterceptor"</span>&gt;&lt;/interceptor&gt;</span><br><span class="line">    		&lt;!-- 定义拦截器栈 --&gt;</span><br><span class="line">    		 &lt;interceptor-stack name=<span class="string">"myStack"</span>&gt;</span><br><span class="line">    		 	&lt;interceptor-ref name=<span class="string">"defaultStack"</span>&gt;&lt;/interceptor-ref&gt;</span><br><span class="line">    		 	&lt;interceptor-ref name=<span class="string">"myAuthorization"</span>&gt;&lt;/interceptor-ref&gt;</span><br><span class="line">    		 &lt;/interceptor-stack&gt;</span><br><span class="line">&lt;/interceptors&gt;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">&lt;action name=<span class="string">"indexs"</span>&gt;</span><br><span class="line">    		&lt;result&gt;index.jsp&lt;/result&gt;</span><br><span class="line">            &lt;!-- 引用拦截器栈--&gt;</span><br><span class="line">    		&lt;interceptor-ref name=<span class="string">"myTimeStack"</span>&gt;&lt;/interceptor-ref&gt;</span><br><span class="line">            &lt;!-- 引用单个拦截器--&gt;</span><br><span class="line">    		&lt;interceptor-ref name=<span class="string">"myTime"</span>&gt;&lt;/interceptor-ref&gt;</span><br><span class="line">    		&lt;!-- 默认拦截器栈，必须--&gt;</span><br><span class="line">    		&lt;interceptor-ref name=<span class="string">"defaultStack"</span>&gt;&lt;/interceptor-ref&gt;</span><br><span class="line">&lt;/action&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>设置默认拦截器</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 在这个包里所有action都会有myTimeStack --&gt;</span><br><span class="line">&lt;default-interceptor-ref name=<span class="string">"myTimeStack"</span>&gt;&lt;/default-interceptor-ref&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="自定义拦截器"><a href="#自定义拦截器" class="headerlink" title="自定义拦截器"></a>自定义拦截器</h4><blockquote>
+<p><strong>实现Intercepror接口</strong></p>
+<blockquote>
+<ul>
+<li>void init()：初始化拦截器所需资源</li>
+<li>void destroy()：释放在init()中分配的资源</li>
+<li>String intercept(ActionInvocation ai) throws Exception<blockquote>
+<ul>
+<li>实现拦截器功能</li>
+<li>利用ActionInvocation参数获取Action状态</li>
+<li>返回结果码字符串</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+</blockquote>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>继承AbstractInterceptor类</strong></p>
+<blockquote>
+<ul>
+<li>提供了init()和destroy()方法的空实现</li>
+<li>只需要实现intercept方法既可</li>
+</ul>
+</blockquote>
+</blockquote>
+<hr>
+<h4 id="权限验证拦截器"><a href="#权限验证拦截器" class="headerlink" title="权限验证拦截器"></a>权限验证拦截器</h4><blockquote>
+<p><strong>创建权限验证拦截器</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class AuthorizationInterceptor extends AbstractInterceptor &#123;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	public String intercept(ActionInvocation invocation) throws Exception &#123;</span><br><span class="line">		Object loginUser=invocation.getInvocationContext().getSession().get(<span class="string">"loginUser"</span>);</span><br><span class="line">		<span class="keyword">if</span>(loginUser==null)&#123;</span><br><span class="line">			<span class="built_in">return</span> <span class="string">"input"</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="built_in">return</span> invocation.invoke();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>struts.xml</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;package name=<span class="string">"renthouse"</span> extends=<span class="string">"struts-default"</span> namespace=<span class="string">"/mm"</span>&gt;</span><br><span class="line">    	&lt;interceptors&gt;</span><br><span class="line">    		&lt;!-- 定义权限验证拦截器 --&gt;</span><br><span class="line">    		&lt;interceptor name=<span class="string">"myAuthorization"</span> class=<span class="string">"cn.ssh.interceptor.AuthorizationInterceptor"</span>&gt;&lt;/interceptor&gt;</span><br><span class="line">    		&lt;!-- 定义拦截器栈 --&gt;</span><br><span class="line">    		 &lt;interceptor-stack name=<span class="string">"myStack"</span>&gt;</span><br><span class="line">    		 	&lt;interceptor-ref name=<span class="string">"defaultStack"</span>&gt;&lt;/interceptor-ref&gt;</span><br><span class="line">    		 	&lt;interceptor-ref name=<span class="string">"myAuthorization"</span>&gt;&lt;/interceptor-ref&gt;</span><br><span class="line">    		 &lt;/interceptor-stack&gt;</span><br><span class="line">    	&lt;/interceptors&gt;</span><br><span class="line">    	&lt;default-interceptor-ref name=<span class="string">"myStack"</span>&gt;&lt;/default-interceptor-ref&gt;</span><br><span class="line">    	</span><br><span class="line">    	&lt;action name=<span class="string">"Logins"</span> class=<span class="string">"cn.ssh.action.LoginAction"</span>&gt;</span><br><span class="line">           &lt;result name=<span class="string">"success"</span>&gt;/success.jsp&lt;/result&gt;</span><br><span class="line">           &lt;result name=<span class="string">"fail"</span>&gt;/fail.jsp&lt;/result&gt;</span><br><span class="line">           &lt;result name=<span class="string">"input"</span>&gt;/login.jsp&lt;/result&gt;</span><br><span class="line">        &lt;/action&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;action name=<span class="string">"success"</span>&gt;</span><br><span class="line">           &lt;result name=<span class="string">"success"</span>&gt;/success.jsp&lt;/result&gt;</span><br><span class="line">           &lt;result name=<span class="string">"input"</span>&gt;/login.jsp&lt;/result&gt;</span><br><span class="line">        &lt;/action&gt;</span><br><span class="line">        </span><br><span class="line">    &lt;/package&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="文件上传"><a href="#文件上传" class="headerlink" title="文件上传"></a>文件上传</h3><blockquote>
+<p><strong>Commons-FileUpload组件</strong></p>
+<blockquote>
+<ul>
+<li>使用简单：可以方便的嵌入到jsp文件，编写少量代码既可完成文件上传</li>
+<li>能全程控制文件上传</li>
+<li>能对上传文件的大小，类型进行控制</li>
+</ul>
+</blockquote>
+</blockquote>
+<h4 id="添加jar包"><a href="#添加jar包" class="headerlink" title="添加jar包"></a>添加jar包</h4><blockquote>
+<p>commons-collections-3.1.jar<br>commons-fileupload-1.3.1.jar<br>commons-io-2.2.jar<br>commons-lang3-3.1.jar<br>commons-logging-1.1.3.jar</p>
+</blockquote>
+<h4 id="设置表单提交属性"><a href="#设置表单提交属性" class="headerlink" title="设置表单提交属性"></a>设置表单提交属性</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">上传文件&lt;br/&gt;</span><br><span class="line">&lt;s:form enctype=<span class="string">"multipart/form-data"</span> method=<span class="string">"post"</span> action=<span class="string">"uploads.action"</span>&gt;</span><br><span class="line">   	&lt;s:file name=<span class="string">"upload"</span>&gt;&lt;/s:file&gt;</span><br><span class="line">   	&lt;s:submit value=<span class="string">"上传"</span>&gt;&lt;/s:submit&gt;</span><br><span class="line">&lt;/s:form&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="编写处理上传的Action文件"><a href="#编写处理上传的Action文件" class="headerlink" title="编写处理上传的Action文件"></a>编写处理上传的Action文件</h4><blockquote>
+<p>private File upload;<br>private String uploadContentType;<br>private String uploadFileName;</p>
+<ul>
+<li>upload是提交属性name，绝对要一致</li>
+</ul>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">private File upload;</span><br><span class="line">	public File <span class="function"><span class="title">getUpload</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> upload;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setUpload(File upload) &#123;</span><br><span class="line">		this.upload = upload;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String <span class="function"><span class="title">getUploadContentType</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> uploadContentType;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setUploadContentType(String uploadContentType) &#123;</span><br><span class="line">		this.uploadContentType = uploadContentType;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String <span class="function"><span class="title">getUploadFileName</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> uploadFileName;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setUploadFileName(String uploadFileName) &#123;</span><br><span class="line">		this.uploadFileName = uploadFileName;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String <span class="function"><span class="title">getSavePath</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> savePath;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setSavePath(String savePath) &#123;</span><br><span class="line">		this.savePath = savePath;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	private String uploadContentType;</span><br><span class="line">	private String uploadFileName;</span><br><span class="line">	</span><br><span class="line">	private String savePath;</span><br><span class="line">	</span><br><span class="line">	public String <span class="function"><span class="title">execute</span></span>()&#123;</span><br><span class="line">		try &#123;</span><br><span class="line">			File destFile=new File(ServletActionContext.getRequest().getRealPath(savePath)+<span class="string">"\\"</span>+this.getUploadFileName());;</span><br><span class="line">			FileUtils.copyFile(upload, destFile);</span><br><span class="line">		&#125; catch (IOException e) &#123;</span><br><span class="line">			// TODO Auto-generated catch block</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> <span class="string">"success"</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="struts-xml处理"><a href="#struts-xml处理" class="headerlink" title="struts.xml处理"></a>struts.xml处理</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 文件上传 --&gt;</span><br><span class="line">    	&lt;action name=<span class="string">"upload"</span> class=<span class="string">"cn.ssh.action.UploadAction"</span>&gt;</span><br><span class="line">    		&lt;!-- 给savePath手动赋值 --&gt;</span><br><span class="line">    		&lt;param name=<span class="string">"savePath"</span>&gt;/upload&lt;/param&gt;</span><br><span class="line">    		&lt;result name=<span class="string">"success"</span>&gt;/upload.jsp&lt;/result&gt;</span><br><span class="line">    		&lt;result name=<span class="string">"input"</span>&gt;/upload.jsp&lt;/result&gt;</span><br><span class="line">    		&lt;interceptor-ref name=<span class="string">"fileUpload"</span>&gt;</span><br><span class="line">    			&lt;!-- 设置文件大小 --&gt;</span><br><span class="line">    			&lt;param name=<span class="string">"maximumSize"</span>&gt;1024000&lt;/param&gt;</span><br><span class="line">    			&lt;!-- 设置文件类型 --&gt;</span><br><span class="line">    			&lt;param name=<span class="string">"allowedTypes"</span>&gt;image/jpeg,image/gif,image/png&lt;/param&gt;</span><br><span class="line">    		&lt;/interceptor-ref&gt;</span><br><span class="line">    		&lt;interceptor-ref name=<span class="string">"defaultStack"</span>&gt;&lt;/interceptor-ref&gt;</span><br><span class="line">    	&lt;/action&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="进行显示"><a href="#进行显示" class="headerlink" title="进行显示"></a>进行显示</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img alt=<span class="string">""</span> src=<span class="string">"upload/&lt;s:property value='uploadFileName'/&gt;"</span>&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="多文件上传"><a href="#多文件上传" class="headerlink" title="多文件上传"></a>多文件上传</h3><blockquote>
+<ul>
+<li>多个file控件，name属性相同</li>
+<li>Action的修改，将三个属性的类型修改成数组</li>
+</ul>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>创建多文件上传Action</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">public class ManyUploadAction extends ActionSupport &#123;</span><br><span class="line">	</span><br><span class="line">	private File[] upload;</span><br><span class="line">	</span><br><span class="line">	private String[] uploadContentType;</span><br><span class="line">	</span><br><span class="line">	private String[] uploadFileName;</span><br><span class="line">	</span><br><span class="line">	private String savePath;</span><br><span class="line"></span><br><span class="line">	public File[] <span class="function"><span class="title">getUpload</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> upload;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setUpload(File[] upload) &#123;</span><br><span class="line">		this.upload = upload;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String[] <span class="function"><span class="title">getUploadContentType</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> uploadContentType;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setUploadContentType(String[] uploadContentType) &#123;</span><br><span class="line">		this.uploadContentType = uploadContentType;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String[] <span class="function"><span class="title">getUploadFileName</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> uploadFileName;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setUploadFileName(String[] uploadFileName) &#123;</span><br><span class="line">		this.uploadFileName = uploadFileName;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String <span class="function"><span class="title">getSavePath</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> savePath;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setSavePath(String savePath) &#123;</span><br><span class="line">		this.savePath = savePath;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public String <span class="function"><span class="title">execute</span></span>()&#123;</span><br><span class="line">		int i;</span><br><span class="line">		<span class="keyword">for</span>(i=0;i&lt;3;i++)&#123;</span><br><span class="line">			File file=upload[i];</span><br><span class="line">			File destFile=new File(ServletActionContext.getRequest().getRealPath(savePath)+<span class="string">"\\"</span>+uploadFileName[i]);</span><br><span class="line">			try &#123;</span><br><span class="line">				FileUtils.copyFile(file, destFile);</span><br><span class="line">			&#125; catch (IOException e) &#123;</span><br><span class="line">				// TODO Auto-generated catch block</span><br><span class="line">				e.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> <span class="string">"success"</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>struts.xml配置</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 多文件上传 --&gt;</span><br><span class="line">    	&lt;action name=<span class="string">"uploads"</span> class=<span class="string">"cn.ssh.action.ManyUploadAction"</span>&gt;</span><br><span class="line">    		&lt;!-- 给savePath手动赋值 --&gt;</span><br><span class="line">    		&lt;param name=<span class="string">"savePath"</span>&gt;/upload&lt;/param&gt;</span><br><span class="line">    		&lt;result name=<span class="string">"success"</span>&gt;/upload.jsp&lt;/result&gt;</span><br><span class="line">    		&lt;result name=<span class="string">"input"</span>&gt;/upload.jsp&lt;/result&gt;</span><br><span class="line">    		&lt;interceptor-ref name=<span class="string">"fileUpload"</span>&gt;</span><br><span class="line">    			&lt;param name=<span class="string">"maximumSize"</span>&gt;1024000&lt;/param&gt;</span><br><span class="line">    			&lt;param name=<span class="string">"allowedTypes"</span>&gt;image/jpeg,image/gif,image/png&lt;/param&gt;</span><br><span class="line">    		&lt;/interceptor-ref&gt;</span><br><span class="line">    		&lt;interceptor-ref name=<span class="string">"defaultStack"</span>&gt;&lt;/interceptor-ref&gt;</span><br><span class="line">    	&lt;/action&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<hr>
+<blockquote>
+<p><strong>显示文件</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;s:iterator value=<span class="string">"uploadFileName"</span>&gt;</span><br><span class="line">   	&lt;s:property/&gt;</span><br><span class="line">   		&lt;img alt=<span class="string">""</span> src=<span class="string">"upload/&lt;s:property/&gt;"</span>&gt;</span><br><span class="line">   	&lt;/s:iterator&gt;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h3><blockquote>
+<p><strong>Action</strong></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">public class FileDownAction extends ActionSupport &#123;</span><br><span class="line">	</span><br><span class="line">	//读取下载文件的目录</span><br><span class="line">	private String inputPath;</span><br><span class="line">	</span><br><span class="line">	//下载文件的文件名</span><br><span class="line">	private String fileName;</span><br><span class="line">	</span><br><span class="line">	//读取下载文件的输入流</span><br><span class="line">	private InputStream inputStream;</span><br><span class="line">	</span><br><span class="line">	//下载文件的类型</span><br><span class="line">	private String conetntType;</span><br><span class="line"></span><br><span class="line">	public String <span class="function"><span class="title">getInputPath</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> inputPath;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setInputPath(String inputPath) &#123;</span><br><span class="line">		this.inputPath = inputPath;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String <span class="function"><span class="title">getFileName</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> fileName;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setFileName(String fileName) &#123;</span><br><span class="line">		this.fileName = fileName;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public InputStream getInputStream() throws FileNotFoundException &#123;</span><br><span class="line">		String path=ServletActionContext.getServletContext().getRealPath(inputPath);</span><br><span class="line">		InputStream <span class="keyword">in</span>=ServletActionContext.getServletContext().getResourceAsStream(inputPath);</span><br><span class="line">		System.out.println(<span class="string">"--------"</span>+<span class="keyword">in</span>);</span><br><span class="line">		<span class="built_in">return</span> new BufferedInputStream(new FileInputStream(path+<span class="string">"\\"</span>+fileName));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setInputStream(InputStream inputStream) &#123;</span><br><span class="line">		this.inputStream = inputStream;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public String <span class="function"><span class="title">getConetntType</span></span>() &#123;</span><br><span class="line">		<span class="built_in">return</span> conetntType;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public void setConetntType(String conetntType) &#123;</span><br><span class="line">		this.conetntType = conetntType;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	public String <span class="function"><span class="title">execute</span></span>()&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="built_in">return</span> <span class="string">"success"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>struts.xml</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 文件下载 --&gt;</span><br><span class="line">    	&lt;action name=<span class="string">"downFile"</span> class=<span class="string">"cn.ssh.action.FileDownAction"</span> method=<span class="string">"execute"</span>&gt;</span><br><span class="line">    		&lt;param name=<span class="string">"inputPath"</span>&gt;/upload&lt;/param&gt;</span><br><span class="line">    		&lt;result name=<span class="string">"success"</span> <span class="built_in">type</span>=<span class="string">"stream"</span>&gt;</span><br><span class="line">    			&lt;param name=<span class="string">"inputName"</span>&gt;inputStream&lt;/param&gt;</span><br><span class="line">                 &lt;param name=<span class="string">"contentType"</span>&gt;application/octet-stream&lt;/param&gt;</span><br><span class="line">                 &lt;param name=<span class="string">"contentDisposition"</span>&gt;attachment;filename=<span class="string">"<span class="variable">$&#123;fileName&#125;</span>&lt;/param&gt;</span></span><br><span class="line"><span class="string">                 &lt;param name="</span>bufferSize<span class="string">"&gt;4096&lt;/param&gt;</span></span><br><span class="line"><span class="string">    		&lt;/result&gt;</span></span><br><span class="line"><span class="string">			&lt;result name="</span>input<span class="string">"&gt;/downld.jsp&lt;/result&gt;</span></span><br><span class="line"><span class="string">		&lt;/action&gt;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>下载页面</p>
+<ul>
+<li>前提项目目录下必须拥有&lt;param name=”inputPath”&gt;/upload&lt;/param&gt;设置的路径以及相应的文件名<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"downFile.action?fileName=obt.jpg"</span>&gt;下载&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/24/OGNL/" rel="next" title="OGNL">
+                <i class="fa fa-chevron-left"></i> OGNL
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/obt.jpg" alt="樊可">
+            
+              <p class="site-author-name" itemprop="name">樊可</p>
+              <p class="site-description motion-element" itemprop="description">不相信自己的人没有努力的价值。   -- 迈特凯</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Fankekeke" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/5384373842?is_all=1" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1258846421@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#拦截器"><span class="nav-number">1.</span> <span class="nav-text">拦截器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简单应用"><span class="nav-number">1.1.</span> <span class="nav-text">简单应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义拦截器"><span class="nav-number">1.2.</span> <span class="nav-text">自定义拦截器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#权限验证拦截器"><span class="nav-number">1.3.</span> <span class="nav-text">权限验证拦截器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件上传"><span class="nav-number">2.</span> <span class="nav-text">文件上传</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#添加jar包"><span class="nav-number">2.1.</span> <span class="nav-text">添加jar包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置表单提交属性"><span class="nav-number">2.2.</span> <span class="nav-text">设置表单提交属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#编写处理上传的Action文件"><span class="nav-number">2.3.</span> <span class="nav-text">编写处理上传的Action文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#struts-xml处理"><span class="nav-number">2.4.</span> <span class="nav-text">struts.xml处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进行显示"><span class="nav-number">2.5.</span> <span class="nav-text">进行显示</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多文件上传"><span class="nav-number">3.</span> <span class="nav-text">多文件上传</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件下载"><span class="nav-number">4.</span> <span class="nav-text">文件下载</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">樊可</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访问数<i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'qBi0aBkxrd0a61dRtSDJjK8M-gzGzoHsz',
+        appKey: 'gcHEadNXDusN49dVUsIK3Be9',
+        placeholder: '俺要评论..',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
