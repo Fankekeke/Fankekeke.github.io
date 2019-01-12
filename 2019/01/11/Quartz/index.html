@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #1A1918; /*��������ɫ*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1A1918; /*��Ӱ��ɫ*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1A1918;    /*�ϱ߿���ɫ*/
+        border-left-color: #1A1918;    /*��߿���ɫ*/
+    }
+</style>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="介绍QuartzQuartz是一个任务调度框架。在某一个有规律的时间点干某件事。并且时间的触发的条件可以非常复杂（比如每月最后一个工作日的17:50），复杂到需要一个专门的框架来干这个事。 Quartz就是来干这样的事，你给它一个触发条件的定义，它负责到了时间点，触发相应的Job起来干活。 框架搭建导入Quartz的相关jar包slf4j-log4j12-1.7.7.jarquartz-jobs-">
+<meta name="keywords" content="悲伤的橘子树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Quartz">
+<meta property="og:url" content="http://fankekeke.club/2019/01/11/Quartz/index.html">
+<meta property="og:site_name" content="悲伤的橘子树">
+<meta property="og:description" content="介绍QuartzQuartz是一个任务调度框架。在某一个有规律的时间点干某件事。并且时间的触发的条件可以非常复杂（比如每月最后一个工作日的17:50），复杂到需要一个专门的框架来干这个事。 Quartz就是来干这样的事，你给它一个触发条件的定义，它负责到了时间点，触发相应的Job起来干活。 框架搭建导入Quartz的相关jar包slf4j-log4j12-1.7.7.jarquartz-jobs-">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-11T01:59:09.039Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Quartz">
+<meta name="twitter:description" content="介绍QuartzQuartz是一个任务调度框架。在某一个有规律的时间点干某件事。并且时间的触发的条件可以非常复杂（比如每月最后一个工作日的17:50），复杂到需要一个专门的框架来干这个事。 Quartz就是来干这样的事，你给它一个触发条件的定义，它负责到了时间点，触发相应的Job起来干活。 框架搭建导入Quartz的相关jar包slf4j-log4j12-1.7.7.jarquartz-jobs-">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://fankekeke.club/2019/01/11/Quartz/">
+
+
+
+
+
+  <title>Quartz | 悲伤的橘子树</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?[object Object]";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">悲伤的橘子树</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://fankekeke.club/2019/01/11/Quartz/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="樊可">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/obt.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="悲伤的橘子树">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Quartz</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-11T09:35:29+08:00">
+                2019-01-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java工具与中间件/" itemprop="url" rel="index">
+                    <span itemprop="name">Java工具与中间件</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/01/11/Quartz/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/01/11/Quartz/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv">本文总阅读数<i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="介绍Quartz"><a href="#介绍Quartz" class="headerlink" title="介绍Quartz"></a>介绍Quartz</h3><p>Quartz是一个任务调度框架。在某一个有规律的时间点干某件事。并且时间的触发的条件可以非常复杂（比如每月最后一个工作日的17:50），复杂到需要一个专门的框架来干这个事。 Quartz就是来干这样的事，你给它一个触发条件的定义，它负责到了时间点，触发相应的Job起来干活。</p>
+<h3 id="框架搭建"><a href="#框架搭建" class="headerlink" title="框架搭建"></a>框架搭建</h3><h4 id="导入Quartz的相关jar包"><a href="#导入Quartz的相关jar包" class="headerlink" title="导入Quartz的相关jar包"></a>导入Quartz的相关jar包</h4><p><strong>slf4j-log4j12-1.7.7.jar<br>quartz-jobs-2.2.3.jar<br>quartz-2.2.3.jar<br>c3p0-0.9.1.1.jar<br>log4j-1.2.16.jar<br>slf4j-api-1.7.7.jar</strong></p>
+<h4 id="TestQuartz"><a href="#TestQuartz" class="headerlink" title="TestQuartz"></a>TestQuartz</h4><p>触发器 Trigger： 什么时候工作<br>任务 Job: 做什么工作<br>调度器 Scheduler: 搭配 Trigger和Job<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestQuartz</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">            <span class="comment">//创建调度器</span></span><br><span class="line">            Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();</span><br><span class="line"> </span><br><span class="line">            <span class="comment">//定义一个触发器</span></span><br><span class="line">            Trigger trigger = newTrigger().withIdentity(<span class="string">"trigger1"</span>, <span class="string">"group1"</span>) <span class="comment">//定义名称和所属的组</span></span><br><span class="line">                .startNow()</span><br><span class="line">                .withSchedule(simpleSchedule()</span><br><span class="line">                    .withIntervalInSeconds(<span class="number">2</span>) <span class="comment">//每隔2秒执行一次</span></span><br><span class="line">                    .withRepeatCount(<span class="number">10</span>)) <span class="comment">//总共执行11次(第一次执行不基数)</span></span><br><span class="line">                .build();</span><br><span class="line"> </span><br><span class="line">            <span class="comment">//定义一个JobDetail</span></span><br><span class="line">            JobDetail job = newJob(MailJob.class) <span class="comment">//指定干活的类MailJob</span></span><br><span class="line">                .withIdentity(<span class="string">"mailjob1"</span>, <span class="string">"mailgroup"</span>) <span class="comment">//定义任务名称和分组</span></span><br><span class="line">                .usingJobData(<span class="string">"email"</span>, <span class="string">"admin@10086.com"</span>) <span class="comment">//定义属性</span></span><br><span class="line">                .build();</span><br><span class="line">             </span><br><span class="line">            <span class="comment">//调度加入这个job</span></span><br><span class="line">            scheduler.scheduleJob(job, trigger);</span><br><span class="line"> </span><br><span class="line">            <span class="comment">//启动</span></span><br><span class="line">            scheduler.start();</span><br><span class="line">             </span><br><span class="line">            <span class="comment">//等待20秒，让前面的任务都执行完了之后，再关闭调度器</span></span><br><span class="line">            Thread.sleep(<span class="number">20000</span>);</span><br><span class="line">            scheduler.shutdown(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="MailJob"><a href="#MailJob" class="headerlink" title="MailJob"></a>MailJob</h4><p>MailJob 实现了 Job 接口，提供 execute<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MailJob</span> <span class="keyword">implements</span> <span class="title">Job</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(JobExecutionContext context)</span> <span class="keyword">throws</span> JobExecutionException </span>&#123;</span><br><span class="line">        JobDetail detail = context.getJobDetail();</span><br><span class="line">        String email = detail.getJobDataMap().getString(<span class="string">"email"</span>);</span><br><span class="line">         </span><br><span class="line">        SimpleDateFormat sdf = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"HH:mm:ss"</span>);</span><br><span class="line">        String now = sdf.format(<span class="keyword">new</span>  Date());</span><br><span class="line">         </span><br><span class="line">        System.out.printf(<span class="string">"给邮件地址 %s 发出了一封定时邮件, 当前时间是: %s%n"</span> ,email, now);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.withIdentity(<span class="string">"mailjob1"</span>, <span class="string">"mailgroup"</span>)</span><br></pre></td></tr></table></figure>
+<p> 比如一个系统有3个job 是备份数据库的，有4个job 是发邮件的，那么对他们进行分组，可以方便管理，类似于一次性停止所有发邮件的这样的操作</p>
+<h4 id="log4j-xml"><a href="#log4j-xml" class="headerlink" title="log4j.xml"></a>log4j.xml</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;!DOCTYPE log4j:configuration SYSTEM <span class="string">"log4j.dtd"</span>&gt;</span><br><span class="line"> </span><br><span class="line">&lt;log4j:configuration xmlns:log4j=<span class="string">"http://jakarta.apache.org/log4j/"</span>&gt;</span><br><span class="line"> </span><br><span class="line">  &lt;appender name=<span class="string">"default"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"org.apache.log4j.ConsoleAppender"</span>&gt;</span><br><span class="line">    &lt;param name=<span class="string">"target"</span> value=<span class="string">"System.out"</span>/&gt;</span><br><span class="line">    &lt;layout <span class="class"><span class="keyword">class</span></span>=<span class="string">"org.apache.log4j.PatternLayout"</span>&gt;</span><br><span class="line">      &lt;param name=<span class="string">"ConversionPattern"</span> value=<span class="string">"[%p] %d&#123;dd MMM hh:mm:ss.SSS aa&#125; %t [%c]%n%m%n%n"</span>/&gt;</span><br><span class="line">    &lt;/layout&gt;</span><br><span class="line">  &lt;/appender&gt;</span><br><span class="line"> </span><br><span class="line"> &lt;logger name=<span class="string">"com.how2java"</span>&gt;</span><br><span class="line">   &lt;level value=<span class="string">"error"</span> /&gt;</span><br><span class="line"> &lt;/logger&gt;</span><br><span class="line"> </span><br><span class="line">  &lt;root&gt;</span><br><span class="line">    &lt;level value=<span class="string">"error"</span> /&gt;</span><br><span class="line">    &lt;appender-ref ref=<span class="string">"default"</span> /&gt;</span><br><span class="line">  &lt;/root&gt;</span><br><span class="line"> </span><br><span class="line">&lt;/log4j:configuration&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="Job管理"><a href="#Job管理" class="headerlink" title="Job管理"></a>Job管理</h3><h4 id="Job组成部分"><a href="#Job组成部分" class="headerlink" title="Job组成部分"></a>Job组成部分</h4><p>JobDetail: 用于描述这个Job是做什么的<br>实现Job的类: 具体干活的<br>JobDataMap: 给 Job 提供参数用的</p>
+<p>JobDataMap 除了usingJobData 方式之外，还可以是其他方式，像这样<br> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">job.getJobDataMap().put(<span class="string">"email"</span>, <span class="string">"admin@taobao.com"</span>);</span><br></pre></td></tr></table></figure></p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">jobDataMap</span><span class="params">()</span> <span class="keyword">throws</span> SchedulerException, InterruptedException </span>&#123;</span><br><span class="line">      Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();</span><br><span class="line"></span><br><span class="line">      Trigger trigger = newTrigger().withIdentity(<span class="string">"trigger1"</span>, <span class="string">"group1"</span>)</span><br><span class="line">          .startNow()</span><br><span class="line">          .withSchedule(simpleSchedule()</span><br><span class="line">              .withIntervalInSeconds(<span class="number">2</span>)</span><br><span class="line">              .withRepeatCount(<span class="number">10</span>))</span><br><span class="line">          .build();</span><br><span class="line"></span><br><span class="line">      <span class="comment">//定义一个JobDetail</span></span><br><span class="line">      JobDetail job = newJob(MailJob.class)</span><br><span class="line">          .withIdentity(<span class="string">"mailjob1"</span>, <span class="string">"mailgroup"</span>)</span><br><span class="line">          .usingJobData(<span class="string">"email"</span>, <span class="string">"admin@10086.com"</span>)</span><br><span class="line">          .build();</span><br><span class="line">       </span><br><span class="line">      <span class="comment">//用JobDataMap 修改email</span></span><br><span class="line">      job.getJobDataMap().put(<span class="string">"email"</span>, <span class="string">"admin@taobao.com"</span>);</span><br><span class="line">       </span><br><span class="line">      <span class="comment">//调度加入这个job</span></span><br><span class="line">      scheduler.scheduleJob(job, trigger);</span><br><span class="line"></span><br><span class="line">      <span class="comment">//启动</span></span><br><span class="line">      scheduler.start();</span><br><span class="line">        </span><br><span class="line">      <span class="comment">//等待20秒，让前面的任务都执行完了之后，再关闭调度器</span></span><br><span class="line">      Thread.sleep(<span class="number">20000</span>);</span><br><span class="line">      scheduler.shutdown(<span class="keyword">true</span>);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Job并发"><a href="#Job并发" class="headerlink" title="Job并发"></a>Job并发</h4><p> 默认的情况下，无论上一次任务是否结束或者完成，只要规定的时间到了，那么下一次就开始。</p>
+<p>有时候会做长时间的任务，比如数据库备份，这个时候就希望上一次备份成功结束之后，才开始下一次备份，即便是规定时间到了，也不能开始，因为这样很有可能造成 数据库被锁死 （几个线程同时备份数据库，引发无法预计的混乱）。</p>
+<p>那么在这种情况下，给数据库备份任务增加一个注解就好了<br><strong>@DisallowConcurrentExecution </strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@DisallowConcurrentExecution</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DatabaseBackupJob</span> <span class="keyword">implements</span> <span class="title">Job</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(JobExecutionContext context)</span> <span class="keyword">throws</span> JobExecutionException </span>&#123;</span><br><span class="line">        JobDetail detail = context.getJobDetail();</span><br><span class="line">        String database = detail.getJobDataMap().getString(<span class="string">"database"</span>);</span><br><span class="line">         </span><br><span class="line">        System.out.printf(<span class="string">"给数据库 %s 备份, 耗时10秒 %n"</span> ,database);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">10000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="Job异常"><a href="#Job异常" class="headerlink" title="Job异常"></a>Job异常</h4><p>任务里发生异常是很常见的。 异常处理办法通常是两种： </p>
+<h5 id="当异常发生，那么就通知所有管理这个-Job-的调度，停止运行它"><a href="#当异常发生，那么就通知所有管理这个-Job-的调度，停止运行它" class="headerlink" title="当异常发生，那么就通知所有管理这个 Job 的调度，停止运行它"></a>当异常发生，那么就通知所有管理这个 Job 的调度，停止运行它</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExceptionJob1</span>  <span class="keyword">implements</span> <span class="title">Job</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(JobExecutionContext context)</span> <span class="keyword">throws</span> JobExecutionException </span>&#123;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//故意发生异常</span></span><br><span class="line">            System.out.println(<span class="number">100</span>/i);</span><br><span class="line">             </span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"发生了异常，取消这个Job 对应的所有调度"</span>);</span><br><span class="line">            JobExecutionException je =<span class="keyword">new</span> JobExecutionException(e);</span><br><span class="line">            je.setUnscheduleAllTriggers(<span class="keyword">true</span>);</span><br><span class="line">            <span class="keyword">throw</span> je;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="当异常发生，修改一下参数，马上重新运行"><a href="#当异常发生，修改一下参数，马上重新运行" class="headerlink" title="当异常发生，修改一下参数，马上重新运行"></a>当异常发生，修改一下参数，马上重新运行</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExceptionJob2</span>  <span class="keyword">implements</span> <span class="title">Job</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(JobExecutionContext context)</span> <span class="keyword">throws</span> JobExecutionException </span>&#123;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//故意发生异常</span></span><br><span class="line">            System.out.println(<span class="string">"运算结果"</span>+<span class="number">100</span>/i);</span><br><span class="line">             </span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"发生了异常，修改一下参数，立即重新执行"</span>);</span><br><span class="line">            i = <span class="number">1</span>;</span><br><span class="line">            JobExecutionException je =<span class="keyword">new</span> JobExecutionException(e);</span><br><span class="line">            je.setRefireImmediately(<span class="keyword">true</span>);</span><br><span class="line">            <span class="keyword">throw</span> je;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="中断-Job"><a href="#中断-Job" class="headerlink" title="中断 Job"></a>中断 Job</h4><p>这个Job需要实现 InterruptableJob 接口，然后就方便中断了<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//必须实现InterruptableJob 而非 Job才能够被中断</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StoppableJob</span> <span class="keyword">implements</span> <span class="title">InterruptableJob</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> stop = <span class="keyword">false</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(JobExecutionContext context)</span> <span class="keyword">throws</span> JobExecutionException </span>&#123;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>)&#123;</span><br><span class="line"> </span><br><span class="line">            <span class="keyword">if</span>(stop)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">"每隔1秒，进行一次检测，看看是否停止"</span>);</span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                <span class="comment">// TODO Auto-generated catch block</span></span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">"持续工作中。。。"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">     </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">interrupt</span><span class="params">()</span> <span class="keyword">throws</span> UnableToInterruptJobException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"被调度叫停"</span>);</span><br><span class="line">        stop = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>运作终止方法</strong></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">stop</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();</span><br><span class="line">          </span><br><span class="line">        Trigger trigger = newTrigger().withIdentity(<span class="string">"trigger1"</span>, <span class="string">"group1"</span>)</span><br><span class="line">            .startNow()</span><br><span class="line">            .build();</span><br><span class="line">  </span><br><span class="line">        <span class="comment">//定义一个JobDetail</span></span><br><span class="line">        JobDetail job = newJob(StoppableJob.class)</span><br><span class="line">            .withIdentity(<span class="string">"exceptionJob1"</span>, <span class="string">"someJobGroup"</span>)</span><br><span class="line">            .build();</span><br><span class="line">          </span><br><span class="line">        <span class="comment">//调度加入这个job</span></span><br><span class="line">        scheduler.scheduleJob(job, trigger);</span><br><span class="line">  </span><br><span class="line">        <span class="comment">//启动</span></span><br><span class="line">        scheduler.start();</span><br><span class="line">     </span><br><span class="line">        Thread.sleep(<span class="number">5000</span>);</span><br><span class="line">        System.out.println(<span class="string">"过5秒，调度停止 job"</span>);</span><br><span class="line">         </span><br><span class="line">        <span class="comment">//key 就相当于这个Job的主键</span></span><br><span class="line">        scheduler.interrupt(job.getKey());</span><br><span class="line">         </span><br><span class="line">        <span class="comment">//等待20秒，让前面的任务都执行完了之后，再关闭调度器</span></span><br><span class="line">        Thread.sleep(<span class="number">20000</span>);</span><br><span class="line">        scheduler.shutdown(<span class="keyword">true</span>);  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="SimpleTrigger"><a href="#SimpleTrigger" class="headerlink" title="SimpleTrigger"></a>SimpleTrigger</h3><p>Trigger 就是触发器的意思，用来指定什么时间开始触发，触发多少次，每隔多久触发一次.<br>SimpleTrigger 可以方便的实现一系列的触发机制。</p>
+<h4 id="下一个8秒的倍数"><a href="#下一个8秒的倍数" class="headerlink" title="下一个8秒的倍数"></a>下一个8秒的倍数</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">           Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();</span><br><span class="line"> </span><br><span class="line">           Date startTime = DateBuilder.nextGivenSecondDate(<span class="keyword">null</span>, <span class="number">8</span>);</span><br><span class="line"></span><br><span class="line">           JobDetail job = newJob(MailJob.class).withIdentity(<span class="string">"mailJob"</span>, <span class="string">"mailGroup"</span>).build();</span><br><span class="line"></span><br><span class="line">           SimpleTrigger trigger = (SimpleTrigger) newTrigger().withIdentity(<span class="string">"trigger1"</span>, <span class="string">"group1"</span>).startAt(startTime).build();</span><br><span class="line"></span><br><span class="line">           <span class="comment">// schedule it to run!</span></span><br><span class="line">           Date ft = scheduler.scheduleJob(job, trigger);</span><br><span class="line">            </span><br><span class="line">           System.out.println(<span class="string">"当前时间是："</span> + <span class="keyword">new</span> Date().toLocaleString());</span><br><span class="line">           System.out.printf(<span class="string">"%s 这个任务会在 %s 准时开始运行，累计运行%d次，间隔时间是%d毫秒%n"</span>, job.getKey(), ft.toLocaleString(), trigger.getRepeatCount()+<span class="number">1</span>, trigger.getRepeatInterval());</span><br><span class="line">           </span><br><span class="line">           scheduler.start();</span><br><span class="line">             </span><br><span class="line">           <span class="comment">//等待200秒，让前面的任务都执行完了之后，再关闭调度器</span></span><br><span class="line">           Thread.sleep(<span class="number">200000</span>);</span><br><span class="line">           scheduler.shutdown(<span class="keyword">true</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="10-秒后运行"><a href="#10-秒后运行" class="headerlink" title="10 秒后运行"></a>10 秒后运行</h4><p><strong>DateBuilder.futureDate()</strong></p>
+<p>可以方便的获取10秒后， 5分钟后， 3个小时候，2个月后这样的时间<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">            Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();</span><br><span class="line">   </span><br><span class="line">            Date startTime = DateBuilder.futureDate(<span class="number">10</span>, IntervalUnit.SECOND);</span><br><span class="line">             </span><br><span class="line">            JobDetail job = newJob(MailJob.class).withIdentity(<span class="string">"mailJob"</span>, <span class="string">"mailGroup"</span>).build();</span><br><span class="line">  </span><br><span class="line">            SimpleTrigger trigger = (SimpleTrigger) newTrigger().withIdentity(<span class="string">"trigger1"</span>, <span class="string">"group1"</span>).startAt(startTime).build();</span><br><span class="line">  </span><br><span class="line">            <span class="comment">// schedule it to run!</span></span><br><span class="line">            Date ft = scheduler.scheduleJob(job, trigger);</span><br><span class="line">              </span><br><span class="line">            System.out.println(<span class="string">"当前时间是："</span> + <span class="keyword">new</span> Date().toLocaleString());</span><br><span class="line">            System.out.printf(<span class="string">"%s 这个任务会在 %s 准时开始运行，累计运行%d次，间隔时间是%d毫秒%n"</span>, job.getKey(), ft.toLocaleString(), trigger.getRepeatCount()+<span class="number">1</span>, trigger.getRepeatInterval());</span><br><span class="line">             </span><br><span class="line">            scheduler.start();</span><br><span class="line">               </span><br><span class="line">            <span class="comment">//等待200秒，让前面的任务都执行完了之后，再关闭调度器</span></span><br><span class="line">            Thread.sleep(<span class="number">200000</span>);</span><br><span class="line">            scheduler.shutdown(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="累计n次，间隔n秒"><a href="#累计n次，间隔n秒" class="headerlink" title="累计n次，间隔n秒"></a>累计n次，间隔n秒</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">            Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();</span><br><span class="line">  </span><br><span class="line">            Date startTime = DateBuilder.nextGivenSecondDate(<span class="keyword">null</span>, <span class="number">8</span>);</span><br><span class="line"> </span><br><span class="line">            JobDetail job = newJob(MailJob.class).withIdentity(<span class="string">"mailJob"</span>, <span class="string">"mailGroup"</span>).build();</span><br><span class="line"> </span><br><span class="line">            SimpleTrigger trigger = (SimpleTrigger) newTrigger()</span><br><span class="line">                    .withIdentity(<span class="string">"trigger1"</span>, <span class="string">"group1"</span>)</span><br><span class="line">                    .startAt(startTime)</span><br><span class="line">                    .withSchedule(simpleSchedule()</span><br><span class="line">                            .withRepeatCount(<span class="number">3</span>)</span><br><span class="line">                            .withIntervalInSeconds(<span class="number">1</span>))</span><br><span class="line">                    .build();</span><br><span class="line"> </span><br><span class="line">            <span class="comment">// schedule it to run!</span></span><br><span class="line">            Date ft = scheduler.scheduleJob(job, trigger);</span><br><span class="line">             </span><br><span class="line">            System.out.println(<span class="string">"当前时间是："</span> + <span class="keyword">new</span> Date().toLocaleString());</span><br><span class="line">            System.out.printf(<span class="string">"%s 这个任务会在 %s 准时开始运行，累计运行%d次，间隔时间是%d毫秒%n"</span>, job.getKey(), ft.toLocaleString(), trigger.getRepeatCount()+<span class="number">1</span>, trigger.getRepeatInterval());</span><br><span class="line">            </span><br><span class="line">            scheduler.start();</span><br><span class="line">              </span><br><span class="line">            <span class="comment">//等待200秒，让前面的任务都执行完了之后，再关闭调度器</span></span><br><span class="line">            Thread.sleep(<span class="number">200000</span>);</span><br><span class="line">            scheduler.shutdown(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="无限重复，间隔1秒"><a href="#无限重复，间隔1秒" class="headerlink" title="无限重复，间隔1秒"></a>无限重复，间隔1秒</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">           Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();</span><br><span class="line">  </span><br><span class="line">           Date startTime = DateBuilder.nextGivenSecondDate(<span class="keyword">null</span>, <span class="number">8</span>);</span><br><span class="line"> </span><br><span class="line">           JobDetail job = newJob(MailJob.class).withIdentity(<span class="string">"mailJob"</span>, <span class="string">"mailGroup"</span>).build();</span><br><span class="line"> </span><br><span class="line">           SimpleTrigger trigger = (SimpleTrigger) newTrigger()</span><br><span class="line">                   .withIdentity(<span class="string">"trigger1"</span>, <span class="string">"group1"</span>)</span><br><span class="line">                   .startAt(startTime)</span><br><span class="line">                   .withSchedule(simpleSchedule()</span><br><span class="line">                           .repeatForever()</span><br><span class="line">                           .withIntervalInSeconds(<span class="number">1</span>))</span><br><span class="line">                   .build();</span><br><span class="line"> </span><br><span class="line">           <span class="comment">// schedule it to run!</span></span><br><span class="line">           Date ft = scheduler.scheduleJob(job, trigger);</span><br><span class="line">             </span><br><span class="line">           System.out.println(<span class="string">"当前时间是："</span> + <span class="keyword">new</span> Date().toLocaleString());</span><br><span class="line">           System.out.printf(<span class="string">"%s 这个任务会在 %s 准时开始运行，累计运行%d次，间隔时间是%d毫秒%n"</span>, job.getKey(), ft.toLocaleString(), trigger.getRepeatCount()+<span class="number">1</span>, trigger.getRepeatInterval());</span><br><span class="line">            </span><br><span class="line">           scheduler.start();</span><br><span class="line">              </span><br><span class="line">           <span class="comment">//等待200秒，让前面的任务都执行完了之后，再关闭调度器</span></span><br><span class="line">           Thread.sleep(<span class="number">200000</span>);</span><br><span class="line">           scheduler.shutdown(<span class="keyword">true</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="CronTrigger"><a href="#CronTrigger" class="headerlink" title="CronTrigger"></a>CronTrigger</h3><p>Cron 是Linux下的一个定时器，功能很强大，但是表达式更为复杂<br>CronTrigger 就是用 Cron 表达式来安排触发时间和次数的。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">            Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();</span><br><span class="line">   </span><br><span class="line">            Date startTime = DateBuilder.nextGivenSecondDate(<span class="keyword">null</span>, <span class="number">8</span>);</span><br><span class="line">  </span><br><span class="line">            JobDetail job = newJob(MailJob.class).withIdentity(<span class="string">"mailJob"</span>, <span class="string">"mailGroup"</span>).build();</span><br><span class="line">  </span><br><span class="line">            CronTrigger trigger = newTrigger().withIdentity(<span class="string">"trigger1"</span>, <span class="string">"group1"</span>).withSchedule(cronSchedule(<span class="string">"0/2 * * * * ?"</span>))</span><br><span class="line">                    .build();</span><br><span class="line">  </span><br><span class="line">            <span class="comment">// schedule it to run!</span></span><br><span class="line">            Date ft = scheduler.scheduleJob(job, trigger);</span><br><span class="line">             </span><br><span class="line">            System.out.println(<span class="string">"使用的Cron表达式是："</span>+trigger.getCronExpression());</span><br><span class="line"><span class="comment">//            System.out.printf("%s 这个任务会在 %s 准时开始运行，累计运行%d次，间隔时间是%d毫秒%n", job.getKey(), ft.toLocaleString(), trigger.getRepeatCount()+1, trigger.getRepeatInterval());</span></span><br><span class="line">             </span><br><span class="line">            scheduler.start();</span><br><span class="line">               </span><br><span class="line">            <span class="comment">//等待200秒，让前面的任务都执行完了之后，再关闭调度器</span></span><br><span class="line">            Thread.sleep(<span class="number">200000</span>);</span><br><span class="line">            scheduler.shutdown(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>这里有个Cron表达式生成工具，可以参考一下：</strong> <a href="http://cron.qqe2.com/" target="_blank" rel="noopener">http://cron.qqe2.com/</a></p>
+<h3 id="Listener"><a href="#Listener" class="headerlink" title="Listener"></a>Listener</h3><p>Quartz 的监听器有Job监听器，Trigger监听器， Scheduler监听器，对不同层面进行监控。 实际业务用的较多的是Job监听器，用于监听器是否执行了</p>
+<h4 id="MailJobListener"><a href="#MailJobListener" class="headerlink" title="MailJobListener"></a>MailJobListener</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MailJobListener</span> <span class="keyword">implements</span> <span class="title">JobListener</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"listener of mail job"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">jobExecutionVetoed</span><span class="params">(JobExecutionContext context)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        System.out.println(<span class="string">"取消执行：\t "</span>+context.getJobDetail().getKey());</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">jobToBeExecuted</span><span class="params">(JobExecutionContext context)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        System.out.println(<span class="string">"准备执行：\t "</span>+context.getJobDetail().getKey());</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">jobWasExecuted</span><span class="params">(JobExecutionContext context, JobExecutionException arg1)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        System.out.println(<span class="string">"执行结束：\t "</span>+context.getJobDetail().getKey());</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>必须实现这四个方法</strong></p>
+<h4 id="增加监听器"><a href="#增加监听器" class="headerlink" title="增加监听器"></a>增加监听器</h4><p>mailJob是当前JobDetail的对象<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//增加Job监听</span></span><br><span class="line">MailJobListener mailJobListener= <span class="keyword">new</span> MailJobListener();</span><br><span class="line">KeyMatcher&lt;JobKey&gt; keyMatcher = KeyMatcher.keyEquals(mailJob.getKey());</span><br><span class="line">scheduler.getListenerManager().addJobListener(mailJobListener, keyMatcher);</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/08/SpringBoot整合Quartz定时任务框架/" rel="next" title="SpringBoot整合Quartz定时任务框架">
+                <i class="fa fa-chevron-left"></i> SpringBoot整合Quartz定时任务框架
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/obt.jpg" alt="樊可">
+            
+              <p class="site-author-name" itemprop="name">樊可</p>
+              <p class="site-description motion-element" itemprop="description">不相信自己的人没有努力的价值。   -- 迈特凯</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">68</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Fankekeke" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/u/5384373842?is_all=1" target="_blank" title="weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:1258846421@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友链
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.baidu.com/" title="百度" target="_blank">百度</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://shansan.top/" title="shansan" target="_blank">shansan</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.nicenan.cn/" title="耐斯楠" target="_blank">耐斯楠</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://my.oschina.net/liuh1988" title="liuh1998" target="_blank">liuh1998</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.hojun.cn/" title="hojun" target="_blank">hojun</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.csdn.net/qq_43051879" title="刘Hart" target="_blank">刘Hart</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cloud.tencent.com/developer/column/3143" title="赵俊的Java专栏" target="_blank">赵俊的Java专栏</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://trhx.top" title="TRHX’s Blog" target="_blank">TRHX’s Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.moonster.top/" title="一去二三遥" target="_blank">一去二三遥</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://mlldxe.cn/" title="Mlldxe’s Blog" target="_blank">Mlldxe’s Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://summul.cn/" title="夏晨博客" target="_blank">夏晨博客</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://xaoxuu.com/blog/" title="IOS大佬" target="_blank">IOS大佬</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://shan333.xyz/s" title="汕汕哥的图床" target="_blank">汕汕哥的图床</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://sxxkearth.github.io/" title="嗜血星空earth" target="_blank">嗜血星空earth</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://sasuke.club/" title="悲伤的桔子树" target="_blank">悲伤的桔子树</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍Quartz"><span class="nav-number">1.</span> <span class="nav-text">介绍Quartz</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#框架搭建"><span class="nav-number">2.</span> <span class="nav-text">框架搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#导入Quartz的相关jar包"><span class="nav-number">2.1.</span> <span class="nav-text">导入Quartz的相关jar包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TestQuartz"><span class="nav-number">2.2.</span> <span class="nav-text">TestQuartz</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MailJob"><span class="nav-number">2.3.</span> <span class="nav-text">MailJob</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分组"><span class="nav-number">2.4.</span> <span class="nav-text">分组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#log4j-xml"><span class="nav-number">2.5.</span> <span class="nav-text">log4j.xml</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Job管理"><span class="nav-number">3.</span> <span class="nav-text">Job管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Job组成部分"><span class="nav-number">3.1.</span> <span class="nav-text">Job组成部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Job并发"><span class="nav-number">3.2.</span> <span class="nav-text">Job并发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Job异常"><span class="nav-number">3.3.</span> <span class="nav-text">Job异常</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#当异常发生，那么就通知所有管理这个-Job-的调度，停止运行它"><span class="nav-number">3.3.1.</span> <span class="nav-text">当异常发生，那么就通知所有管理这个 Job 的调度，停止运行它</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#当异常发生，修改一下参数，马上重新运行"><span class="nav-number">3.3.2.</span> <span class="nav-text">当异常发生，修改一下参数，马上重新运行</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#中断-Job"><span class="nav-number">3.4.</span> <span class="nav-text">中断 Job</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SimpleTrigger"><span class="nav-number">4.</span> <span class="nav-text">SimpleTrigger</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#下一个8秒的倍数"><span class="nav-number">4.1.</span> <span class="nav-text">下一个8秒的倍数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-秒后运行"><span class="nav-number">4.2.</span> <span class="nav-text">10 秒后运行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#累计n次，间隔n秒"><span class="nav-number">4.3.</span> <span class="nav-text">累计n次，间隔n秒</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#无限重复，间隔1秒"><span class="nav-number">4.4.</span> <span class="nav-text">无限重复，间隔1秒</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CronTrigger"><span class="nav-number">5.</span> <span class="nav-text">CronTrigger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Listener"><span class="nav-number">6.</span> <span class="nav-text">Listener</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MailJobListener"><span class="nav-number">6.1.</span> <span class="nav-text">MailJobListener</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#增加监听器"><span class="nav-number">6.2.</span> <span class="nav-text">增加监听器</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">樊可</span>
+
+  
+</div>
+
+<!--
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+-->
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      本站访问数<i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      本站总访问量<i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: false,
+        appId: 'qBi0aBkxrd0a61dRtSDJjK8M-gzGzoHsz',
+        appKey: 'gcHEadNXDusN49dVUsIK3Be9',
+        placeholder: '俺要评论..',
+        avatar:'monsterid',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
