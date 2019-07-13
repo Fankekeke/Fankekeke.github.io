@@ -59,15 +59,15 @@
     <span id="nav">
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/">Inici</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/about/">Qui som</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/archives/">Articles</a></li>
          
-          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projects</a></li>
+          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projectes</a></li>
          
-          <li><a href="/search/">Search</a></li>
+          <li><a href="/search/">Buscar</a></li>
          
           <li><a href="/categories/">categories</a></li>
         
@@ -85,10 +85,10 @@
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
-      <span id="i-prev" class="info" style="display:none;">Previous post</span>
-      <span id="i-next" class="info" style="display:none;">Next post</span>
-      <span id="i-top" class="info" style="display:none;">Back to top</span>
-      <span id="i-share" class="info" style="display:none;">Share post</span>
+      <span id="i-prev" class="info" style="display:none;">Post Anterior</span>
+      <span id="i-next" class="info" style="display:none;">Post Següent</span>
+      <span id="i-top" class="info" style="display:none;">Adalt</span>
+      <span id="i-share" class="info" style="display:none;">Compartir Post</span>
     </span>
     <br>
     <div id="share" style="display: none">
@@ -171,6 +171,18 @@
 <h4 id="JSP页面"><a href="#JSP页面" class="headerlink" title="JSP页面"></a>JSP页面</h4><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">&lt;%--</span><br><span class="line">  Created by IntelliJ IDEA.</span><br><span class="line">  User: F117</span><br><span class="line">  Date: <span class="number">2019</span>/<span class="number">1</span>/<span class="number">11</span></span><br><span class="line">  Time: <span class="number">14</span>:<span class="number">49</span></span><br><span class="line">  To change <span class="keyword">this</span> template use File | Settings | File Templates.</span><br><span class="line">--%&gt;</span><br><span class="line">&lt;%@ page language=<span class="string">"java"</span> pageEncoding=<span class="string">"UTF-8"</span> %&gt;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;title&gt;用WebSocket实时获知比特币价格&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;div style=<span class="string">"width:400px;margin:20px auto;border:1px solid lightgray;padding:20px;text-align:center;"</span>&gt;</span><br><span class="line">  当前比特币价格：￥&lt;span style="color:#FF7519" id="price"&gt;10000&lt;/span&gt;</span><br><span class="line">  &lt;div style="font-size:0.9em;margin-top:20px"&gt;查看的人数越多，价格越高, 当前总共 &lt;span id="total"&gt;1&lt;/span&gt; 个人在线&lt;/div&gt;</span><br><span class="line">  &lt;div style="color:silver;font-size:0.8em;margin-top:20px"&gt;以上价格纯属虚构，如有雷同，so what？&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">    <span class="keyword">var</span> websocket = <span class="keyword">null</span>;</span><br><span class="line">    <span class="comment">//判断当前浏览器是否支持WebSocket</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="string">'WebSocket'</span> in window) &#123;</span><br><span class="line">        websocket = <span class="keyword">new</span> WebSocket(<span class="string">"ws://localhost:8080/ws/bitcoinServer"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//连接成功建立的回调方法</span></span><br><span class="line">        websocket.onopen = function () &#123;</span><br><span class="line">            websocket.send(<span class="string">"客户端链接成功"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//接收到消息的回调方法</span></span><br><span class="line">        websocket.onmessage = function (event) &#123;</span><br><span class="line">            setMessageInnerHTML(event.data);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//连接发生错误的回调方法</span></span><br><span class="line">        websocket.onerror = function () &#123;</span><br><span class="line">            alert(<span class="string">"WebSocket连接发生错误"</span>);</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//连接关闭的回调方法</span></span><br><span class="line">        websocket.onclose = function () &#123;</span><br><span class="line">            alert(<span class="string">"WebSocket连接关闭"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。</span></span><br><span class="line">        window.onbeforeunload = function () &#123;</span><br><span class="line">            closeWebSocket();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        alert(<span class="string">'当前浏览器 Not support websocket'</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//将消息显示在网页上</span></span><br><span class="line">    <span class="function">function <span class="title">setMessageInnerHTML</span><span class="params">(innerHTML)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> bitcoin = eval(<span class="string">"("</span>+innerHTML+<span class="string">")"</span>);</span><br><span class="line">        document.getElementById(<span class="string">'price'</span>).innerHTML = bitcoin.price;</span><br><span class="line">        document.getElementById(<span class="string">'total'</span>).innerHTML = bitcoin.total;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//关闭WebSocket连接</span></span><br><span class="line">    <span class="function">function <span class="title">closeWebSocket</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        websocket.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
   </div>
+   <div class="comment"></div>
+    <script>
+        new Valine({
+            el: '.comment', // 
+            app_id: 'qBi0aBkxrd0a61dRtSDJjK8M-gzGzoHsz', // 这里填写上面得到的APP ID
+            app_key: 'gcHEadNXDusN49dVUsIK3Be9', // 这里填写上面得到的APP KEY
+            placeholder: '説話を言う...', // [v1.0.7 new]留言框占位提示文字
+            notify: true, // 邮件提醒!!!
+            verify: true, // 验证码
+            avatar: 'robohash'
+        });
+    </script>
 </article>
 
 
@@ -182,15 +194,15 @@
     <div id="nav-footer" style="display: none">
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/">Inici</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/about/">Qui som</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/archives/">Articles</a></li>
          
-          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projects</a></li>
+          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projectes</a></li>
          
-          <li><a href="/search/">Search</a></li>
+          <li><a href="/search/">Buscar</a></li>
          
           <li><a href="/categories/">categories</a></li>
         
@@ -218,10 +230,10 @@
     </div>
 
     <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menú</a>
         <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Compartir</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Cap amunt</a>
     </div>
 
   </div>
@@ -236,15 +248,15 @@
     <nav>
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/">Inici</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/about/">Qui som</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/archives/">Articles</a></li>
          
-          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projects</a></li>
+          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projectes</a></li>
          
-          <li><a href="/search/">Search</a></li>
+          <li><a href="/search/">Buscar</a></li>
          
           <li><a href="/categories/">categories</a></li>
         

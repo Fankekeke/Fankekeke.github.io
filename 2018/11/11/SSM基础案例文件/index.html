@@ -59,15 +59,15 @@
     <span id="nav">
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/">Inici</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/about/">Qui som</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/archives/">Articles</a></li>
          
-          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projects</a></li>
+          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projectes</a></li>
          
-          <li><a href="/search/">Search</a></li>
+          <li><a href="/search/">Buscar</a></li>
          
           <li><a href="/categories/">categories</a></li>
         
@@ -85,10 +85,10 @@
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
-      <span id="i-prev" class="info" style="display:none;">Previous post</span>
-      <span id="i-next" class="info" style="display:none;">Next post</span>
-      <span id="i-top" class="info" style="display:none;">Back to top</span>
-      <span id="i-share" class="info" style="display:none;">Share post</span>
+      <span id="i-prev" class="info" style="display:none;">Post Anterior</span>
+      <span id="i-next" class="info" style="display:none;">Post Següent</span>
+      <span id="i-top" class="info" style="display:none;">Adalt</span>
+      <span id="i-share" class="info" style="display:none;">Compartir Post</span>
     </span>
     <br>
     <div id="share" style="display: none">
@@ -170,6 +170,18 @@
 <h4 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> import=<span class="string">"java.util.*"</span> pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%@taglib prefix=<span class="string">"fm"</span> uri=<span class="string">"http://www.springframework.org/tags/form"</span> %&gt;</span><br><span class="line">&lt;%</span><br><span class="line">String path = request.getContextPath();</span><br><span class="line">String basePath = request.getScheme()+<span class="string">"://"</span>+request.getServerName()+<span class="string">":"</span>+request.getServerPort()+path+<span class="string">"/"</span>;</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE HTML PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;base href=<span class="string">"&lt;%=basePath%&gt;"</span>&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;title&gt;My JSP <span class="string">'doSaveUserInfo.jsp'</span> starting page&lt;/title&gt;</span><br><span class="line">    </span><br><span class="line">	&lt;meta http-equiv=<span class="string">"pragma"</span> content=<span class="string">"no-cache"</span>&gt;</span><br><span class="line">	&lt;meta http-equiv=<span class="string">"cache-control"</span> content=<span class="string">"no-cache"</span>&gt;</span><br><span class="line">	&lt;meta http-equiv=<span class="string">"expires"</span> content=<span class="string">"0"</span>&gt;    </span><br><span class="line">	&lt;meta http-equiv=<span class="string">"keywords"</span> content=<span class="string">"keyword1,keyword2,keyword3"</span>&gt;</span><br><span class="line">	&lt;meta http-equiv=<span class="string">"description"</span> content=<span class="string">"This is my page"</span>&gt;</span><br><span class="line">	&lt;!--</span><br><span class="line">	&lt;link rel=<span class="string">"stylesheet"</span> <span class="built_in">type</span>=<span class="string">"text/css"</span> href=<span class="string">"styles.css"</span>&gt;</span><br><span class="line">	--&gt;</span><br><span class="line"></span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;h2&gt;新增用户&lt;/h2&gt;</span><br><span class="line">    </span><br><span class="line">     &lt;fm:form method=<span class="string">"post"</span> modelAttribute=<span class="string">"user"</span> action=<span class="string">"<span class="variable">$&#123;pageContext.request.contextPath&#125;</span>/user/addUsersave.html"</span>&gt;</span><br><span class="line">    	&lt;fm:errors path=<span class="string">"userName"</span>/&gt;&lt;br/&gt;</span><br><span class="line">    	用户名称：&lt;fm:input path=<span class="string">"userName"</span>/&gt;&lt;br/&gt;</span><br><span class="line">    	&lt;fm:errors path=<span class="string">"userPwd"</span>/&gt;&lt;br/&gt;</span><br><span class="line">    	用户密码：&lt;fm:password path=<span class="string">"userPwd"</span>/&gt;&lt;br/&gt;</span><br><span class="line">    	&lt;fm:errors path=<span class="string">"userBirthday"</span>/&gt;&lt;br/&gt;</span><br><span class="line">    	用户生日：&lt;fm:input path=<span class="string">"userBirthday"</span> Class=<span class="string">"Wdate"</span> id=<span class="string">"birthday"</span> name=<span class="string">"userBirthday"</span> <span class="built_in">readonly</span>=<span class="string">"readonly"</span> /&gt;&lt;br/&gt;</span><br><span class="line">    	</span><br><span class="line">    	&lt;input <span class="built_in">type</span>=<span class="string">"submit"</span> value=<span class="string">"保存"</span>&gt;</span><br><span class="line">    &lt;/fm:form&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> &lt;body&gt;</span><br><span class="line">    &lt;h2&gt;用户修改页面&lt;/h2&gt;</span><br><span class="line">    &lt;form action=<span class="string">"<span class="variable">$&#123;pageContext.request.contextPath&#125;</span>/user/usermodifysave.html"</span> method=<span class="string">"post"</span>&gt;</span><br><span class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"hidden"</span> name=<span class="string">"id"</span> value=<span class="string">"<span class="variable">$&#123;user.id &#125;</span>"</span>&gt;&lt;br/&gt;</span><br><span class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"userName"</span> value=<span class="string">"<span class="variable">$&#123;user.userName &#125;</span>"</span>&gt;&lt;br/&gt;</span><br><span class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"userPwd"</span> value=<span class="string">"<span class="variable">$&#123;user.userPwd &#125;</span>"</span>&gt;&lt;br/&gt;</span><br><span class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"userBirthday"</span> value=<span class="string">"<span class="variable">$&#123;user.userBirthday &#125;</span>"</span>&gt;&lt;br/&gt;</span><br><span class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"submit"</span> value=<span class="string">"修改"</span>&gt;</span><br><span class="line">    &lt;input <span class="built_in">type</span>=<span class="string">"button"</span> value=<span class="string">"返回主页面"</span>&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">  </span><br><span class="line"><span class="comment">### 有形的东西迟早会凋零，但只有回忆是永远不会凋零的</span></span><br></pre></td></tr></table></figure>
   </div>
+   <div class="comment"></div>
+    <script>
+        new Valine({
+            el: '.comment', // 
+            app_id: 'qBi0aBkxrd0a61dRtSDJjK8M-gzGzoHsz', // 这里填写上面得到的APP ID
+            app_key: 'gcHEadNXDusN49dVUsIK3Be9', // 这里填写上面得到的APP KEY
+            placeholder: '説話を言う...', // [v1.0.7 new]留言框占位提示文字
+            notify: true, // 邮件提醒!!!
+            verify: true, // 验证码
+            avatar: 'robohash'
+        });
+    </script>
 </article>
 
 
@@ -181,15 +193,15 @@
     <div id="nav-footer" style="display: none">
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/">Inici</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/about/">Qui som</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/archives/">Articles</a></li>
          
-          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projects</a></li>
+          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projectes</a></li>
          
-          <li><a href="/search/">Search</a></li>
+          <li><a href="/search/">Buscar</a></li>
          
           <li><a href="/categories/">categories</a></li>
         
@@ -217,10 +229,10 @@
     </div>
 
     <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menú</a>
         <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Compartir</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Cap amunt</a>
     </div>
 
   </div>
@@ -235,15 +247,15 @@
     <nav>
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/">Inici</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/about/">Qui som</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/archives/">Articles</a></li>
          
-          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projects</a></li>
+          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projectes</a></li>
          
-          <li><a href="/search/">Search</a></li>
+          <li><a href="/search/">Buscar</a></li>
          
           <li><a href="/categories/">categories</a></li>
         

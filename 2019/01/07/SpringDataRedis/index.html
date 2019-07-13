@@ -59,15 +59,15 @@
     <span id="nav">
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/">Inici</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/about/">Qui som</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/archives/">Articles</a></li>
          
-          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projects</a></li>
+          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projectes</a></li>
          
-          <li><a href="/search/">Search</a></li>
+          <li><a href="/search/">Buscar</a></li>
          
           <li><a href="/categories/">categories</a></li>
         
@@ -85,10 +85,10 @@
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
-      <span id="i-prev" class="info" style="display:none;">Previous post</span>
-      <span id="i-next" class="info" style="display:none;">Next post</span>
-      <span id="i-top" class="info" style="display:none;">Back to top</span>
-      <span id="i-share" class="info" style="display:none;">Share post</span>
+      <span id="i-prev" class="info" style="display:none;">Post Anterior</span>
+      <span id="i-next" class="info" style="display:none;">Post Següent</span>
+      <span id="i-top" class="info" style="display:none;">Adalt</span>
+      <span id="i-share" class="info" style="display:none;">Compartir Post</span>
     </span>
     <br>
     <div id="share" style="display: none">
@@ -167,6 +167,18 @@
 <p><strong>实体类必须实现Serializable接口<br>实体类必须实现Serializable接口<br>实体类必须实现Serializable接口</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 添加 Users</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span></span>&#123;</span><br><span class="line">Users users = <span class="keyword">new</span> Users();</span><br><span class="line">users.setAge(<span class="number">30</span>);</span><br><span class="line">users.setId(<span class="number">1</span>);</span><br><span class="line">users.setName(<span class="string">"张三"</span>);</span><br><span class="line"><span class="comment">//更换序列化器</span></span><br><span class="line"><span class="keyword">this</span>.redisTemplate.setValueSerializer(<span class="keyword">new</span></span><br><span class="line">JdkSerializationRedisSerializer());</span><br><span class="line"><span class="keyword">this</span>.redisTemplate.opsForValue().set(<span class="string">"users"</span>, users);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 获取 Users</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//更换序列化器</span></span><br><span class="line"><span class="keyword">this</span>.redisTemplate.setValueSerializer(<span class="keyword">new</span></span><br><span class="line">JdkSerializationRedisSerializer());</span><br><span class="line">Users users =</span><br><span class="line">(Users)<span class="keyword">this</span>.redisTemplate.opsForValue().get(<span class="string">"users"</span>);</span><br><span class="line">System.out.println(users);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="Spring-Data-Redis-以-JSON-的格式存储实体对象"><a href="#Spring-Data-Redis-以-JSON-的格式存储实体对象" class="headerlink" title="Spring Data Redis 以 JSON 的格式存储实体对象"></a>Spring Data Redis 以 JSON 的格式存储实体对象</h3><h4 id="导入jackson包"><a href="#导入jackson包" class="headerlink" title="导入jackson包"></a>导入jackson包</h4><h4 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 添加 Users JSON 格式</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test5</span><span class="params">()</span></span>&#123;</span><br><span class="line">Users users = <span class="keyword">new</span> Users();</span><br><span class="line">users.setAge(<span class="number">23</span>);</span><br><span class="line">users.setId(<span class="number">2</span>);</span><br><span class="line">users.setName(<span class="string">"李四"</span>);</span><br><span class="line"><span class="keyword">this</span>.redisTemplate.setValueSerializer(<span class="keyword">new</span></span><br><span class="line">Jackson2JsonRedisSerializer&lt;&gt;(Users.class));</span><br><span class="line"><span class="keyword">this</span>.redisTemplate.opsForValue().set(<span class="string">"usersjson"</span>, users);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 获取 Uesrs JSON 格式</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test6</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">this</span>.redisTemplate.setValueSerializer(<span class="keyword">new</span></span><br><span class="line">Jackson2JsonRedisSerializer&lt;&gt;(Users.class));</span><br><span class="line">Users users =</span><br><span class="line">(Users)<span class="keyword">this</span>.redisTemplate.opsForValue().get(<span class="string">"usersjson"</span>);</span><br><span class="line">System.out.println(users);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
   </div>
+   <div class="comment"></div>
+    <script>
+        new Valine({
+            el: '.comment', // 
+            app_id: 'qBi0aBkxrd0a61dRtSDJjK8M-gzGzoHsz', // 这里填写上面得到的APP ID
+            app_key: 'gcHEadNXDusN49dVUsIK3Be9', // 这里填写上面得到的APP KEY
+            placeholder: '説話を言う...', // [v1.0.7 new]留言框占位提示文字
+            notify: true, // 邮件提醒!!!
+            verify: true, // 验证码
+            avatar: 'robohash'
+        });
+    </script>
 </article>
 
 
@@ -178,15 +190,15 @@
     <div id="nav-footer" style="display: none">
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/">Inici</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/about/">Qui som</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/archives/">Articles</a></li>
          
-          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projects</a></li>
+          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projectes</a></li>
          
-          <li><a href="/search/">Search</a></li>
+          <li><a href="/search/">Buscar</a></li>
          
           <li><a href="/categories/">categories</a></li>
         
@@ -214,10 +226,10 @@
     </div>
 
     <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menú</a>
         <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Compartir</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Cap amunt</a>
     </div>
 
   </div>
@@ -232,15 +244,15 @@
     <nav>
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/">Inici</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/about/">Qui som</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/archives/">Articles</a></li>
          
-          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projects</a></li>
+          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projectes</a></li>
          
-          <li><a href="/search/">Search</a></li>
+          <li><a href="/search/">Buscar</a></li>
          
           <li><a href="/categories/">categories</a></li>
         

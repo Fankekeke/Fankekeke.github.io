@@ -59,15 +59,15 @@
     <span id="nav">
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/">Inici</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/about/">Qui som</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/archives/">Articles</a></li>
          
-          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projects</a></li>
+          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projectes</a></li>
          
-          <li><a href="/search/">Search</a></li>
+          <li><a href="/search/">Buscar</a></li>
          
           <li><a href="/categories/">categories</a></li>
         
@@ -85,10 +85,10 @@
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
-      <span id="i-prev" class="info" style="display:none;">Previous post</span>
-      <span id="i-next" class="info" style="display:none;">Next post</span>
-      <span id="i-top" class="info" style="display:none;">Back to top</span>
-      <span id="i-share" class="info" style="display:none;">Share post</span>
+      <span id="i-prev" class="info" style="display:none;">Post Anterior</span>
+      <span id="i-next" class="info" style="display:none;">Post Següent</span>
+      <span id="i-top" class="info" style="display:none;">Adalt</span>
+      <span id="i-share" class="info" style="display:none;">Compartir Post</span>
     </span>
     <br>
     <div id="share" style="display: none">
@@ -153,6 +153,18 @@
   <div class="content" itemprop="articleBody">
     <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.fanke.sms.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.net.InetAddress;</span><br><span class="line"><span class="keyword">import</span> java.net.NetworkInterface;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">getComputer</span> </span>&#123;</span><br><span class="line">    <span class="comment">//通过截取cmd流方式得到计算机的配置信息(不好)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;String&gt; <span class="title">getIpAddress</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Process p = <span class="keyword">null</span>;</span><br><span class="line">        List&lt;String&gt; address = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            p = <span class="keyword">new</span> ProcessBuilder(<span class="string">"ipconfig"</span>, <span class="string">"/all"</span>).start();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="keyword">return</span> address;</span><br><span class="line">        &#125;</span><br><span class="line">        StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="comment">//读取进程输出值</span></span><br><span class="line">        InputStream inputStream = p.getInputStream();</span><br><span class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(inputStream));</span><br><span class="line">        String s = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">while</span> ((s = br.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                sb.append(s + <span class="string">"\n"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                inputStream.close();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(sb);</span><br><span class="line">        <span class="keyword">return</span> address;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getIpconfig</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Map&lt;String, String&gt; map = System.getenv();</span><br><span class="line">        System.out.println(map.get(<span class="string">"USERNAME"</span>));<span class="comment">//获取用户名</span></span><br><span class="line">        System.out.println(map.get(<span class="string">"COMPUTERNAME"</span>));<span class="comment">//获取计算机名</span></span><br><span class="line">        System.out.println(map.get(<span class="string">"USERDOMAIN"</span>));<span class="comment">//获取计算机域名</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//得到计算机的ip地址和mac地址</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getConfig</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            InetAddress address = InetAddress.getLocalHost();</span><br><span class="line">            NetworkInterface ni = NetworkInterface.getByInetAddress(address);</span><br><span class="line">            <span class="comment">//ni.getInetAddresses().nextElement().getAddress();</span></span><br><span class="line">            <span class="keyword">byte</span>[] mac = ni.getHardwareAddress();</span><br><span class="line">            String sIP = address.getHostAddress();</span><br><span class="line">            String sMAC = <span class="string">""</span>;</span><br><span class="line">            Formatter formatter = <span class="keyword">new</span> Formatter();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; mac.length; i++) &#123;</span><br><span class="line">                sMAC = formatter.format(Locale.getDefault(), <span class="string">"%02X%s"</span>, mac[i],</span><br><span class="line">                        (i &lt; mac.length - <span class="number">1</span>) ? <span class="string">"-"</span> : <span class="string">""</span>).toString();</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">"IP："</span> + sIP);</span><br><span class="line">            System.out.println(<span class="string">"MAC："</span> + sMAC);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//得到计算机的ip,名称,操作系统名称,操作系统版本</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Config</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            InetAddress addr = InetAddress.getLocalHost();</span><br><span class="line">            String ip=addr.getHostAddress().toString(); <span class="comment">//获取本机ip</span></span><br><span class="line">            String hostName=addr.getHostName().toString(); <span class="comment">//获取本机计算机名称</span></span><br><span class="line">            System.out.println(<span class="string">"本机IP："</span>+ip+<span class="string">"\n本机名称:"</span>+hostName);</span><br><span class="line">            Properties props=System.getProperties();</span><br><span class="line">            System.out.println(<span class="string">"操作系统的名称："</span>+props.getProperty(<span class="string">"os.name"</span>));</span><br><span class="line">            System.out.println(<span class="string">"操作系统的版本："</span>+props.getProperty(<span class="string">"os.version"</span>));</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//java环境</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">all</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Properties props=System.getProperties();</span><br><span class="line">        System.out.println(<span class="string">"Java的运行环境版本："</span>+props.getProperty(<span class="string">"java.version"</span>));</span><br><span class="line">        System.out.println(<span class="string">"Java的运行环境供应商："</span>+props.getProperty(<span class="string">"java.vendor"</span>));</span><br><span class="line">        System.out.println(<span class="string">"Java供应商的URL："</span>+props.getProperty(<span class="string">"java.vendor.url"</span>));</span><br><span class="line">        System.out.println(<span class="string">"Java的安装路径："</span>+props.getProperty(<span class="string">"java.home"</span>));</span><br><span class="line">        System.out.println(<span class="string">"Java的虚拟机规范版本："</span>+props.getProperty(<span class="string">"java.vm.specification.version"</span>));</span><br><span class="line">        System.out.println(<span class="string">"Java的虚拟机规范供应商："</span>+props.getProperty(<span class="string">"java.vm.specification.vendor"</span>));</span><br><span class="line">        System.out.println(<span class="string">"Java的虚拟机规范名称："</span>+props.getProperty(<span class="string">"java.vm.specification.name"</span>));</span><br><span class="line">        System.out.println(<span class="string">"Java的虚拟机实现版本："</span>+props.getProperty(<span class="string">"java.vm.version"</span>));</span><br><span class="line">        System.out.println(<span class="string">"Java的虚拟机实现供应商："</span>+props.getProperty(<span class="string">"java.vm.vendor"</span>));</span><br><span class="line">        System.out.println(<span class="string">"Java的虚拟机实现名称："</span>+props.getProperty(<span class="string">"java.vm.name"</span>));</span><br><span class="line">        System.out.println(<span class="string">"Java运行时环境规范版本："</span>+props.getProperty(<span class="string">"java.specification.version"</span>));</span><br><span class="line">        System.out.println(<span class="string">"Java运行时环境规范供应商："</span>+props.getProperty(<span class="string">"java.specification.vender"</span>));</span><br><span class="line">        System.out.println(<span class="string">"Java运行时环境规范名称："</span>+props.getProperty(<span class="string">"java.specification.name"</span>));</span><br><span class="line">        System.out.println(<span class="string">"Java的类格式版本号："</span>+props.getProperty(<span class="string">"java.class.version"</span>));</span><br><span class="line">        System.out.println(<span class="string">"Java的类路径："</span>+props.getProperty(<span class="string">"java.class.path"</span>));</span><br><span class="line">        System.out.println(<span class="string">"加载库时搜索的路径列表："</span>+props.getProperty(<span class="string">"java.library.path"</span>));</span><br><span class="line">        System.out.println(<span class="string">"默认的临时文件路径："</span>+props.getProperty(<span class="string">"java.io.tmpdir"</span>));</span><br><span class="line">        System.out.println(<span class="string">"一个或多个扩展目录的路径："</span>+props.getProperty(<span class="string">"java.ext.dirs"</span>));</span><br><span class="line">        System.out.println(<span class="string">"操作系统的名称："</span>+props.getProperty(<span class="string">"os.name"</span>));</span><br><span class="line">        System.out.println(<span class="string">"操作系统的构架："</span>+props.getProperty(<span class="string">"os.arch"</span>));</span><br><span class="line">        System.out.println(<span class="string">"操作系统的版本："</span>+props.getProperty(<span class="string">"os.version"</span>));</span><br><span class="line">        System.out.println(<span class="string">"文件分隔符："</span>+props.getProperty(<span class="string">"file.separator"</span>));<span class="comment">//在 unix 系统中是＂／＂ System.out.println("路径分隔符："+props.getProperty("path.separator"));//在 unix 系统中是＂:＂ System.out.println("行分隔符："+props.getProperty("line.separator"));//在 unix 系统中是＂/n＂ System.out.println("用户的账户名称："+props.getProperty("user.name"));</span></span><br><span class="line">        System.out.println(<span class="string">"用户的主目录："</span>+props.getProperty(<span class="string">"user.home"</span>));</span><br><span class="line">        System.out.println(<span class="string">"用户的当前工作目录："</span>+props.getProperty(<span class="string">"user.dir"</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
   </div>
+   <div class="comment"></div>
+    <script>
+        new Valine({
+            el: '.comment', // 
+            app_id: 'qBi0aBkxrd0a61dRtSDJjK8M-gzGzoHsz', // 这里填写上面得到的APP ID
+            app_key: 'gcHEadNXDusN49dVUsIK3Be9', // 这里填写上面得到的APP KEY
+            placeholder: '説話を言う...', // [v1.0.7 new]留言框占位提示文字
+            notify: true, // 邮件提醒!!!
+            verify: true, // 验证码
+            avatar: 'robohash'
+        });
+    </script>
 </article>
 
 
@@ -164,15 +176,15 @@
     <div id="nav-footer" style="display: none">
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/">Inici</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/about/">Qui som</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/archives/">Articles</a></li>
          
-          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projects</a></li>
+          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projectes</a></li>
          
-          <li><a href="/search/">Search</a></li>
+          <li><a href="/search/">Buscar</a></li>
          
           <li><a href="/categories/">categories</a></li>
         
@@ -200,10 +212,10 @@
     </div>
 
     <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menú</a>
         <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Compartir</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Cap amunt</a>
     </div>
 
   </div>
@@ -218,15 +230,15 @@
     <nav>
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/">Inici</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/about/">Qui som</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/archives/">Articles</a></li>
          
-          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projects</a></li>
+          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projectes</a></li>
          
-          <li><a href="/search/">Search</a></li>
+          <li><a href="/search/">Buscar</a></li>
          
           <li><a href="/categories/">categories</a></li>
         

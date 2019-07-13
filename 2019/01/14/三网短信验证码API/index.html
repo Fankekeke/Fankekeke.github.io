@@ -59,15 +59,15 @@
     <span id="nav">
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/">Inici</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/about/">Qui som</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/archives/">Articles</a></li>
          
-          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projects</a></li>
+          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projectes</a></li>
          
-          <li><a href="/search/">Search</a></li>
+          <li><a href="/search/">Buscar</a></li>
          
           <li><a href="/categories/">categories</a></li>
         
@@ -85,10 +85,10 @@
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
-      <span id="i-prev" class="info" style="display:none;">Previous post</span>
-      <span id="i-next" class="info" style="display:none;">Next post</span>
-      <span id="i-top" class="info" style="display:none;">Back to top</span>
-      <span id="i-share" class="info" style="display:none;">Share post</span>
+      <span id="i-prev" class="info" style="display:none;">Post Anterior</span>
+      <span id="i-next" class="info" style="display:none;">Post Següent</span>
+      <span id="i-top" class="info" style="display:none;">Adalt</span>
+      <span id="i-share" class="info" style="display:none;">Compartir Post</span>
     </span>
     <br>
     <div id="share" style="display: none">
@@ -156,6 +156,18 @@
 <h4 id="SmsTest"><a href="#SmsTest" class="headerlink" title="SmsTest"></a>SmsTest</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.fanke.sms.test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.fanke.sms.util.HttpUtil;</span><br><span class="line"><span class="keyword">import</span> org.apache.http.HttpResponse;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.net.HttpURLConnection;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.regex.Matcher;</span><br><span class="line"><span class="keyword">import</span> java.util.regex.Pattern;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SmsTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String host = <span class="string">"http://yzx.market.alicloudapi.com"</span>;</span><br><span class="line">        String path = <span class="string">"/yzx/sendSms"</span>;</span><br><span class="line">        String method = <span class="string">"POST"</span>;</span><br><span class="line">        String appcode = <span class="string">"你自己的AppCode"</span>;</span><br><span class="line">	    Map&lt;String, String&gt; headers = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">	    <span class="comment">//最后在header中的格式(中间是英文空格)为Authorization:APPCODE 83359fd73fe94948385f570e3c139105</span></span><br><span class="line">	    headers.put(<span class="string">"Authorization"</span>, <span class="string">"APPCODE "</span> + appcode);</span><br><span class="line">	    Map&lt;String, String&gt; querys = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">	    querys.put(<span class="string">"mobile"</span>, <span class="string">"15905351199"</span>);</span><br><span class="line">	    querys.put(<span class="string">"param"</span>, <span class="string">"code:1234"</span>);</span><br><span class="line">	    querys.put(<span class="string">"tpl_id"</span>, <span class="string">"TP1710262"</span>);</span><br><span class="line">        Map&lt;String, String&gt; bodys = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 重要提示如下:</span></span><br><span class="line"><span class="comment">             * HttpUtils请从</span></span><br><span class="line"><span class="comment">             * https://github.com/aliyun/api-gateway-demo-sign-java/blob/master/src/main/java/com/aliyun/api/gateway/demo/util/HttpUtils.java</span></span><br><span class="line"><span class="comment">             * 下载</span></span><br><span class="line"><span class="comment">             *</span></span><br><span class="line"><span class="comment">             * 相应的依赖请参照</span></span><br><span class="line"><span class="comment">             * https://github.com/aliyun/api-gateway-demo-sign-java/blob/master/pom.xml</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            HttpResponse response = HttpUtil.doPost(host, path, method, headers, querys, bodys);</span><br><span class="line">            System.out.println(response.toString());</span><br><span class="line">            <span class="comment">//获取response的body</span></span><br><span class="line">            <span class="comment">//System.out.println(EntityUtils.toString(response.getEntity()));</span></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="然后ok了"><a href="#然后ok了" class="headerlink" title="然后ok了"></a>然后ok了</h4>
   </div>
+   <div class="comment"></div>
+    <script>
+        new Valine({
+            el: '.comment', // 
+            app_id: 'qBi0aBkxrd0a61dRtSDJjK8M-gzGzoHsz', // 这里填写上面得到的APP ID
+            app_key: 'gcHEadNXDusN49dVUsIK3Be9', // 这里填写上面得到的APP KEY
+            placeholder: '説話を言う...', // [v1.0.7 new]留言框占位提示文字
+            notify: true, // 邮件提醒!!!
+            verify: true, // 验证码
+            avatar: 'robohash'
+        });
+    </script>
 </article>
 
 
@@ -167,15 +179,15 @@
     <div id="nav-footer" style="display: none">
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/">Inici</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/about/">Qui som</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/archives/">Articles</a></li>
          
-          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projects</a></li>
+          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projectes</a></li>
          
-          <li><a href="/search/">Search</a></li>
+          <li><a href="/search/">Buscar</a></li>
          
           <li><a href="/categories/">categories</a></li>
         
@@ -203,10 +215,10 @@
     </div>
 
     <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menú</a>
         <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Compartir</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Cap amunt</a>
     </div>
 
   </div>
@@ -221,15 +233,15 @@
     <nav>
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/">Inici</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/about/">Qui som</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/archives/">Articles</a></li>
          
-          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projects</a></li>
+          <li><a href="https://github.com/Fankekeke/Fanke.github.io">Projectes</a></li>
          
-          <li><a href="/search/">Search</a></li>
+          <li><a href="/search/">Buscar</a></li>
          
           <li><a href="/categories/">categories</a></li>
         
